@@ -95,6 +95,5 @@ def josephus(num, k):
     print(str(q.dequeue()) + ' was killed')
   print('Surviving position: ' + str(q.front()))
   
-josephus(24,3)
 
-
+josephus(8,3)
