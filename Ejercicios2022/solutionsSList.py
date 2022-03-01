@@ -295,7 +295,7 @@ if __name__=='__main__':
         l2.addLast(i)
 
 
-    '''
+
     print("before removing 7", l2)
     l2.removeAll(7)
     print("after removing 7:", l2)
@@ -305,14 +305,14 @@ if __name__=='__main__':
     l2.removeAll(-1)
     print("after removing -1:", l2)
     print()
-    '''
 
-    '''
+
+
     print(l2)
     for i in range(len(l2)):
         print("l2.getAt({})={}, l2.getAtRev({})={}".format(i,l2.getAt(i),i,l2.getAtRev(i)))
     print()
-    '''
+
 
 
     print()
