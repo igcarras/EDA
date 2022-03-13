@@ -21,8 +21,9 @@ class MySList():
         while nodeIt:
             result+= str(nodeIt.elem)+ ", "
             nodeIt=nodeIt.next
-        
-        result=result[:-2]
+
+        if len(result)>1:
+            result=result[:-2]
 
         result+=']'
         return result
@@ -41,14 +42,14 @@ class MySList():
         self._tail=newNode
 
     def isSorted(self):
-        "returns True if self is sorted and does not have any duplicate"
+        "returns True if self is sorted"
         if self._head==None:
             return True
         else:
             node1=self._head
             node2=node1.next
             while node2:
-                if node1.elem>=node2.elem:
+                if node1.elem>node2.elem:
                     return False
                 node1=node2
                 node2=node2.next
@@ -57,41 +58,7 @@ class MySList():
 
     def merge(self, other):
         "Merge of two ordered lists. No duplicates allowed."
-        if self.isSorted()==False or other.isSorted()==False:
-            print('Error: both list must be sorted')
-            return None
-
-        listMerged = MySList()
-
-        node1 = self._head
-        node2 = other._head
-
-        while node1 and node2:
-            if node1.elem < node2.elem:
-                listMerged.append(node1.elem)
-                node1 = node1.next
-            elif node2.elem < node1.elem:
-                listMerged.append(node2.elem)
-                node2 = node2.next
-            else:
-                # no duplicates allowed
-                listMerged.append(node1.elem)
-                node1 = node1.next
-                node2 = node2.next
-
-        # if the there are still elements in self (list)
-        while node1:
-            #no duplicates allowed
-            listMerged.append(node1.elem)
-            node1 = node1.next
-
-            # if the there are still elements in other (list)
-        while node2:
-            # no duplicates allowed
-            listMerged.append(node2.elem)
-            node2 = node2.next
-
-        return listMerged
+    ...
 
 import random
 if __name__=='__main__':
