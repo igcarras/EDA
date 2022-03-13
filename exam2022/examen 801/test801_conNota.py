@@ -101,7 +101,7 @@ class Test(unittest.TestCase):
         result = self.l1.subtraction(self.l2)
         #print("List subtraction1:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test1")
-
+        Test.notaprovisional += 1.5
 
     def test_subtraction2(self):
         print('Caso 2. Dos listas ordenadas sin duplicados, segunda menos longitud')
@@ -109,7 +109,7 @@ class Test(unittest.TestCase):
         result = self.l2.subtraction(self.l1)
         #print("List subtraction2:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test2")
-
+        Test.notaprovisional += 1.5
 
     def test_subtraction3(self):
         print('Caso 3. Dos listas vacias')
@@ -117,7 +117,7 @@ class Test(unittest.TestCase):
         result = self.listE1.subtraction(self.listE2)
         #print("List subtraction3:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test3")
-
+        Test.notaprovisional += 0.5
 
     def test_subtraction4(self):
         print('Caso 4. Primera lista vacia')
@@ -125,7 +125,7 @@ class Test(unittest.TestCase):
         result = self.listE1.subtraction(self.l2)
         #print("List subtraction4:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test4")
-
+        Test.notaprovisional += 1.25
 
     def test_subtraction5(self):
         print('Caso 5. Segunda lista vacia')
@@ -133,28 +133,28 @@ class Test(unittest.TestCase):
         result = self.l1.subtraction(self.listE1)
         #print("List subtraction5:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test5")
-
+        Test.notaprovisional += 1.25
 
     def test_subtraction6(self):
         print('Caso 6. Dos listas sin ordenar')
         result = self.l3.subtraction(self.l4)
         #print("List subtraction6:", str(result))
         self.assertIsNone(result, "Fail: test6")
-
+        Test.notaprovisional += 0.75
 
     def test_subtraction7(self):
         print('Caso 7. Primera lista sin ordenar')
         result = self.l3.subtraction(self.l1)
         #print("List subtraction7:", str(result))
         self.assertIsNone(result, "Fail: test7")
-
+        Test.notaprovisional += 1.25
 
     def test_subtraction8(self):
         print('Caso 8. Segunda lista sin ordenar')
         result = self.l1.subtraction(self.l4)
         #print("List subtraction8:", str(result))
         self.assertIsNone(result, "Fail: test8")
-
+        Test.notaprovisional += 1.25
 
     def test_subtraction9(self):
         print('Caso 9. Dos listas ordenadas iguales sin duplicados')
@@ -162,7 +162,7 @@ class Test(unittest.TestCase):
         result = self.l2.subtraction(self.l2)
         #print("List subtraction9:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test9")
-
+        Test.notaprovisional += 1.25
 
     def test_subtraction10(self):
         print('Caso 10. Dos listas ordenadas iguales con duplicados')
@@ -170,7 +170,7 @@ class Test(unittest.TestCase):
         result = self.l5.subtraction(self.l5)
         #print("List subtraction10:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test10")
-
+        Test.notaprovisional += 1.5
 
     def test_subtraction11(self):
         print('Caso 11. Dos listas ordenadas, primera con duplicados y menos longitud')
@@ -178,7 +178,7 @@ class Test(unittest.TestCase):
         result = self.l6.subtraction(self.l5)
         #print("List subtraction10:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test11")
-
+        Test.notaprovisional += 1.5
 
     def test_subtraction12(self):
         print('Caso 12. Dos listas ordenadas, segunda con duplicados y menos longitud')
@@ -186,10 +186,10 @@ class Test(unittest.TestCase):
         result = self.l5.subtraction(self.l6)
         # print("List subtraction10:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test12")
+        Test.notaprovisional += 1.5
 
-
-    #def test_zprintNota(self):
-    #    print("Nota provisional: ", Test.notaprovisional)
+    def test_zprintNota(self):
+        print("Nota provisional: ", Test.notaprovisional)
 
 # Descomentar para usarlo en Spyder
 if __name__ == '__main__':
