@@ -254,10 +254,10 @@ class Test(unittest.TestCase):
       expected=self.l1
       result=self.l1Dupli.merge(self.l1Dupli)
 
-      print('first list: ', str(self.l1Dupli))
-      print('second list: ', str(self.l1Dupli))
-      print("List merged:" , str(result))
-      print("expected:" , str(expected))
+      #print('first list: ', str(self.l1Dupli))
+      #print('second list: ', str(self.l1Dupli))
+      #print("List merged:" , str(result))
+      #print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test12")
 

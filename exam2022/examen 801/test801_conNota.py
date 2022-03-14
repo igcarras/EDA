@@ -123,6 +123,7 @@ class Test(unittest.TestCase):
         print('Caso 4. Primera lista vacia')
         expected = self.l2
         result = self.listE1.subtraction(self.l2)
+        #print(self.l2)
         #print("List subtraction4:", str(result))
         self.assertEqual(str(result), str(expected), "Fail: test4")
         Test.notaprovisional += 1.25

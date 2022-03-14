@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from partial_84 import MySList
+from partial_84_solution import MySList
 
 import unittest
 import random
@@ -25,7 +25,6 @@ class Test(unittest.TestCase):
     notaprovisional=0
 
     def setUp(self):
-
       #empty lists
       self.listE1 = MySList()
       self.listE2 = MySList()
@@ -255,10 +254,10 @@ class Test(unittest.TestCase):
       expected=self.l1
       result=self.l1Dupli.merge(self.l1Dupli)
 
-      print('first list: ', str(self.l1Dupli))
-      print('second list: ', str(self.l1Dupli))
-      print("List merged:" , str(result))
-      print("expected:" , str(expected))
+      #print('first list: ', str(self.l1Dupli))
+      #print('second list: ', str(self.l1Dupli))
+      #print("List merged:" , str(result))
+      #print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test12")
       Test.notaprovisional+=0.75
