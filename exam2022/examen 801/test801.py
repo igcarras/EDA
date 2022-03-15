@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-from partial_801 import MySList
+from partial_801_solution import MySList
 
 import unittest
 import random
