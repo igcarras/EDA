@@ -19,16 +19,11 @@ class Node:
         self.right=right
         self.parent=parent
 
-    
-    
-    
 class BinaryTree:
   
     def __init__(self):
         """creates an empty binary tree"""
         self._root=None
-
-
    
     def size(self):
         """Returns the number of nodes"""
@@ -52,7 +47,6 @@ class BinaryTree:
 
         return 1 + max(self._height(node.left),self._height(node.right))
 
-    
     def depth(self,node):
         """return the depth of node"""
 

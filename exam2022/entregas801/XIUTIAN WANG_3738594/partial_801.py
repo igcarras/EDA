@@ -60,7 +60,7 @@ class MySList():
 
     def subtraction(self, other):
         "Subtraction of elements in two ordered lists."
-        if (not self.isSorted()) and (not other.isSorted()):
+        if (not self.isSorted()) or (not other.isSorted()):
             return None
         else:
             if self._head == None and other._head != None:

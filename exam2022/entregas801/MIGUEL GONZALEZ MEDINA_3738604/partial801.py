@@ -68,15 +68,15 @@ class MySList():
                 while nodo1 != None:
                     listaFinal.append(nodo1.elem)
                     nodo1 = nodo1.next
-                print("OTHER is empty")
-                print(listaFinal)
+                #print("OTHER is empty")
+                #print(listaFinal)
                 return listaFinal
             if self._head == None:
                 while nodo2 != None:
                     listaFinal.append(nodo2.elem)
                     nodo2 = nodo2.next
-                print("SELF is empty")
-                print(listaFinal)
+                #print("SELF is empty")
+                #print(listaFinal)
                 return listaFinal
 
             while nodo2 != None or nodo1 != None:
@@ -91,7 +91,7 @@ class MySList():
                 listaFinal.append(abs(nodo1.elem - nodo2.elem))
                 nodo1 = nodo1.next
                 nodo2 = nodo2.next
-            print(listaFinal)
+            #print(listaFinal)
             return listaFinal
 
 import random
