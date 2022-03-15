@@ -1,4 +1,5 @@
-#Nombre: José María Solinís Escolar
+# coding=utf-8
+# #Nombre: José María Solinís Escolar
 #NIA: 100462832
 class SNode:
   def __init__(self, e, next=None):
@@ -96,9 +97,6 @@ class MySList():
                 aux = aux.next
 
 
-
-
-    ...
 
 import random
 if __name__=='__main__':

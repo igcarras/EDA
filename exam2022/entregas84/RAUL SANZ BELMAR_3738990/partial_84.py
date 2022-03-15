@@ -1,4 +1,5 @@
-"Nombre: Raúl Sanz Belmar"
+# coding=utf-8
+# "Nombre: Raúl Sanz Belmar"
 
 class SNode:
   def __init__(self, e, next=None):

@@ -1,3 +1,4 @@
+# coding=utf-8
 # Yago Brotón Gutiérrez, 100451322
 
 class SNode:

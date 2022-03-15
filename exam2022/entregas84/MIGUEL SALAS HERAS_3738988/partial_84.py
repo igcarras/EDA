@@ -1,4 +1,5 @@
 
+# coding=utf-8
 class SNode:
   def __init__(self, e, next=None):
     self.elem = e

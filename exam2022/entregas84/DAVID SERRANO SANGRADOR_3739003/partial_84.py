@@ -1,3 +1,4 @@
+# coding=utf-8
 # David Serrano Sangrador
 class SNode:
   def __init__(self, e, next=None):

@@ -1,4 +1,5 @@
-"""MARIO SANTIUSTE SARABIA GRUPO 84 EDA ING. INF."""
+# coding=utf-8
+# """MARIO SANTIUSTE SARABIA GRUPO 84 EDA ING. INF."""
 class SNode:
   def __init__(self, e, next=None):
     self.elem = e

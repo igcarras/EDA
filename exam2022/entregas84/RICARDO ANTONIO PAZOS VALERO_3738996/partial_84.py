@@ -1,4 +1,4 @@
-
+# coding=utf-8
 class SNode:
   def __init__(self, e, next=None):
     self.elem = e
@@ -58,41 +58,73 @@ class MySList():
 
     def merge(self, other):
         "Merge of two ordered lists. No duplicates allowed."
-        # aqui crea la list auxiliar para poder devolverla al final
-        list_aux = MySList()
-        if not self.isSorted():
-            return None
-        # aqui comprueba que esta ordenanada
-        node1 = self._head
-        node2 = other._head
-        # aqui crea node 1 y node 2 para poder realizar bien el merge
-        
-        while node1 != None or node2 != None:
-            if node1.elem < node2.elem:
-                list_aux.append(node1.elem)
-                node1 = node1.next
-            elif node1.elem > node2.elem:
-                list_aux.append(node2.elem)
-                node2 = node2.next
-            else:
-                list_aux.append(node1.elem)
-                node1 = node1.next
-                node2 = node2.next
-                # aqui hace todas las comprobaciones posibles para 
-            if node1 == None:
-                while node2 != None:
-                    list_aux.append(node2.elem)
+        outputList = MySList()
+        if self.isSorted() and other.isSorted():
+            node1 = self._head
+            node2 = other._head
+
+            while node1:
+                next1 = node1.next
+                if node1.elem == next1.elem:
+                    node1.next = next1.next
+                    if next1.next == None:
+                        node1 = self._tail
+                else:
+                    node1 = next1
+            while node2:
+                next2 = node2.next
+                if node2.elem == next2.elem:
+                    node2.next = next2.next
+                    if next2.next == None:
+                        node2 = other._tail
+                else:
+                    node2 = next2
+
+            node1 = self._head
+            node2 = other._head
+            firstListOver = False
+            secondListOver = False
+            while firstListOver == False and secondListOver == False:
+                if node1 == None:
+                    firstListOver = True
+                elif node2 == None:
+                    secondListOver = True
+                elif node1.elem > node2.elem:
+                    if node2 == None:
+                        secondListOver = True
+                    else:
+                        outputList.append(node2.elem)
+                        node2 = node2.next
+                else:
+                    if node1 == None:
+                        firstListOver = True
+                    else:
+                        outputList.append(node1.elem)
+                        node1 = node1.next
+
+            if firstListOver:
+                while node2:
+                    outputList.append(node2.elem)
                     node2 = node2.next
-        
-            if node2 == None:
-                while node1 != None:
-                    list_aux.append(node1.elem)
+            else:
+                while node1:
+                    outputList.append(node1.elem)
                     node1 = node1.next
-                
-            # el error que me da en los unittest es pq hay valores repetidos 
-            # pero no se como arreglarlo
-        return list_aux
-        
+
+            return outputList
+
+        else:
+            return None
+
+
+
+
+
+
+
+
+
+
 
 import random
 if __name__=='__main__':

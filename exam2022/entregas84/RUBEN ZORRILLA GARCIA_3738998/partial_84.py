@@ -1,6 +1,4 @@
 # coding=utf-8
-# Irene Subías Serrano
-
 class SNode:
   def __init__(self, e, next=None):
     self.elem = e
@@ -10,12 +8,12 @@ class SNode:
 class MySList():
     
     def __init__(self):
-        self._head = None
-        self._tail = None
+        self._head=None
+        self._tail=None
         
     def __str__(self):
         """Returns a string with the elements of the list"""
-        ###This functions returns the same format used
+        ###This functions returns the same format used 
         ###by the Python lists, i.e, [], ['i'], ['a', 'b', 'c', 'd']
         ###[1], [3, 4, 5]
         nodeIt=self._head
@@ -60,48 +58,41 @@ class MySList():
 
     def merge(self, other):
         "Merge of two ordered lists. No duplicates allowed."
-        if other.isSorted() and self.isSorted():
-            l = MySList()
-            index1 = self._head
-            index2 = other._head
-            last = None
-            while index1 or index2:
-                if index1 and index2:
-                    if index1.elem < index2.elem and index1.elem != last:
-                        l.append(index1.elem)
-                        last = index1.elem
-                        index1 = index1.next
-                    elif index1.elem == index2.elem and index1.elem != last:
-                        l.append(index1.elem)
-                        last = index1.elem
-                        index1 = index1.next
-                        index2 = index2.next
-                    elif index1.elem > index2.elem != last:
-                        l.append(index2.elem)
-                        last = index2.elem
-                        index2 = index2.next
-                    elif index1.elem == last:
-                        index1 = index1.next
-                    elif index2.elem == last:
-                        index2 = index2.next
-                elif index1:
-                    if index1.elem != last:
-                        l.append(index1.elem)
-                        last = index1.elem
-                        index1 = index1.next
-                    else:
-                        index1 = index1.next
-                else:
-                    if index2.elem != last:
-                        l.append(index2.elem)
-                        last = index2.elem
-                        index2 = index2.next
-                    else:
-                        index2 = index2.next
-            return l
-        else:
+        # aqui crea la list auxiliar para poder devolverla al final
+        list_aux = MySList()
+        if not self.isSorted():
             return None
-
+        # aqui comprueba que esta ordenanada
+        node1 = self._head
+        node2 = other._head
+        # aqui crea node 1 y node 2 para poder realizar bien el merge
+        
+        while node1 != None or node2 != None:
+            if node1.elem < node2.elem:
+                list_aux.append(node1.elem)
+                node1 = node1.next
+            elif node1.elem > node2.elem:
+                list_aux.append(node2.elem)
+                node2 = node2.next
+            else:
+                list_aux.append(node1.elem)
+                node1 = node1.next
+                node2 = node2.next
+                # aqui hace todas las comprobaciones posibles para 
+            if node1 == None:
+                while node2 != None:
+                    list_aux.append(node2.elem)
+                    node2 = node2.next
+        
+            if node2 == None:
+                while node1 != None:
+                    list_aux.append(node1.elem)
+                    node1 = node1.next
+                
+            # el error que me da en los unittest es pq hay valores repetidos 
+            # pero no se como arreglarlo
+        return list_aux
+        
 
 import random
 if __name__=='__main__':

@@ -1,4 +1,4 @@
-
+# coding=utf-8
 #Nora Tajuelo del Pozo 
 class SNode:
   def __init__(self, e, next=None):

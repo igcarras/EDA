@@ -1,4 +1,6 @@
+# coding=utf-8
 ###Daniel Telo Fernández
+
 class SNode:
   def __init__(self, e, next=None):
     self.elem = e
@@ -63,24 +65,24 @@ class MySList():
         if self.isSorted()==False or other.isSorted()==False:
             return None
         else:
-            
+
             for i in self:
                 if(i==selfNode.next.elem):
                   selfNode.next=selfNode.next.next
                 else:
                   continue
-              
+
             for i in other:
                 if(i==oNode.next.elem):
                   oNode.next=oNode.next.next
                 else:
                   continue
-              
-            s._head()=other._head()
-            s._tail.next()=self._head()
-            s._tail=self._tail               
-        
-        
+
+            s._head=other._head
+            s._tail.next=self._head
+            s._tail=self._tail
+
+
 
 import random
 if __name__=='__main__':

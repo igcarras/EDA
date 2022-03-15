@@ -1,3 +1,5 @@
+
+# coding=utf-8
 #Francisco Torija Jiménez
 #100429111
 
@@ -61,17 +63,17 @@ class MySList():
 
     def merge(self, other):
         "Merge of two ordered lists. No duplicates allowed."
-        if self.isSorted == False:
+        if not self.isSorted:
             return None
                                             #comprobadores de listas ordenadas
-        elif other.isSorted == False:
+        elif not other.isSorted:
             return None
         
         else:
             listaAux = MySList()                  #Lista auxiliar
             listaFinal = MySList()                #Lista final
             listaAux._head = self._head           #Primer nodo primer elem de la lista
-            other._head = listaAux._tail.next
+            other._head = listaAux._tail
 
             nodeItEstarPrev = self._head
             nodeItEstar = self._head.next
@@ -80,15 +82,15 @@ class MySList():
                     listaFinal.append(nodeItEstarPrev.elem)
                     nodeItEstar = nodeItEstar.next
                     nodeItEstarPrev = nodeItEstarPrev.next
-                
-            nodeItOrdenarPrev = self._head  
+
+            nodeItOrdenarPrev = self._head
             nodeItOrdenar = self._head.next
             while nodeItOrdenarPrev:
                 if nodeItOrdenarPrev.elem > nodeItOrdenar.elem:
                     nodeItOrdenar = nodeItOrdenarPrev
                     nodeItOrdenarPrev = nodeItOrdenar
                     nodeItOrdenarPrev = nodeItOrdenar.next
-                    
+
                 
                 
         return listaFinal
