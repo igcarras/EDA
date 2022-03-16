@@ -114,12 +114,12 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
       # print()
       self.assertEqual(str(result),str(expected),"Fail: test1")
-      Test.notaprovisional+=0.25
+      Test.notaprovisional+=0.5
 
 
     def test2(self):
       print('Caso 2. Primera lista no está ordenada')
-      result=self.l3.merge(self.l1)
+      #result=self.l3.merge(self.l1)
 
       # print('first list: ', str(self.l3))
       # print('second list: ', str(self.l1))
@@ -127,7 +127,7 @@ class Test(unittest.TestCase):
       # print("expected:" , None)
       # print()
       self.assertIsNone(result,"Fail: test2")
-      Test.notaprovisional+=0.25
+      Test.notaprovisional+=0.5
 
 
     def test3(self):
@@ -140,12 +140,12 @@ class Test(unittest.TestCase):
       # print("expected:" , None)
 
       self.assertIsNone(result,"Fail: test3")
-      Test.notaprovisional+=0.25
+      Test.notaprovisional+=0.5
 
     def test4(self):
       print('Caso 4. Primera lista vacia, segunda lista no vacía sin duplicados')
       expected=self.l2
-      result=self.listE1.merge(self.l2)
+      #result=self.listE1.merge(self.l2)
 
       # print('first list: ', str(self.listE1))
       # print('second list: ', str(self.l2))
@@ -159,7 +159,7 @@ class Test(unittest.TestCase):
     def test5(self):
       print('Caso 5. Primera lista vacia, segunda lista no vacía con duplicados')
       expected=self.l2
-      result=self.listE1.merge(self.l2Dupli)
+      #result=self.listE1.merge(self.l2Dupli)
 
       # print('first list: ', str(self.listE1))
       # print('second list: ', str(self.l2Dupli))
@@ -172,7 +172,7 @@ class Test(unittest.TestCase):
     def test6(self):
       print('Caso 6. Primera lista no vacía sin duplicados, segunda lista  vacía ')
       expected=self.l1
-      result=self.l1.merge(self.listE2)
+      #result=self.l1.merge(self.listE2)
 
       # print('first list: ', str(self.l1))
       # print('second list: ', str(self.listE2))
@@ -185,7 +185,7 @@ class Test(unittest.TestCase):
     def test7(self):
       print('Caso 7. Primera lista no vacía con duplicados, segunda lista  vacía ')
       expected=self.l1
-      result=self.l1Dupli.merge(self.listE2)
+      #result=self.l1Dupli.merge(self.listE2)
 
       # print('first list: ', str(self.l1Dupli))
       # print('second list: ', str(self.listE2))
@@ -198,7 +198,7 @@ class Test(unittest.TestCase):
     def test8(self):
       print('Caso 8. Dos listas ordenadas sin duplicados. Primera menos longitud')
       expected=self.datamerge
-      result=self.l1.merge(self.l2)
+      #result=self.l1.merge(self.l2)
 
       # print('first list: ', str(self.l1))
       # print('second list: ', str(self.l2))
@@ -211,7 +211,7 @@ class Test(unittest.TestCase):
     def test9(self):
       print('Caso 9. Dos listas ordenadas sin duplicados. Segunda menos longitud')
       expected=self.datamerge
-      result=self.l2.merge(self.l1)
+      #result=self.l2.merge(self.l1)
 
       # print('first list: ', str(self.l2))
       # print('second list: ', str(self.l1))
@@ -224,7 +224,7 @@ class Test(unittest.TestCase):
     def test10(self):
       print('Caso 10. Dos listas ordenadas con duplicados. Primera menos longitud')
       expected=self.datamerge
-      result=self.l1Dupli.merge(self.l2Dupli)
+      #result=self.l1Dupli.merge(self.l2Dupli)
 
       #print('first list: ', str(self.l1Dupli))
       #print('second list: ', str(self.l2Dupli))
@@ -232,13 +232,13 @@ class Test(unittest.TestCase):
       #print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test10")
-      Test.notaprovisional+=2
+      Test.notaprovisional+=1.5
 
 
     def test11(self):
       print('Caso 11. Dos listas ordenadas con duplicados. Segunda menos longitud')
       expected=self.datamerge
-      result=self.l2Dupli.merge(self.l1Dupli)
+      #result=self.l2Dupli.merge(self.l1Dupli)
 
       # print('first list: ', str(self.l2Dupli))
       # print('second list: ', str(self.l1Dupli))
@@ -246,13 +246,13 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test11")
-      Test.notaprovisional+=2
+      Test.notaprovisional+=1.5
 
 
     def test12(self):
       print('Caso 12. la misma lista con duplicados')
       expected=self.l1
-      result=self.l1Dupli.merge(self.l1Dupli)
+      #result=self.l1Dupli.merge(self.l1Dupli)
 
       #print('first list: ', str(self.l1Dupli))
       #print('second list: ', str(self.l1Dupli))
@@ -260,14 +260,14 @@ class Test(unittest.TestCase):
       #print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test12")
-      Test.notaprovisional+=0.75
+      Test.notaprovisional+=1
 
 
 
     def test13(self):
       print('Caso 13. Primera con duplicados, segunda sin duplicados')
       expected=self.datamerge
-      result=self.l1Dupli.merge(self.l2)
+      #result=self.l1Dupli.merge(self.l2)
 
       # print('first list: ', str(self.l1Dupli))
       # print('second list: ', str(self.l2))
@@ -282,7 +282,7 @@ class Test(unittest.TestCase):
     def test14(self):
       print('Caso 14. Primera sin duplicados, segunda con duplicados')
       expected=self.datamerge
-      result=self.l1.merge(self.l2Dupli)
+      #result=self.l1.merge(self.l2Dupli)
 
       # print('first list: ', str(self.l1))
       # print('second list: ', str(self.l2Dupli))

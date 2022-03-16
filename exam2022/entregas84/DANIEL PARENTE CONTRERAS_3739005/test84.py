@@ -25,6 +25,7 @@ class Test(unittest.TestCase):
     notaprovisional=0
 
     def setUp(self):
+
       #empty lists
       self.listE1 = MySList()
       self.listE2 = MySList()
@@ -99,8 +100,8 @@ class Test(unittest.TestCase):
       # print("l4:", self.l4)
       # print()
 
-    def test_printNota(self):
-      print("Nota provisional: ", Test.notaprovisional)
+    #def test_printNota(self):
+    #  print("Nota provisional: ", Test.notaprovisional)
 
 
     def test1(self):
@@ -114,7 +115,6 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
       # print()
       self.assertEqual(str(result),str(expected),"Fail: test1")
-      Test.notaprovisional+=0.5
 
 
     def test2(self):
@@ -127,7 +127,7 @@ class Test(unittest.TestCase):
       # print("expected:" , None)
       # print()
       self.assertIsNone(result,"Fail: test2")
-      Test.notaprovisional+=0.5
+
 
 
     def test3(self):
@@ -140,7 +140,7 @@ class Test(unittest.TestCase):
       # print("expected:" , None)
 
       self.assertIsNone(result,"Fail: test3")
-      Test.notaprovisional+=0.5
+
 
     def test4(self):
       print('Caso 4. Primera lista vacia, segunda lista no vacía sin duplicados')
@@ -154,7 +154,7 @@ class Test(unittest.TestCase):
       # print()
 
       self.assertEqual(str(result),str(expected),"Fail: test4")
-      Test.notaprovisional+=0.5
+
 
     def test5(self):
       print('Caso 5. Primera lista vacia, segunda lista no vacía con duplicados')
@@ -167,7 +167,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test5")
-      Test.notaprovisional+=1.5
+
 
     def test6(self):
       print('Caso 6. Primera lista no vacía sin duplicados, segunda lista  vacía ')
@@ -180,7 +180,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test6")
-      Test.notaprovisional+=0.5
+
 
     def test7(self):
       print('Caso 7. Primera lista no vacía con duplicados, segunda lista  vacía ')
@@ -193,7 +193,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test7")
-      Test.notaprovisional+=1.5
+
 
     def test8(self):
       print('Caso 8. Dos listas ordenadas sin duplicados. Primera menos longitud')
@@ -206,7 +206,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test8")
-      Test.notaprovisional+=1.25
+
 
     def test9(self):
       print('Caso 9. Dos listas ordenadas sin duplicados. Segunda menos longitud')
@@ -219,7 +219,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test9")
-      Test.notaprovisional+=1.25
+
 
     def test10(self):
       print('Caso 10. Dos listas ordenadas con duplicados. Primera menos longitud')
@@ -232,7 +232,7 @@ class Test(unittest.TestCase):
       #print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test10")
-      Test.notaprovisional+=1.5
+
 
 
     def test11(self):
@@ -246,7 +246,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test11")
-      Test.notaprovisional+=1.5
+
 
 
     def test12(self):
@@ -260,7 +260,7 @@ class Test(unittest.TestCase):
       #print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test12")
-      Test.notaprovisional+=1
+
 
 
 
@@ -275,7 +275,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test13")
-      Test.notaprovisional+=1.5
+
 
 
 
@@ -290,7 +290,7 @@ class Test(unittest.TestCase):
       # print("expected:" , str(expected))
 
       self.assertEqual(str(result),str(expected),"Fail: test14")
-      Test.notaprovisional+=1.5
+
 
 
 
