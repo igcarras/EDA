@@ -224,8 +224,9 @@ if __name__ == '__main__':
     newNode = BinaryNode(2)
     left = BinaryNode(3, newNode, None)
 
-    right = BinaryNode(9)
+    print(newNode.__eq__(newNode))
 
+    right = BinaryNode(9)
     right.left = BinaryNode(8)
     right.right = BinaryNode(20)
     rrNode = right.right
