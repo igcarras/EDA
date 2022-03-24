@@ -138,6 +138,7 @@ if __name__ == "__main__":
     for x in [18, 11, 23, 5, 15, 20, 24, 9, 15, 22, 21, 6, 8, 7]:
         tree.insert(x)
     tree.draw()
+    print("buscamos algo que no existe", tree.searchit(1111))
     print('size:', tree.size())
     print('height:', tree.height())
 
