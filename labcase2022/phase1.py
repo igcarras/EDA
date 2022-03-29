@@ -124,7 +124,7 @@ class SList2(SList):
 
                     nodeStack=nodeStack.next
                 # print(self)
-
+w
             self._head=firstNode
 
     def reverseK(self,k):
