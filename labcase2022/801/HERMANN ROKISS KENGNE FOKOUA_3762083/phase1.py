@@ -88,8 +88,7 @@ class SList2(SList):
             hermann.next.next.next.elem = hermann.next.next.next.next.next.elem
             hermann.next.next.next.next.next.elem= her
             return hermann  
-        
-        
+
         if k==4:  
             
             hermann= self._head 
