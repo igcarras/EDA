@@ -4,7 +4,7 @@ from bintree import BinaryNode
 from bintree import BinaryTree
 
 
-class BinarySearchTree(BinaryTree):
+class MyBinarySearchTree(BinaryTree):
 
 
     def insert(self, elem: object) -> None:
@@ -84,7 +84,8 @@ class BinarySearchTree(BinaryTree):
         # if node is not leaf, return node and continue recursion
         return node
 
- # Removes all nodes having value outside the given range
+    # Removes all nodes having value outside the given range
+    # returns a sorted list in ascending order
     def removeOutsideRange3(self, min: int, max: int) -> []:
         # update the root with the new subtree after remove elem
         removelist = []
@@ -92,6 +93,7 @@ class BinarySearchTree(BinaryTree):
         return removelist
 
     # Removes all nodes having value outside the given range
+    # returns a sorted list in ascending order
     def _removeOutsideRange3(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
         # Base Case
         if node is None:
@@ -114,7 +116,7 @@ class BinarySearchTree(BinaryTree):
 
 
 if __name__ == "__main__":
-    aux = BinarySearchTree()
+    aux = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         aux.insert(x)
         # aux.draw()
@@ -134,9 +136,4 @@ if __name__ == "__main__":
     print("Nodos eliminados", aux.removeOutsideRange3(0,0))
     aux.draw()
 
-
-    #tree = BinarySearchTree()
-    #for x in [18, 11, 23, 5, 15, 20, 24, 9, 22, 21, 6, 8, 7]:
-    #    tree.insert(x)
-    #tree.draw()
 
