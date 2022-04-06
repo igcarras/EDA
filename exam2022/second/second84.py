@@ -84,6 +84,35 @@ class BinarySearchTree(BinaryTree):
         # if node is not leaf, return node and continue recursion
         return node
 
+ # Removes all nodes having value outside the given range
+    def removeOutsideRange3(self, min: int, max: int) -> []:
+        # update the root with the new subtree after remove elem
+        removelist = []
+        self._removeOutsideRange3(self._root, min, max, removelist)
+        return removelist
+
+    # Removes all nodes having value outside the given range
+    def _removeOutsideRange3(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
+        # Base Case
+        if node is None:
+            return
+
+        # check is node is not leaf
+        if node.left or node.right:
+            node.left = self._removeOutsideRange3(node.left, min, max,  removelist)
+            node.right = self._removeOutsideRange3(node.right, min, max,  removelist)
+        else:
+            if node.left is None and node.right is None and node.elem not in range(min, max):
+                # node is a leave
+                # append node in list
+                # print("leaf node for removing:", node.elem)
+                removelist.append(node.elem)
+                return None
+
+        # if node is not leaf, return node and continue recursion
+        return node
+
+
 if __name__ == "__main__":
     aux = BinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
@@ -93,16 +122,16 @@ if __name__ == "__main__":
     aux.draw()
 
     print("Remove leaf nodes out range: 1, 120")
-    aux.removeOutsideRange2(1,120)
+    print("Nodos eliminados", aux.removeOutsideRange3(1,120))
     aux.draw()
 
     print("Remove leaf nodes out range: 15, 20")
-    aux.removeOutsideRange2(15,20)
+    print("Nodos eliminados", aux.removeOutsideRange3(15,20))
     aux.draw()
 
 
     print("Remove leaf nodes out range: 0, 0")
-    aux.removeOutsideRange2(0,0)
+    print("Nodos eliminados", aux.removeOutsideRange3(0,0))
     aux.draw()
 
 
