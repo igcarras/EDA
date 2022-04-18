@@ -61,13 +61,19 @@ class BinarySearchTree(BinaryTree):
         not_exist = True
         while not_exist and node:
             if elem < node.elem:
-                node = node.left
-                if node.left is None: # this is the place to insert it
+                if node.left is None:  # this is the place to insert it
                     node.left = BinaryNode(elem)
+                    not_exist = False
+                else:
+                    node = node.left
+
             elif elem > node.elem:
-                node = node.right
                 if node.right is None:  # this is the place to insert it
                     node.right = BinaryNode(elem)
+                    not_exist = False
+                else:
+                    node = node.right
+
             else:  # elem == node.elem
                 print('duplicate elements not allowed!!')
                 not_exist = False
@@ -123,12 +129,21 @@ class BinarySearchTree(BinaryTree):
 
 
 if __name__ == "__main__":
+    print('hola')
     aux = BinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         aux.insert(x)
         # aux.draw()
 
     aux.draw()
+
+    aux2 = BinarySearchTree()
+    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        aux2.insert_iterative(x)
+        # aux.draw()
+    aux2.draw()
+    print(aux == aux2)
+
     print("after remove 80 (a leaf)")
     aux.remove(80)
     aux.draw()
@@ -138,7 +153,6 @@ if __name__ == "__main__":
     for x in [18, 11, 23, 5, 15, 20, 24, 9, 15, 22, 21, 6, 8, 7]:
         tree.insert(x)
     tree.draw()
-    print("buscamos algo que no existe", tree.searchit(1111))
     print('size:', tree.size())
     print('height:', tree.height())
 
