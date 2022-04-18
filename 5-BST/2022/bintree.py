@@ -2,7 +2,7 @@
 # Implementation of Binary Tree
 # A node only saves the references to its children
 
-from slistH import SList
+from TADLineales.slistHT import SList
 
 
 class BinaryNode:
@@ -148,14 +148,14 @@ class BinaryTree:
 
             # we can use SList with tail and head
             list_nodes = SList()
-            list_nodes.addLast(self._root)
+            list_nodes.add_last(self._root)
             while len(list_nodes) > 0:  # loop will be executed the size of tree: n
-                current = list_nodes.removeFirst() # O(1)
+                current = list_nodes.remove_first()
                 print(current.elem, end=' ')
                 if current.left is not None:
-                    list_nodes.addLast(current.left)  # O(1)
+                    list_nodes.add_last(current.left)  # O(1)
                 if current.right is not None:
-                    list_nodes.addLast(current.right)  # O(1)
+                    list_nodes.add_last(current.right)  # O(1)
 
             print()
 
@@ -165,14 +165,15 @@ class BinaryTree:
         if self._root is not None:
             # we can use SList with tail and head
             list_nodes = SList()
-            list_nodes.addLast(self._root)
+            list_nodes.add_last(self._root)
+
             while len(list_nodes) > 0:  # loop will be executed the size of tree: n
-                current = list_nodes.removeFirst() # O(1)
+                current = list_nodes.remove_first() # O(1)
                 result.append(current.elem)
                 if current.left is not None:
-                    list_nodes.addLast(current.left)  # O(1)
+                    list_nodes.add_last(current.left)  # O(1)
                 if current.right is not None:
-                    list_nodes.addLast(current.right)  # O(1)
+                    list_nodes.add_last(current.right)  # O(1)
 
         return result
 
@@ -188,16 +189,16 @@ class BinaryTree:
             depth_level = 0
 
             list_nodes = SList()
-            list_nodes.addLast(self._root)
+            list_nodes.add_last(self._root)
 
             while len(list_nodes) > 0:  # loop will be executed the size of tree: n
-                current = list_nodes.removeFirst() # O(1)
+                current = list_nodes.remove_first() # O(1)
                 if current == node:
                     return depth_level
-                if current.left is not None:
-                    list_nodes.addLast(current.left)  # O(1)
-                if current.right is not None:
-                    list_nodes.addLast(current.right)  # O(1)
+                if current.left is not None and node.elem < current.elem:
+                    list_nodes.add_last(current.left)  # O(1)
+                if current.right is not None and node.elem > current.elem:
+                    list_nodes.add_last(current.right)  # O(1)
                 depth_level += 1
 
         print('Not found ', node.elem)
@@ -224,9 +225,8 @@ if __name__ == '__main__':
     newNode = BinaryNode(2)
     left = BinaryNode(3, newNode, None)
 
-    print(newNode.__eq__(newNode))
-
     right = BinaryNode(9)
+
     right.left = BinaryNode(8)
     right.right = BinaryNode(20)
     rrNode = right.right
@@ -256,3 +256,5 @@ if __name__ == '__main__':
     print('depth of root.left:', tree.depth(left))
     print('depth of root.right:', tree.depth(right))
 
+    print('depth of root.right.left:', tree.depth(right.left))
+    print('depth of root.right.right.right:', tree.depth(rrNode.right), rrNode.right.elem)

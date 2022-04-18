@@ -172,6 +172,56 @@ class BST2(BinarySearchTree):
         else:
             return True
 
+    def findMaxforN(self, n: int) -> int:
+        return self._findMaxforN(self._root, n)
+
+    def _findMaxforN(self, node: 'BSTNode', n:int)->int:
+        # Base cases
+        if node == None:
+            return -1
+        if node.elem == n:
+            return n
+
+        # If root's value is smaller, try in
+        # right subtree
+        elif node.elem  < n:
+            k = self._findMaxforN(node.right, n)
+            if k == -1:
+                return node.elem
+            else:
+                return k
+
+        # If root's key is greater, return
+        # value from left subtree.
+        elif node.elem > n:
+            return  self._findMaxforN(node.left, n)
+
+
+    def lwc(self, a, b):
+        """returns the lowest common ancestor of a and b"""
+        nodeA = self.search(a)
+        if nodeA == None:
+            return None
+
+        nodeB = self.search(b)
+        if nodeB == None:
+            return None
+
+        return self._lwc(self._root, nodeA, nodeB)
+
+
+    def _lwc(self, node, nodeA, nodeB):
+        if node == None:
+            return None
+
+        if nodeA.elem < node.elem and nodeB.elem < node.elem:
+            return self._lwc(node.left, nodeA, nodeB)
+
+        if nodeA.elem > node.elem and nodeB.elem > node.elem:
+            return self._lwc(node.right, nodeA, nodeB)
+
+        return node.elem
+
 
 if __name__ == "__main__":
     tree = BST2()
@@ -215,3 +265,28 @@ if __name__ == "__main__":
         print('size-balanced factor of  {} is {}'.format(x, tree.fe_size(x)))
         print('height-balanced factor of  {} is {}'.format(x, tree.fe_height(x)))
         print()
+
+    n=1
+    tree.draw()
+    print("encontrado para ", n, " el valor ", tree.findMaxforN(n))
+
+
+    values = [50, 48, 70, 30, 65, 90, 20, 32, 67, 98, 15, 25, 31, 35, 66, 69, 94, 99]
+
+    tree = BST2()
+    for x in values:
+        tree.insert(x)
+
+    tree.draw()
+
+    print(tree.lwc(48,70),50)
+    print(tree.lwc(30,70),50)
+    print(tree.lwc(30,65),50)
+    print(tree.lwc(20,32),30)
+    print(tree.lwc(67,90),70)
+    print(tree.lwc(69,99),70)
+    print(tree.lwc(31,94),50)
+    print(tree.lwc(15,25),20)
+    print(tree.lwc(15,35),30)
+    print(tree.lwc(67,70),70)
+    print(tree.lwc(30,35),30)
