@@ -2,7 +2,7 @@ import unittest
 
 # from phase2_solution import AVLTree
 
-from phase2 import AVLTree
+from phase2_solution import AVLTree
 from bst import BinarySearchTree
 
 class TestAVL(unittest.TestCase):
