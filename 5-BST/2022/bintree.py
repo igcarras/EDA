@@ -2,7 +2,7 @@
 # Implementation of Binary Tree
 # A node only saves the references to its children
 
-from TADLineales.slistHT import SList
+from slistHT import SList
 
 
 class BinaryNode:
