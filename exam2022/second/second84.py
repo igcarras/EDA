@@ -26,85 +26,26 @@ class MyBinarySearchTree(BinaryTree):
         return node
 
     # Removes all nodes having value outside the given range
-    def removeOutsideRange(self, min: int, max: int) -> None:
-        # update the root with the new subtree after remove elem
-        notremovelist =[]
-        self._removeOutsideRange(self._root, min, max, notremovelist)
-        #print("Saved notes for not removing:", notremovelist)
-
-    # Removes all nodes having value outside the given range
-    def _removeOutsideRange(self, node: BinaryNode, min: int, max: int, notremovelist: []) -> None:
-        # Base Case
-        if node is None:
-            return
-
-        # check is node is not leaf
-        # append to list for not removing
-        if node.left or node.right:
-            #print("append node for not removing", node.elem)
-            notremovelist.append(node.elem)
-
-        node.left = self._removeOutsideRange(node.left, min, max, notremovelist)
-        node.right = self._removeOutsideRange(node.right, min, max, notremovelist)
-
-        # if node.elem == elem
-        # and node is out of range
-        # then remove node (return None)
-        if node.left is None and node.right is None and node.elem not in range(min, max):
-            if node.elem not in notremovelist:
-                #  node is a leave
-                #print("leaf node for removing:", node.elem)
-                return None
-
-        #if node is not leaf, return node and continue recursion
-        return node
-
-    # Removes all nodes having value outside the given range
-    def removeOutsideRange2(self, min: int, max: int) -> None:
-        # update the root with the new subtree after remove elem
-        self._removeOutsideRange2(self._root, min, max)
-
-
-    # Removes all nodes having value outside the given range
-    def _removeOutsideRange2(self, node: BinaryNode, min: int, max: int) -> None:
-        # Base Case
-        if node is None:
-            return
-
-        # check is node is not leaf
-        if node.left or node.right:
-            node.left = self._removeOutsideRange2(node.left, min, max)
-            node.right = self._removeOutsideRange2(node.right, min, max)
-        else:
-            if node.left is None and node.right is None and node.elem not in range(min, max):
-                #  node is a leave
-                # print("leaf node for removing:", node.elem)
-                return None
-
-        # if node is not leaf, return node and continue recursion
-        return node
-
-    # Removes all nodes having value outside the given range
     # returns a sorted list in ascending order
-    def removeOutsideRange3(self, min: int, max: int) -> []:
+    def removeOutsideRange(self, min: int, max: int) -> []:
         # update the root with the new subtree after remove elem
         removelist = []
-        self._removeOutsideRange3(self._root, min, max, removelist)
+        self._removeOutsideRange(self._root, min, max, removelist)
         return removelist
 
     # Removes all nodes having value outside the given range
     # returns a sorted list in ascending order
-    def _removeOutsideRange3(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
+    def _removeOutsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
         # Base Case
         if node is None:
             return
 
         # check is node is not leaf
         if node.left or node.right:
-            node.left = self._removeOutsideRange3(node.left, min, max,  removelist)
-            node.right = self._removeOutsideRange3(node.right, min, max,  removelist)
+            node.left = self._removeOutsideRange(node.left, min, max,  removelist)
+            node.right = self._removeOutsideRange(node.right, min, max,  removelist)
         else:
-            if node.left is None and node.right is None and node.elem not in range(min, max):
+            if (node.left is None) and (node.right is None) and (node.elem < min or node.elem > max):
                 # node is a leave
                 # append node in list
                 # print("leaf node for removing:", node.elem)
@@ -124,16 +65,23 @@ if __name__ == "__main__":
     aux.draw()
 
     print("Remove leaf nodes out range: 1, 120")
-    print("Nodos eliminados", aux.removeOutsideRange3(1,120))
+    print("Nodos eliminados", aux.removeOutsideRange(1,120))
     aux.draw()
 
     print("Remove leaf nodes out range: 15, 20")
-    print("Nodos eliminados", aux.removeOutsideRange3(15,20))
+    print("Nodos eliminados", aux.removeOutsideRange(15,20))
     aux.draw()
 
 
     print("Remove leaf nodes out range: 0, 0")
-    print("Nodos eliminados", aux.removeOutsideRange3(0,0))
+    print("Nodos eliminados", aux.removeOutsideRange(0,0))
     aux.draw()
 
+    tree2 = MyBinarySearchTree()
 
+    for x in [18, 11, 23, 5, 15, 20, 24, 9, 22, 21, 6, 8, 7]:
+        tree2.insert(x)
+    tree2.draw()
+
+    print("Nodos eliminados", tree2.removeOutsideRange(9, 23))
+    tree2.draw()

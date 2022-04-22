@@ -46,7 +46,7 @@ class MyBinarySearchTree(BinaryTree):
             node.left = self._removeInsideRange(node.left, min, max,  removelist)
 
         else:
-            if node.left is None and node.right is None and node.elem in range(min, max):
+            if (node.left is None) and (node.right is None) and (min <= node.elem <= max):
                 # node is a leave
                 # append node in list
                 # print("leaf node for removing:", node.elem)
@@ -65,15 +65,15 @@ if __name__ == "__main__":
     print("Original Tree")
     aux.draw()
 
-    print("Remove leaf nodes out range: 1, 120")
+    print("Remove leaf nodes in range: 1, 120")
     print("Nodos eliminados", aux.removeInsideRange(1,120))
     aux.draw()
 
-    print("Remove leaf nodes out range: 15, 20")
+    print("Remove leaf nodes in range: 15, 20")
     print("Nodos eliminados", aux.removeInsideRange(15,20))
     aux.draw()
 
-    print("Remove leaf nodes out range: 0, 0")
+    print("Remove leaf nodes in range: 0, 0")
     print("Nodos eliminados", aux.removeInsideRange(0,0))
     aux.draw()
 
