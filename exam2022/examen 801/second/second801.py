@@ -25,7 +25,7 @@ class MyBinarySearchTree(BinaryTree):
             node.right = self._insert(node.right, elem)
         return node
 
-  # Removes all nodes having value inside the given range
+  # Removes all leaf nodes having value inside the given range
   # returns a sorted list in descending order
     def removeInsideRange(self, min: int, max: int) -> []:
         # update the root with the new subtree after remove elem
@@ -58,22 +58,45 @@ class MyBinarySearchTree(BinaryTree):
 
 
 if __name__ == "__main__":
+
+
+
     aux = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         aux.insert(x)
-        # aux.draw()
     print("Original Tree")
     aux.draw()
 
     print("Remove leaf nodes in range: 1, 120")
-    print("Nodos eliminados", aux.removeInsideRange(1,120))
-    aux.draw()
+    print("Nodes removed", aux.removeInsideRange(1,120))
+
+    aux2 = MyBinarySearchTree()
+    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        aux2.insert(x)
+
 
     print("Remove leaf nodes in range: 15, 20")
-    print("Nodos eliminados", aux.removeInsideRange(15,20))
-    aux.draw()
+    print("Nodes removed", aux2.removeInsideRange(15,20))
+
+    aux3 = MyBinarySearchTree()
+    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        aux3.insert(x)
+
 
     print("Remove leaf nodes in range: 0, 0")
-    print("Nodos eliminados", aux.removeInsideRange(0,0))
-    aux.draw()
+    print("Nodes removed", aux3.removeInsideRange(0,0))
 
+    aux4 = MyBinarySearchTree()
+    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        aux4.insert(x)
+
+
+    print("Remove leaf nodes in range: 54, 80")
+    print("Nodes removed", aux4.removeInsideRange(54,80))
+
+    aux5 = MyBinarySearchTree()
+    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        aux5.insert(x)
+
+    print("Remove leaf nodes in range: -10, 0")
+    print("Nodes removed", aux4.removeInsideRange(-10,0))
