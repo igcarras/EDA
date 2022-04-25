@@ -57,7 +57,7 @@ class MyBinarySearchTree:
     # Removes all leaf nodes having value outside the given range
     # returns a sorted list in ascending order
     def _removeOutsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
-      print("hola")
+
 
 
 if __name__ == "__main__":
