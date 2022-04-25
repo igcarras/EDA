@@ -11,6 +11,7 @@ class AVLTree(BinarySearchTree):
         """returns the balance factor of node.
          It is the height of its right subtree minus
          the height of its left subtree"""
+        print("balance factor ", node)
         if node is None:
             return 0
         else:
@@ -22,9 +23,7 @@ class AVLTree(BinarySearchTree):
         self._root = self._insert(self._root,elem)
 
     def _insert(self, node: BinaryNode, elem: object) -> BinaryNode:
-        print("insertamos ", node)
         node = super()._insert(node, elem)
-        print("comprobamos ", node.elem)
         node = self._rebalance(node)
         return node
 
@@ -38,7 +37,6 @@ class AVLTree(BinarySearchTree):
         return node
 
     def _rebalance(self, node: BinaryNode) -> BinaryNode:
-        print("chequeando", node.elem)
         if abs(self.balance_factor(node)) <= 1:
             return node  # the node is already balanced, we do nothing
 
@@ -105,6 +103,8 @@ class AVLTree(BinarySearchTree):
 if __name__ == "__main__":
         tree = AVLTree()
         tree.insert(30)
+        tree.insert(20)
+        """tree.insert(40)
         tree.insert(50)
-        tree.insert(60)
+        tree.insert(60)"""
         tree.draw()
