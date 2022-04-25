@@ -48,17 +48,16 @@ class MyBinarySearchTree:
   # Removes all leaf nodes having value inside the given range
   # returns a sorted list in descending order
     def removeInsideRange(self, min: int, max: int) -> []:
-        # update the root with the new subtree after remove elem
         removelist = []
         self._removeInsideRange(self._root, min, max, removelist)
         return removelist
 
     # Removes all nodes having value inside the given range
     # returns a sorted list in descending order
-    def _removeInsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
+    def _removeInsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> object:
         # Base Case
         if node is None:
-            return
+            return None
 
         # check is node is not leaf
         if node.left or node.right:

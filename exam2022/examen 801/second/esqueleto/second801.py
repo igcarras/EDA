@@ -54,7 +54,7 @@ class MyBinarySearchTree:
 
     # Removes all nodes having value inside the given range
     # returns a sorted list in descending order
-    def _removeInsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> None:
+    def _removeInsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> object:
        ...
 
 
