@@ -22,7 +22,9 @@ class AVLTree(BinarySearchTree):
         self._root = self._insert(self._root,elem)
 
     def _insert(self, node: BinaryNode, elem: object) -> BinaryNode:
+        print("insertamos ", node)
         node = super()._insert(node, elem)
+        print("comprobamos ", node.elem)
         node = self._rebalance(node)
         return node
 
@@ -36,6 +38,7 @@ class AVLTree(BinarySearchTree):
         return node
 
     def _rebalance(self, node: BinaryNode) -> BinaryNode:
+        print("chequeando", node.elem)
         if abs(self.balance_factor(node)) <= 1:
             return node  # the node is already balanced, we do nothing
 
