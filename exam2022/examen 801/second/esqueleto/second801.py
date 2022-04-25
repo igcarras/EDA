@@ -48,15 +48,7 @@ class MyBinarySearchTree:
   # Removes all leaf nodes having value inside the given range
   # returns a sorted list in descending order
     def removeInsideRange(self, min: int, max: int) -> []:
-        removelist = []
-        self._removeInsideRange(self._root, min, max, removelist)
-        return removelist
-
-    # Removes all nodes having value inside the given range
-    # returns a sorted list in descending order
-    def _removeInsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> object:
-       ...
-
+        ...
 
 if __name__ == "__main__":
 

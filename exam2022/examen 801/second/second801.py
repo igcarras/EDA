@@ -87,6 +87,8 @@ if __name__ == "__main__":
     print("Remove leaf nodes in range: 1, 120")
     print("Nodes removed", aux.removeInsideRange(1,120))
 
+    aux.draw()
+
     aux2 = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         aux2.insert(x)

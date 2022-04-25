@@ -2,8 +2,8 @@ import unittest
 
 # from phase2_solution import AVLTree
 
-from phase2_solution import AVLTree
 from bst import BinarySearchTree
+from phase2_solution import AVLTree
 
 class TestAVL(unittest.TestCase):
     """
@@ -461,6 +461,7 @@ class TestAVL(unittest.TestCase):
 
     def test_z(self):
         print('Nota provisional: ', TestAVL.mark)
+
 
 if __name__ == "__main__":
     unittest.main()

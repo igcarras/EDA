@@ -23,9 +23,7 @@ class AVLTree(BinarySearchTree):
 
     def _insert(self, node: BinaryNode, elem: object) -> BinaryNode:
         node = super()._insert(node, elem)
-        #print("comprobamos", node.elem)
         node = self._rebalance(node)
-        #print("fin de ", node.elem)
         return node
 
     # Override remove method from base class to keep it as AVL
@@ -39,11 +37,9 @@ class AVLTree(BinarySearchTree):
 
     def _rebalance(self, node: BinaryNode) -> BinaryNode:
         if abs(self.balance_factor(node)) <= 1:
-            #print("nada de nada en",  node)
             return node  # the node is already balanced, we do nothing
 
         print('balancing ', node.elem)
-        self.draw()
 
         height_left = self._height(node.left)
         height_right = self._height(node.right)
@@ -54,12 +50,12 @@ class AVLTree(BinarySearchTree):
             # as it is greater, node.left cannot be None,
             height_left_left = self._height(node.left.left)
             height_left_right = self._height(node.left.right)
-            if height_left_left < height_left_right:  
+            if height_left_left < height_left_right:
                 # print(' double first left rotation on: ', node.elem)
                 node.left = self.left_rotate(node.left)
             #print('right rotation on ', node.elem)
             node= self.right_rotate(node)
-        else:  
+        else:
             # left rotate
             height_right_left = self._height(node.right.left)
             height_right_right = self._height(node.right.right)
@@ -102,10 +98,10 @@ class AVLTree(BinarySearchTree):
 
         return new_root
 
+
 if __name__ == "__main__":
-     tree = AVLTree()
-     values = [50,30, 10, 40, 60, 20,15, 70, 80]
-     for x in values:
-        print("insertamos", x)
-        tree.insert(x)
-     tree.draw()
+        tree = AVLTree()
+        tree.insert(30)
+        tree.insert(50)
+        tree.insert(60)
+        tree.draw()
