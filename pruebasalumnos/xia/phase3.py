@@ -25,8 +25,7 @@ class Graph2(Graph):
                 distance[end] = distance[i.vertex] + 1
                 queue.append(i.vertex)
                 visited[i.vertex] = True
-
-        return distance[end]
+        return -1
 
 
     def transpose(self) -> 'Graph2':

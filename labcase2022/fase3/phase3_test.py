@@ -64,6 +64,8 @@ class Graph2Test(unittest.TestCase):
         """ directed_graph.min_number_edges('A', 'G')"""
         print("\n test3: directed_graph.min_number_edges('A', 'G')")
         actual = self.directed_graph.min_number_edges('A', 'G')
+        print(self.directed_graph)
+
         expected = 4
         print('actual = ', actual)
         print('expected = ', expected)

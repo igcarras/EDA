@@ -7,7 +7,8 @@ class Graph3(Graph):
     """ Algorithms for shortest path """
 
     def min_distance(self, distances: dict, visited: dict) -> int:
-        """returns the vertex (index) whose associated value in
+        """ This function is used from dijkstra.
+        It returns the vertex (index) whose associated value in
         the dictionary distances is the smallest value. We
         only consider the set of vertices that have not been visited"""
         # Initialize minimum distance for next node
@@ -56,10 +57,14 @@ class Graph3(Graph):
         return distances, previous
 
     def print_solution(self, distances: dict, previous: dict, origin: object):
+        """Both Dijkstra and Bellman-Ford algorithms use this function.
+        For each vertex, the function is able to rebuild the reverse path from i to origin.
+        To do this, the function only needs to read the value associated to the vertex in the dictionary
+        previous until to reach a vertex whouse associated value is None (origin)"""
         print("Minimum path from ", origin)
 
         for i in self._vertices.keys():
-            if distances[i] == sys.maxsize:
+            if distances[i] == math.inf:
                 print("There is not path from ", origin, ' to ', i)
             else:
                 # minimum_path is the list which contains the minimum path from origin to i
@@ -95,20 +100,23 @@ class Graph3(Graph):
                         distances[v] = distances[u] + w
                         previous[v] = u
 
+        # final review to check if there is a solution, or there is a negative cicle (therefore, there is no solution)
         for u in self._vertices.keys():
             for adj in self._vertices[u]:
                 v = adj.vertex
                 w = adj.weight
                 if distances[v] > distances[u] + w:
+                    # There is at least a negative cicle.
                     print('There is no solution ', origin)
                     return False
 
         self.print_solution(distances, previous, origin)
+        return distances, previous
 
     def minimum_path(self, start: object, end: object) -> list:
         """ returns a list containing the path from star to end.
         It also returns the distance of the path. If the path
-        does not exist, it returns an empty list and infinitum"""
+        does not exist, it returns an empty list and infinito"""
         if start not in self._vertices.keys():
             print(start, ' does not exist!!!')
             return None, None

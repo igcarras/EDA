@@ -1,171 +1,396 @@
 # -*- coding: utf-8 -*-
-# Examen Ordinario 24 Mayo 2021
-# La clase MyGraph es una implementación basada en diccionarios para representar un grafo dirigido no ponderado.
-# Para simplificar el problema, supondremos que los vértices son números enteros no negativos (0,1,2,..).
-# Implementa la función minimum_path, que reciba dos vértices,
-# start y end, y devuelve una lista de Python con los vértices
-# que forman el camino mínimo desde start a end,
-# ambos inclusive.
-# La función minimum_path debe utilizar
-# el algoritmo de camino mínimo de Dijkstra.
+from graph import Graph
 
-import math
+class Graph4(Graph):
+    # delete this method, if it already exists in graph.py
+    def add_vertex(self, vertex: str) -> None:
+        if vertex in self._vertices.keys():
+            print(vertex, ' already exists!')
+            return
+        self._vertices[vertex] = []
 
+    def _dfs(self, vertex: str, visited: dict) -> None:
+        visited[vertex] = True
+        for adj in self._vertices[vertex]:
+            # adj is an object of AdjacentVertex
+            adj_vertex = adj.vertex
+            if not visited[adj_vertex]:
+                self._dfs(adj_vertex, visited)
 
-class MyGraph:
-    def __init__(self, n: int) -> None:
-        """ Create a graph with n vertices (0,1,...,n-1) """
-        self._vertices = {}
-        for i in range(n):
-            self._vertices[i] = []
+    def _bfs(self, vertex: str, visited: dict) -> None:
+        queue = [vertex]
+        visited[vertex] = True
+        while len(queue) > 0:
+            u = queue.pop(0)
+            for adj in self._vertices[u]:
+                # remember that adj is an AdjacentVertex
+                if not visited[adj.vertex]:
+                    queue.append(adj.vertex)
+                    visited[adj.vertex] = True
 
-    def check_vertex(self, v: int) -> bool:
-        """ checks if v is a vertex"""
-        if v not in range(len(self._vertices)):
-            print(v, " is not a vertex!!!")
-            return False
-        return True
-
-    def add_connection(self, i: int, j: int) -> None:
-        """ adds a connection from i to j"""
-        if not self.check_vertex(i) or not self.check_vertex(j):
-            return 
-
-        self._vertices[i].append(j)
-
-    def min_distance(self, distances, visited):
-        """This functions returns the vertex (index) whose associated value in
-        the dictionary distances is the smallest value. We
-        only consider the set of vertices that have not been visited"""
-        # Initialize minimum distance with a very big number
-        min_distance = math.inf
-
-        # returns the vertex with minimum distance from the non-visited vertices
-        for vertex in self._vertices.keys():
-            if distances[vertex] <= min_distance and not visited[vertex]:
-                min_distance = distances[vertex]  # update the new smallest
-                min_vertex = vertex  # update the index of the smallest
-
-        return min_vertex
-
-    def dijkstra(self, origin):
-        """"This function takes a vertex v and calculates its mininum path
-        to the rest of vertices by using the Dijkstra algoritm"""
-
-        visited = {}  # visited is a dictionary whose keys are the verticies of our graph.
-        previous = {}  # this dictionary will save the previous vertex for the key in the minimum path
-        distances = {}  # This dictionary will save the accumulate distance from the  origin to the vertex (key)
-
-        for v in self._vertices.keys():
-            visited[v] = False
-            previous[v] = None
-            distances[v] = math.inf
-
-        # The distance from origin to itself is 0
-        distances[origin] = 0
-
-        for _ in range(len(self._vertices)):
-            # Pick the vertex with the minimum distance vertex.
-            # u is always equal to origin in first iteration
-            u = self.min_distance(distances, visited)
-
-            visited[u] = True
-
-            # we must visit all adjacent vertices (neighbours) for u
-            for v in self._vertices[u]:
-                if not visited[v]  and distances[v] > distances[u] + 1:
-                    # we must update because its distance is greater than the new distance
-                    distances[v] = distances[u] + 1
-                    previous[v] = u
-
-                    # finally, we print the minimum path from origin to the other vertices
-        return distances, previous
-
-    def minimum_path(self, start: int, end: int) -> list:
-        """returns the shortest path from start to end and its distance"""
-        print("Smallest path from ", start, " to ", end)
-
-        if not self.check_vertex(start) or not self.check_vertex(end):
-            return None, None
-
-        distances, previous = self.dijkstra(start)
-        if distances[end] == math.inf:
-            print("There is not path from {} to {}".format(start, end))
-            return None, math.inf
-
-        minimum_path = []
-        prev = previous[end]
-        while prev:
-            minimum_path.insert(0, prev)
-            prev = previous[prev]
-
-        minimum_path.append(end)
-
-        return minimum_path, distances[end]
-
-    def __str__(self):
-        result = ''
-        for u in self._vertices.keys():
-            result += '\n' + str(u) + ' \t: '
-            for v in self._vertices[u]:
-                result += str(v) + ','
-            result = result[0:-1]
+    def non_accessible(self, vertex: str) -> list:
+        """gets a vertex and returns the list of vertices
+        that cannot be reached from vertex, that is, there is no path
+        from vertex to these vertices"""
+        # First, we need to obtain all vertices that can be
+        # reached from vertex. To do this, we can apply
+        # the algorithms of dfs or bfs
+        visited = {}
+        for v1 in self._vertices:
+            visited[v1] = False
+        self._dfs(vertex, visited)
+        # The function _dfs will visit all vertices reachable
+        # from vertex. Therefore, the non-visited vertices
+        # will form the list of non-accessible vertices from vertex
+        result = []  # list with the non-accessible vertices
+        for v1 in self._vertices:
+            if not visited[v1]:
+                result.append(v1)
 
         return result
 
+    def get_reachable(self, vertex: str, alg: str = '_dfs') -> list:
+        """gets a vertex and returns the list of vertices
+        that can be reached from vertex, that is, there is a path
+        from vertex to these vertices"""
+        # First, we need to obtain all vertices that can be
+        # reached from vertex. To do this, we can apply
+        # the algorithms of dfs or bfs
+        visited = {}
+        for v1 in self._vertices:
+            visited[v1] = False
+        if alg == '_dfs':
+            self._dfs(vertex, visited)
+        else:
+            self._bfs(vertex, visited)
+
+        # The function _dfs will visit all vertices reachable
+        # from vertex. Therefore, the visited vertices
+        # will form the list of accessible vertices from vertex
+        result = []  # list with the accessible vertices
+        for v1 in self._vertices:
+            if visited[v1]:
+                result.append(v1)
+
+        return result
+
+    def _check_bipartite(self, source: str, color: dict) -> bool:
+
+        # Assign first color to source
+        queue = [source]
+        color[source] = 1
+        # similar to bfs
+        while len(queue):
+            u = queue.pop(0)
+            for adj in self._vertices[u]:
+                adj_vertex = adj.vertex
+                if color[adj_vertex] is None:
+                    color[adj_vertex] = 1 - color[u]
+                    queue.append(adj_vertex)
+                elif color[adj_vertex] == color[u]:
+                    return False
+
+        # If we reach here, then all adjacent
+        # vertices can be colored with alternate
+        # color
+        return True
+
+    def check_bipartite(self) -> bool:
+        """ returns True if the graph is bipartite and False eoc
+        A graph is bipartite is a graph whose vertices can be divided
+        into two independent sets, U and V
+        such that every edge (u, v) either connects a vertex
+        from U to V or a vertex from V to U.
+        In other words, for every edge (u, v), either u belongs to U and v to V,
+         or u belongs to V and v to U. We can also say that there is no edge
+         that connects vertices of same set. """
+        color = {}
+        # We use a dictionary color to save the color
+        # assigned to each vertex: 1 means first color (origins)
+        # , 0 means second color (target)
+        for v1 in self._vertices:
+            color[v1] = None
+
+        for v1 in self._vertices:
+            if color[v1] is None:
+                if not self._check_bipartite(v1, color):
+                    return False
+
+        return True
+
+
+
+    def _has_cycles_bfs(self, vertex: str, visited: dict) -> bool:
+        """This is function is based on bfs to detect if there is
+        some cycle in the breadth traversal from vertex. It uses the dictionary
+        visited and the parent of the vertices to detect
+        cycle in subgraph reachable from vertex v."""
+
+        # Mark the current vertex as visited
+        queue = [vertex]
+        parents = {}
+        for v1 in self._vertices:
+            parents[v1] = None
+
+        while len(queue) > 0:
+            s = queue.pop(0)
+            visited[s] = True
+            for adj in self._vertices[s]:
+                adj_vertex = adj.vertex
+                if not visited[adj_vertex]:
+                    visited[adj_vertex] = True
+                    queue.append(adj_vertex)
+                    parents[adj_vertex] = s
+                elif parents[s] != adj_vertex:
+                    # if the ajd_vertex has been already visited,
+                    # and it is not the parent of current vertex,
+                    # then there is a cycle
+                    return True
+        return False
+
+    def _has_cycles_dfs(self, vertex: str, visited: dict, parent: str) -> bool:
+        """This is recursive function that uses the dictionary
+        visited and the parent of the vertices to detect
+        cycle in subgraph reachable from vertex v."""
+
+        # Mark the current vertex as visited
+        visited[vertex] = True
+        # Recur for all the vertices
+        # adjacent to this vertex
+        for adj in self._vertices[vertex]:
+            adj_vertex = adj.vertex
+            # If the node is not visited then recurse on it
+            if not visited[adj_vertex]:
+                if self._has_cycles_dfs(adj_vertex, visited, vertex):
+                    return True
+            elif parent != adj_vertex:
+                # if the ajd_vertex has been already visited,
+                # and it is not the parent of current vertex,
+                # then there is a cycle
+                return True
+        print()
+        return False
+
+    def _has_cycles_directed(self, vertex: str, visited: dict, rec_stack: dict) -> bool:
+        """detects a cycle in a directed graph using the
+        dfs alg. Moreover, visited and rec_stack allow us
+        to detect if a vertex has been previously visited."""
+
+        # Mark the current vertex as visited
+        visited[vertex] = True
+        rec_stack[vertex] = True
+        # Recur for all the vertices
+        # adjacent to this vertex
+        for adj in self._vertices[vertex]:
+            adj_vertex = adj.vertex
+            # If the node is not visited then recurse on it
+            if not visited[adj_vertex]:
+                if self._has_cycles_directed(adj_vertex, visited, rec_stack):
+                    return True
+            elif rec_stack[adj_vertex]:
+                return True
+        # The node needs to be popped from
+        # recursion stack before function ends
+        rec_stack[vertex] = False
+        return False
+
+    def has_cycles(self, alg: str = 'dfs') -> bool:
+        """returns True if the graph contains a cycle, False eoc"""
+        print(self._directed)
+        visited = {}
+        recursion_stack = {}
+
+        for v1 in self._vertices:
+            visited[v1] = False
+            # we will only use it for directed graphs
+            recursion_stack[v1] = False
+
+        # Call the recursive helper
+        # function to detect cycle in different
+        # DFS trees
+        for v1 in self._vertices:
+            if not visited[v1]:
+                if self._directed:
+                    result = self._has_cycles_directed(v1, visited, recursion_stack)
+                else:
+                    if alg == 'dfs':
+                        result = self._has_cycles_dfs(v1, visited, None)
+                    else:
+                        result = self._has_cycles_bfs(v1, visited)
+
+                if result:
+                    return True
+
+        return False
+
 
 if __name__ == '__main__':
-    # Now, we use the implementation to represent this directed and unweighted graph:
-    # <img src='https://www.researchgate.net/publication/319327358/figure/fig8/AS:631663130337280@1527611634108/Figura-52-Ejemplo-de-Grafo-Dirigido-No-Ponderado-Extraido-de-Fre10.png'/>
-    
-    g = MyGraph(8)
-    # vertex = 0 is not connected
-    # Now, we add the edges
-    g.add_connection(1, 2)
-    g.add_connection(1, 3)
-    g.add_connection(1, 4)
-    
-    g.add_connection(2, 4)
-    g.add_connection(2, 5)
-    g.add_connection(3, 6)
-    g.add_connection(4, 3)
-    g.add_connection(4, 6)
-    g.add_connection(4, 7)
-    g.add_connection(5, 4)
-    g.add_connection(5, 7)
-    g.add_connection(7, 6)
+    # We use the class to represent an undirected graph without weights :
+    # <img src='https://computersciencesource.files.wordpress.com/2010/05/dfs_1.png' width='35%'/>
+
+    labels = ['A', 'B', 'C', 'D', 'E']
+    g = Graph4(labels, False)
+    g.add_edge('A', 'B')  # A:0,  B:1
+    g.add_edge('A', 'C')  # A:0,  C:2
+    g.add_edge('A', 'E')  # A:0,  E:5
+    g.add_edge('B', 'D')  # B:1,  D:4
+    g.add_edge('B', 'E')  # C:2,  B:1
+    print(g)
+    # Please, draw the graph. This is a connected graph, that is,
+    # for any pair of vertices, there is a path between them
+    for v in g._vertices:
+        list_non_accessible = g.non_accessible(v)
+        print("non-accessible from {}:{} ".format(v, list_non_accessible))
+        # all list should be empty
+        assert list_non_accessible == []
+
+        list_reachable = g.get_reachable(v)
+        print("reachable from {}: {} ".format(v, list_reachable))
+        assert list_reachable == list(g._vertices.keys())
+        # we now use the _bfs alg
+        list_reachable = g.get_reachable(v, '_bfs')
+        print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
+        assert list_reachable == list(g._vertices.keys())
+        print()
+    algorithm = 'bfs'
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert g.has_cycles(algorithm)
+
+    # we add more vertices to the graph (please, download
+    # graph.py if you don't have the method add_vertex
+    g.add_vertex("F")
+    g.add_vertex("G")
+    g.add_vertex("H")
+    # Now, we add edges to connect these nodes between them,
+    # but not with the other vertices. In this way, we will have
+    # a subgraph
+    g.add_edge("F", "G")
+    g.add_edge("F", "H")
+    g.add_edge("G", "H")
     print(g)
 
-    path, d = g.minimum_path(0, 1)
-    print(path, "distance: ", d)
+    # now, we show the non-accessible vertices for each vertex in the graph
+    for v in g._vertices:
+        list_non_accessible = g.non_accessible(v)
+        print("non-accessible from {}:{} ".format(v, list_non_accessible))
+        list_reachable = g.get_reachable(v)
+        print("reachable from {}:{} ".format(v, list_reachable))
+        list_reachable = g.get_reachable(v, '_bfs')
+        print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
 
-    path, d = g.minimum_path(2, 7)
-    print(path, "distance: ", d)
-    print()
-    # <img src='https://www.researchgate.net/profile/Wladimir-Tavares/publication/318252493/figure/fig8/AS:668258659225604@1536336688129/Figura-31-Grafo-ponderado-direcionado-G-r-onde-r-1-2-3-4-5-6.png'>
-    
-    g = MyGraph(7)
-    # the vertex 0 is not connected
-    # Now, we add the edges
-    g.add_connection(1, 2)
-    g.add_connection(1, 5)
-    g.add_connection(2, 3)
-    g.add_connection(3, 4)
-    g.add_connection(3, 6)
-    g.add_connection(4, 5)
-    g.add_connection(4, 6)
-    g.add_connection(5, 6)
-    
+        print()
+        # checks if our methods are correct (similar to unitest)
+        if v in ['A', 'B', 'C', 'D', 'E']:
+            assert sorted(list_non_accessible) == ['F', 'G', 'H']
+            assert sorted(list_reachable) == ['A', 'B', 'C', 'D', 'E']
+        elif v in ['F', 'G', 'H']:
+            assert sorted(list_non_accessible) == ['A', 'B', 'C', 'D', 'E']
+            assert sorted(list_reachable) == ['F', 'G', 'H']
+
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert g.has_cycles(algorithm)
+
+    # We create an undirected graph without cycles
+    labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    g = Graph4(labels, False)
+    g.add_edge('A', 'B')
+    g.add_edge('A', 'C')
+    g.add_edge('B', 'D')
+    g.add_edge('B', 'E')
+    g.add_edge('C', 'F')
+    g.add_edge('C', 'G')
+    g.add_edge('E', 'H')
+    g.add_edge('F', 'I')
     print(g)
-    
-    path, d = g.minimum_path(0, 1)
-    print(path, "distance: ", d)
-    
-    path, d = g.minimum_path(1, 4)
-    print(path, "distance: ", d)
-    
-    path, d = g.minimum_path(1, 6)
-    print(path, "distance: ", d)
-    
-    path, d = g.minimum_path(3, 6)
-    print(path, "distance: ", d)
+    print("has_cycles: {}".format(g.has_cycles()))
+    assert not g.has_cycles()
+
+    # Now,  we use the implementation to represent this graph:
+    # <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CPT-Graphs-directed-weighted-ex1.svg/722px-CPT-Graphs-directed-weighted-ex1.svg.png' width='25%'/>
+
+    labels = ['A', 'B', 'C', 'D', 'E']
+    g = Graph4(labels)
+
+    # Now, we add the edges
+    g.add_edge('A', 'C', 12)  # A->(12)C
+    g.add_edge('A', 'D', 60)  # A->(60)D
+    g.add_edge('B', 'A', 10)  # B->(10)A
+    g.add_edge('C', 'B', 20)  # C->(20)B
+    g.add_edge('C', 'D', 32)  # C->(32)D
+    g.add_edge('E', 'A', 7)   # E->(7)A
+
+    print(g)
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert g.has_cycles(algorithm)
+
+    for v in g._vertices:
+        list_non_accessible = g.non_accessible(v)
+        print("non-accessible from {}:{} ".format(v, list_non_accessible))
+        list_reachable = g.get_reachable(v)
+        print("reachable from {}:{} ".format(v, list_reachable))
+        list_reachable = g.get_reachable(v, '_bfs')
+        print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
+
+        print()
+        # checks if our method is correct (similar to unitest)
+        if v in ['A', 'B', 'C']:
+            assert sorted(list_non_accessible) == ['E']
+            assert sorted(list_reachable) == ['A', 'B', 'C', 'D']
+        elif v == 'D':
+            assert sorted(list_non_accessible) == ['A', 'B', 'C', 'E']
+            assert sorted(list_reachable) == ['D']
+        elif v == 'E':
+            assert sorted(list_non_accessible) == []
+            assert sorted(list_reachable) == ['A', 'B', 'C', 'D', 'E']
+
+    # Let us remove the edge from B to A, the graph does not have any cycle
+    g.remove_edge('B', 'A')
+    print(g)
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert not g.has_cycles(algorithm)
+
+    labels = ['A', 'B', 'C']
+    g = Graph4(labels)
+    g.add_edge('A', 'B')
+    g.add_edge('A', 'C')
+    g.add_edge('B', 'C')
+    print(g)
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert not g.has_cycles(algorithm)
+
+    # remove A -> C
+    g.remove_edge('A', 'C')
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert not g.has_cycles(algorithm)
+
+    # add C -> A, now, the graph is cyclic!!!
+    g.add_edge('C', 'A')
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert g.has_cycles(algorithm)
+
+    print('check_bipartite ', g.check_bipartite())
+    # assert not g.check_bipartite()
+
+    # now, the graph is bipartite
+    g.remove_edge('C', 'A')
+    g.remove_edge('A', 'B')
+    g.add_edge('A', 'C')
+    print(g)
+    print('check_bipartite ', g.check_bipartite())
+    assert g.check_bipartite()
+
+    # we create a bipartite graph
+    labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+    g = Graph4(labels, False)
+    g.add_edge('A', 'E')
+    g.add_edge('A', 'F')
+    g.add_edge('B', 'G')
+    g.add_edge('C', 'F')
+    g.add_edge('D', 'H')
+    print(g)
+    print('check_bipartite ', g.check_bipartite())
+    assert g.check_bipartite()
+    g.add_edge('H', 'A')
+    print(g)
+    print('check_bipartite ', g.check_bipartite())
+    assert g.check_bipartite()
