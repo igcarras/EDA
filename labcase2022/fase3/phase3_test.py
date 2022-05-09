@@ -1,6 +1,6 @@
 import unittest
 
-from phase3 import Graph2
+from phase3_solution import Graph2
 
 class Graph2Test(unittest.TestCase):
     mark = 0
@@ -27,7 +27,7 @@ class Graph2Test(unittest.TestCase):
         self.directed_graph.add_edge('D', 'E')
         self.directed_graph.add_edge('E', 'F')
         self.directed_graph.add_edge('F', 'G')
-        # print(self.directed_graph)
+        print(self.directed_graph)
 
         self.undirected_graph = Graph2(self.vertices, False)
         self.undirected_graph.add_edge('A', 'B')

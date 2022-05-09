@@ -26,6 +26,7 @@ class Graph2(Graph):
 
         while queue:
             vertex = queue.pop(0)
+
             # print(" visiting: ", vertex)
 
             # visit all its adjacent vertices of the dequeued index.
@@ -34,7 +35,8 @@ class Graph2(Graph):
                     visited_vertex[adj.vertex] = True
                     distances[adj.vertex] = distances[vertex] + 1
                     queue.append(adj.vertex)
-
+            print("Inicio desde:", vertex)
+            print(distances)
         return distances[end]
 
     def transpose(self) -> 'Graph2':

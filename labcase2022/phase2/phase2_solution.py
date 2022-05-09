@@ -20,10 +20,12 @@ class AVLTree(BinarySearchTree):
     # Override insert method from base class to keep it as AVL
     def insert(self, elem: object) -> None:
         """inserts a new node, with key and element elem"""
+        print("vamos a insertar", elem)
         self._root = self._insert(self._root,elem)
 
     def _insert(self, node: BinaryNode, elem: object) -> BinaryNode:
         node = super()._insert(node, elem)
+        print("vamos a balancear", node)
         node = self._rebalance(node)
         return node
 
