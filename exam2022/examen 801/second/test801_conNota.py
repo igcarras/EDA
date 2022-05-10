@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 from second801 import MyBinarySearchTree
-
+from bst import BinarySearchTree
 import unittest
 import random
 
@@ -42,6 +42,49 @@ class Test(unittest.TestCase):
       for x in [12]:
         self.tree5.insert(x)
 
+      self.treetest1 = BinarySearchTree()
+      for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        self.treetest1.insert(x)
+      expected = [80, 54, 24, 18, 5]
+      for x in expected:
+        self.treetest1.remove(x)
+
+      self.treetest2 = BinarySearchTree()
+      for x in [18, 11, 23, 5, 15, 20, 24, 9, 22, 21, 6, 8, 7]:
+          self.treetest2.insert(x)
+      expected = [24, 21, 15, 7]
+      for x in expected:
+          self.treetest2.remove(x)
+
+      self.treetest3 = BinarySearchTree()
+      for x in [18, 11, 23, 5, 15, 20, 24, 9, 22, 21, 6, 8, 7]:
+          self.treetest3.insert(x)
+      expected = [21, 15, 7]
+      for x in expected:
+        self.treetest3.remove(x)
+
+      self.treetest4 = BinarySearchTree()
+      for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+        self.treetest4.insert(x)
+      expected = [18, 5]
+      for x in expected:
+        self.treetest4.remove(x)
+
+      self.treetest5 = BinarySearchTree()
+      for x in [12]:
+          self.treetest5.insert(x)
+      expected = [12]
+      for x in expected:
+          self.treetest5.remove(x)
+
+      self.treetest6 = BinarySearchTree()
+      for x in [18, 11, 23, 5, 15, 20, 24, 9, 22, 21, 6, 8, 7]:
+        self.treetest6.insert(x)
+      expected = [24, 21, 15, 7]
+      for x in expected:
+        self.treetest6.remove(x)
+
+
     def test_printNota(self):
       print("Nota provisional: ", Test.notaprovisional)
 
@@ -51,7 +94,13 @@ class Test(unittest.TestCase):
         expected = [80, 54, 24, 18, 5]
         result = self.tree.removeInsideRange(1, 120)
 
-        self.assertEqual(str(result), str(expected), "Fail: test1")
+
+        #self.assertEqual(str(result), str(expected), "Fail: test1")
+
+
+
+        self.assertEqual(self.treetest1, self.tree)
+
         Test.notaprovisional += 1
 
 
@@ -61,15 +110,19 @@ class Test(unittest.TestCase):
         result = self.tree.removeInsideRange(33, 34)
 
         self.assertEqual(str(result), str(expected), "Fail: test2")
+        self.assertEqual(self.tree, self.tree, "Fail: test2")
+
         Test.notaprovisional += 1
 
 
     def test3(self):
         print('Caso 3. Valores min y max fuera de rango de valores del arbol (test 2) ')
         expected = [24, 21, 15, 7]
+
         result = self.tree2.removeInsideRange(2, 220)
 
         self.assertEqual(str(result), str(expected), "Fail: test3")
+        self.assertEqual(self.treetest2, self.tree2, "Fail: test3")
         Test.notaprovisional += 1
 
 
@@ -79,60 +132,78 @@ class Test(unittest.TestCase):
         result = self.tree2.removeInsideRange(7, 23)
 
         self.assertEqual(str(result), str(expected), "Fail: test4")
+        self.assertEqual(self.treetest3, self.tree2, "Fail: test4")
         Test.notaprovisional += 1
 
 
     def test5(self):
         print('Caso 5. Árbol vacío ')
         expected = []
+        treetest = self.tree3
+
         result = self.tree3.removeInsideRange(15, 20)
 
         self.assertEqual(str(result), str(expected), "Fail: test5")
+        self.assertEqual(treetest, self.tree3, "Fail: test5")
         Test.notaprovisional += 0.75
 
 
     def test6(self):
         print('Caso 6. Valor min fuera de rango de valores del arbol')
         expected = [18, 5]
+
         result = self.tree.removeInsideRange(0, 20)
 
         self.assertEqual(str(result), str(expected), "Fail: test6")
+        self.assertEqual(self.treetest4, self.tree,  "Fail: test6")
         Test.notaprovisional += 0.75
 
 
     def test7(self):
         print('Caso 7. Valor max fuera de rango de valores del arbol')
         expected = [80, 54, 24, 18]
+        treetest = self.tree
+
         result = self.tree.removeInsideRange(15, 200)
 
         self.assertEqual(str(result), str(expected), "Fail: test7")
+        self.assertEqual(treetest, self.tree, "Fail: test7")
         Test.notaprovisional += 0.75
 
 
     def test8(self):
         print('Caso 8. Arbol con un solo nodo y no se elimina')
         expected = []
+        treetest = self.tree5
+
         result = self.tree5.removeInsideRange(15, 200)
 
         self.assertEqual(str(result), str(expected), "Fail: test8")
+        self.assertEqual(treetest, self.tree5, "Fail: test8")
         Test.notaprovisional += 0.75
 
 
     def test9(self):
         print('Caso 9. Arbol con un solo nodo y se elimina')
         expected = [12]
+        treetest = self.tree5
+
         result = self.tree5.removeInsideRange(10, 200)
 
         self.assertEqual(str(result), str(expected), "Fail: test9")
+        self.assertEqual(treetest, self.tree5)
         Test.notaprovisional += 0.75
 
 
     def test10(self):
         print('Caso 10. Valores mínimo y maximo iguales y no elimina')
         expected = []
+        treetest = self.tree2
+
         result = self.tree2.removeInsideRange(0, 0)
 
         self.assertEqual(str(result), str(expected), "Fail: test10")
+        self.assertEqual(treetest, self.tree2)
         Test.notaprovisional += 0.75
 
 
@@ -142,6 +213,7 @@ class Test(unittest.TestCase):
         result = self.tree2.removeInsideRange(7, 24)
 
         self.assertEqual(str(result), str(expected), "Fail: test11")
+        self.assertEqual(self.treetest6, self.tree2,"Fail: test11")
         Test.notaprovisional += 1.5
 
 
