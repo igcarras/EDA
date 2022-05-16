@@ -1,8 +1,10 @@
 from slist import SList
 from slist import SNode
-
+#Download stackLL.py and queueLLHT.py from aula global and copy them
+#to the same directory
 from stackLL import Stack
 from queueLLHT import Queue
+
 import sys
 
 class SList2(SList):
@@ -24,7 +26,7 @@ class SList2(SList):
                 node=node.next
 
             return result
-    
+
     #method for inserting a new node in the middle
     def insertMiddle(self, elem):
         """inserts the element elem at the middle of the list. O(n)"""
@@ -33,7 +35,7 @@ class SList2(SList):
         else:
             self.insertAt(len(self)//2+1,elem)
 
-    
+
     def insertList(self,inputList,start,end):
         """removes the nodes from start and end positions, and insert the inputList
         between these positions. O(n)"""
@@ -71,8 +73,9 @@ class SList2(SList):
             self._size=len(self)-(end-start)+len(inputList)
 
 
+
     def reverseK1(self,k):
-        """reverse the list in groups of k elements. O(n2)"""
+        #O(n2)
         if k>1:
             q=Queue()
             node=self._head
@@ -86,11 +89,10 @@ class SList2(SList):
 
                 while not stack.isEmpty():
                     q.enqueue(stack.pop())
-
-
             self._head=q._head
 
-    def reverseK(self,k):
+
+    def reverseK2(self,k):
         """reverse the list in groups of k elements. O(n2)"""
         if k>1:
             #first and last nodes of a new list to save the reverse list
@@ -122,8 +124,33 @@ class SList2(SList):
 
                     nodeStack=nodeStack.next
                 # print(self)
-
+w
             self._head=firstNode
+
+    def reverseK(self,k):
+        self._head=self._reverseK(self._head,k)
+
+    def _reverseK(self, inputNode, k):
+        """O(n)"""
+        if inputNode==None:
+            return None
+
+        i=0
+        node=inputNode
+        nextNode=None
+        prevNode=None
+        while node and i<k:
+            nextNode=node.next
+            node.next=prevNode
+            prevNode=node
+            node=nextNode
+            i+=1
+
+        if nextNode is not None:
+            inputNode.next = self._reverseK(nextNode, k)
+
+        # prev is new head of the input list
+        return prevNode
 
     def maximumPair(self):
         """return the maximum sum of equidistant nodes.

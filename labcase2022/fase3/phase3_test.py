@@ -38,7 +38,7 @@ class Graph2Test(unittest.TestCase):
         self.undirected_graph.add_edge('D', 'E')
         self.undirected_graph.add_edge('E', 'F')
         self.undirected_graph.add_edge('F', 'G')
-        # print(self.undirected_graph)
+        print(self.undirected_graph)
 #
     def test1(self):
         """ directed_graph.min_number_edges('A', 'B')"""
