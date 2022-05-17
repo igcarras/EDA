@@ -46,22 +46,9 @@ class MyDList:
         result+=']'
         return result
 
-    # Exam starts here
+    #Exam starts here
     def remove_sublist(self, start, end, count):
-        # Update pointers to remove the whole section
-        if start.prev: 
-            (start.prev).next = end.next
-        if end.next:
-            (end.next).prev = start.prev
-
-        # Update head / tail references if needed
-        if start == self._head:
-            self._head = end.next
-        if end == self._tail:
-            self._tail = start.prev
-
-        # Update size of the list
-        self._size -= count
+     ...
 
     def remove_section_by_sum(self, k):        
      ...
