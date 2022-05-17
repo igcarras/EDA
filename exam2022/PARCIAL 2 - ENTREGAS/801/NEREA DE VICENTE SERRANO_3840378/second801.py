@@ -50,27 +50,25 @@ class MyBinarySearchTree:
     def removeInsideRange(self, min: int, max: int) -> []:
         result = []
 
-        return self._removeInsideRange(self._root,min,max,result)
+        self._removeInsideRange(self._root,min,max,result)
+
+        return result
 
     def _removeInsideRange(self,node,min,max,lista):
         if node is None:
-            return []
-
-        if min <= node.elem and max >= node.elem: #Se encunetra entre los
+            return None
+        print(node.elem)
+        if (min <= node.elem <= max): #Se encunetra entre los
             # valores
             if node.right is None and node.left is None: #Es una hoja
                 lista.append(node.elem)
-                node = None
-
+                return None
             else: #No es una hoja
-                self._removeInsideRange(node.right,min,max,
+                node.right= self._removeInsideRange(node.right,min,max,
                                                      lista)
-                self._removeInsideRange(node.left,min,max,
+                node.left= self._removeInsideRange(node.left,min,max,
                                                     lista)
-        else:
-            return lista
-
-        return lista
+        return node
 
 
 

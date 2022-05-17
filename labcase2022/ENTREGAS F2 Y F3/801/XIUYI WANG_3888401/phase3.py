@@ -38,16 +38,13 @@ class Graph2(Graph):
 
     def transpose(self) -> 'Graph2':
         """ returns a new graph that is the transpose graph of self"""
-        grafoT = Graph2(self._vertices, self._directed)
-        if self._directed:
-            for v in self._vertices.keys():
-                for adj in self._vertices[v]:
-                    u = adj.vertex
-                    w = adj.weight
-                    grafoT.add_edge(u, v, w)
-
-            return grafoT
-        return self
+        result = Graph2(self._vertices, self._directed)
+        for u in self._vertices:
+            for adj in self._vertices[u]:
+                v = adj.vertex
+                w = adj.weight
+                result.add_edge(v, u, w)
+        return result
 
     def is_strongly_connected(self) -> bool:
         """ This function checks if the graph is strongly connected.

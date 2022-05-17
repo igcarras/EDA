@@ -41,13 +41,13 @@ class Graph2(Graph):
 
     def transpose(self) -> 'Graph2':
         """ returns a new graph that is the transpose graph of self"""
-        G = self
-        if G._directed == False:
-            return G
+
+        if self._directed == False:
+            return self
         else:
             graph = Graph2(self._vertices)
-            for i in G._vertices:
-                for j in G._vertices[i]:
+            for i in self._vertices:
+                for j in self._vertices[i]:
                     graph.add_edge(j.vertex, i, 1)
             return graph
 

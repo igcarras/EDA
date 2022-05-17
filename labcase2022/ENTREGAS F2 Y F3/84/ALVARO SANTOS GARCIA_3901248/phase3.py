@@ -13,7 +13,7 @@ class Graph2(Graph):
         arista = 0
         visited[start] = True
         lista.append(start)
-        # mientras que no hayamos recorrido todo el grafo o hayamos encontrado el vértice end se sigue ejecutando
+        # mientras que no hayamos recorrido todos el grafo o hayamos encontrado el vértice end se sigue ejecutando
         # Recorremos el grafo mediante recorrido por amplitud
         while len(lista) != 0 and end not in lista:
             a = lista.pop(0)

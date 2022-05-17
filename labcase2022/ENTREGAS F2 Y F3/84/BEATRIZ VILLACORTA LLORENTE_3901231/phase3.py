@@ -105,7 +105,7 @@ class Graph2(Graph):
         #newGraph = Graph()
         #guardo los vértices del viejo grafo en el nuevo
         for i in range(len(self._vertices)):
-            newGraph = Graph(vertices=self._vertices.keys())
+            newGraph = Graph(self._vertices.keys())
 
         #redirijo las aristas
         for v in self._vertices.keys():

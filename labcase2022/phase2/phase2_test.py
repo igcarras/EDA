@@ -83,6 +83,7 @@ class TestAVL(unittest.TestCase):
 
         # inserting 18 will do 17 unbalance
         # right - left rotation
+        print("empieza 18")
         self.avl.insert(18)
         # self.avl.draw()
 

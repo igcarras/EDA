@@ -1,4 +1,3 @@
-import unittest
 
 from phase3 import Graph2
 
