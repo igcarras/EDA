@@ -100,7 +100,7 @@ class MyGraph:
         if v1 not in self._vertices.keys() or v2 not in self._vertices.keys():
             return False
         
-        #Para comprobar todo eliminado la conexion v2 de v1 y v1 de v2
+        #Para comprobar to do eliminado la conexion v2 de v1 y v1 de v2
 
         self._vertices[v1].remove(v2)
         

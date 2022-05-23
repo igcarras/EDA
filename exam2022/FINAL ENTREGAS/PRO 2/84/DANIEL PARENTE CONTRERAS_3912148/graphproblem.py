@@ -71,7 +71,7 @@ class MyGraph:
 
     def is_connected(self) -> bool:
         """returns True if the graph is connected, False eoc"""
-        # Usaremos bfs para intentar recorrer todo el grafo a partir de un solo vértice y ver si es conexo
+        # Usaremos bfs para intentar recorrer to do el grafo a partir de un solo vértice y ver si es conexo
         visitados = {}
         for v in self._vertices.keys():
             visitados[v] = False
