@@ -7,8 +7,8 @@ class Test_DC(unittest.TestCase):
     mark = 0
 
     def setUp(self):
-        self.a = [4, 1, 7, 4, 4, 8, 8, 3, 1, 2]
-        self.b = [5, 7, 1, 6, 4, 8, 7, 4, 7, 3]
+        self.a = [4, 1, 7, 4, 4, 8, 8, 3, 1, 2, 1, 5]
+        self.b = [5, 7, 1, 6, 4, 8, 7, 4, 7, 3, 2, 4]
 
     def test1(self):
         """ x does not exist"""
