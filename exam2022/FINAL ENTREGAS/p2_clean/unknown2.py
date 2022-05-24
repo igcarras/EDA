@@ -1,4 +1,3 @@
-from re import X
     def is_connected(self) -> bool:
         """returns True if the graph is connected, False eoc"""
         if len(self._vertices) > 0:

@@ -1,8 +1,3 @@
-    def _find(self, vertex, vertices):
-        for v in self._vertices[vertex]:
-            if v not in vertices:
-                vertices.append(v)
-                self._find(v, vertices)
     def is_connected(self) -> bool:
         """returns True if the graph is connected, False eoc"""
         if len(self._vertices) > 0:
@@ -19,3 +14,8 @@
             if not conectado:
                 return True
         return False
+    def _find(self, vertex, vertices):
+        for v in self._vertices[vertex]:
+            if v not in vertices:
+                vertices.append(v)
+                self._find(v, vertices)
