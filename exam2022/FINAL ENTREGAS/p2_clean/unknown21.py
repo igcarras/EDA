@@ -8,12 +8,7 @@
             if not visitado[v]:
                 return False
         return True
-    def _dfs(self, v, visitado):
-        for adj in self._vertices[v]:
-            if not visitado[adj]:
-                visitado[adj] = True
-                self._dfs(adj, visitado)
-    def is_bridge(self, v1: str, v2: str) -> bool:
+      def is_bridge(self, v1: str, v2: str) -> bool:
         if self.is_connected() and v2 in self._vertices[v1]:
             self._vertices[v1].remove(v2)
             self._vertices[v2].remove(v1)
@@ -23,3 +18,8 @@
             if not resultado:
                 return True
         return False
+    def _dfs(self, v, visitado):
+        for adj in self._vertices[v]:
+            if not visitado[adj]:
+                visitado[adj] = True
+                self._dfs(adj, visitado)

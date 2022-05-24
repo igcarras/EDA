@@ -112,10 +112,6 @@ class MyGraph:
             if adj == start:
                 self._vertices[end].remove(adj)
 
-
-
-
-
 if __name__ == '__main__':
     # Create a graph: A<->B<->C<->D
     vertices = ['A', 'B', 'C', 'D']

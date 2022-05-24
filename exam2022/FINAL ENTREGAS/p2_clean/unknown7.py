@@ -1,9 +1,3 @@
-    def _adj(self, v, visited, lista):
-        if v not in visited:
-            visited.append(v)
-            lista.append(v)
-            for j in self._vertices[v]:
-                self._adj(j, visited, lista)
     def is_connected(self) -> bool:
         """returns True if the graph is connected, False eoc"""
         for v in self._vertices.keys():
@@ -13,6 +7,12 @@
             if len(self._vertices) != len(list):
                 return False
         return True
+    def _adj(self, v, visited, lista):
+        if v not in visited:
+            visited.append(v)
+            lista.append(v)
+            for j in self._vertices[v]:
+                self._adj(j, visited, lista)
     def is_bridge(self, v1: str, v2: str) -> bool:
         if v1 in self._vertices[v2] and v2 in self._vertices[v1]:
             g2 = self

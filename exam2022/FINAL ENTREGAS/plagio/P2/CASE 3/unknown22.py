@@ -1,3 +1,4 @@
+    def is_connected(self) -> bool:
         """returns True if the graph is connected, False eoc"""
         for vertex in self._vertices:
             visited = {}

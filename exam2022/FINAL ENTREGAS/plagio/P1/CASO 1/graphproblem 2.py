@@ -1,4 +1,3 @@
-#Ignacio Tordable Mestres
 def compare_lists(list1: list, list2: list) -> bool:
     if len(list1) != len(list2):
         return False
@@ -9,6 +8,7 @@ def compare_lists(list1: list, list2: list) -> bool:
             return False
     return True
 
+
 class MyGraph:
     """Implementation of an undirected and unweighted graph"""
 
@@ -16,7 +16,7 @@ class MyGraph:
         """We use a dictionary to save the vertices"""
         self._vertices = {}
         for vertex in lst_vertices:
-            # Each vertex is3 a key of the dictionary
+            # Each vertex is a key of the dictionary
             # Its associated value will be the list of its adjacent vertices
             self._vertices[vertex] = []
 
@@ -70,45 +70,34 @@ class MyGraph:
                 result = result[:-2]
         return result
 
+    def _find(self, vertex, vertices):
+        for v in self._vertices[vertex]:
+            if v not in vertices:
+                vertices.append(v)
+                self._find(v, vertices)
+
     def is_connected(self) -> bool:
         """returns True if the graph is connected, False eoc"""
-        visitado = {}
-        for v in self._vertices.keys():
-            visitado[v] = False
-
-        self._dfs(v, visitado)
-        for v in self._vertices.keys():
-            if not visitado[v]:
-                return False
-        return True
-
-
-    def _dfs(self, v, visitado):
-        for adj in self._vertices[v]:
-            if not visitado[adj]:
-                visitado[adj] = True
-                self._dfs(adj, visitado)
+        if len(self._vertices) > 0:
+            vertices = []
+            self._find(list(self._vertices.keys())[0], vertices)
+            return len(vertices) == len(self._vertices)
 
     def is_bridge(self, v1: str, v2: str) -> bool:
-        if v1 in self._vertices[v2] and v2 in self._vertices[v1]:
-            grafoNuevo = self
-            grafoNuevo.remove(v1, v2)
-            solucion = not grafoNuevo.is_connected()
-            grafoNuevo.add_edge(v1, v2)
-            return solucion
-        return False
+        if self.is_connected() and v2 in self._vertices[v1]:
 
-    def remove(self, start: object, end: object):
-        if start not in self._vertices.keys():
-            return
-        if end not in self._vertices.keys():
-            return
-        for adj in self._vertices[start]:
-            if adj == end:
-                self._vertices[start].remove(adj)
-        for adj in self._vertices[end]:
-            if adj == start:
-                self._vertices[end].remove(adj)
+            self._vertices[v1].remove(v2)
+            self._vertices[v2].remove(v1)
+
+            conectado = self.is_connected()
+
+            self._vertices[v1].append(v2)
+
+            self._vertices[v2].append(v1)
+
+            if not conectado:
+                return True
+        return False
 
 
 if __name__ == '__main__':

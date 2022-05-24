@@ -73,7 +73,7 @@ def _clean_code(path, methods_remove):
 
 
 if __name__ == '__main__':
-    problem = 'p2'
+    problem = 'p1'
     if problem == 'p2':
         copy_files('./p2/*/*/graphproblem*.py', './p2_clean/')
         methods_remove = ['compare_lists', '__init__', 'check_vertex',
