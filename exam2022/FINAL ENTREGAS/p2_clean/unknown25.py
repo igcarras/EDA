@@ -1,6 +1,4 @@
-#Carmen Marrasan Monar
     def is_connected(self) -> bool:
-        """returns True if the graph is connected, False eoc"""
         for vertex in self._vertices:
             visited = {}
             for v in self._vertices.keys():
@@ -9,6 +7,7 @@
             if not result:
                 return False
         return True
+
     def _is_connected(self,vertex, visited:list)-> bool:
         visited[vertex] = True
         for adj in self._vertices[vertex]:
@@ -18,6 +17,7 @@
             if visited[v] == False:
                 return False
         return True
+
     def is_bridge(self, v1: str, v2: str) -> bool:
         if v1 in self._vertices[v2] and v2 in self._vertices[v1]:
             New = self
@@ -26,6 +26,9 @@
             New.add_edge(v1, v2) #devolvemos la arista, para no modificar el grafo
             return result
         return False
+
+
+
     def eliminar(self, start: object, end: object):
         if start not in self._vertices.keys():
             return
