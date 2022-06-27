@@ -21,9 +21,15 @@ class Archipelago:
         We simply need to use a Python list
         where we can save the adjacent islands for each island"""
         self._num = n
-        self._adjacent_islands = [None] * n# will be a list of lists
-        #print(self._adjacent_islands)
+        self._adjacent_islands = [None] * n  # will be a list of lists
+        print(self._adjacent_islands)
 
+    def _neigbours(self, island) -> list:
+        result = []
+        if self._adjacent_islands[island] is not None:
+            for adj in self._adjacent_islands[island]:
+                result.append(adj._island)
+        return result
     def add_bridge(self, i1: int, i2: int, h: int, d: int) -> None:
         """i1, i2: islands to be connected.
             h: height of the bridge that connects both islands
@@ -37,28 +43,31 @@ class Archipelago:
         if i1 == i2:
             print('loops are not allowed')
             return
-        if h<=0:
+        if h <= 0:
             print(h, ' the height should be positive')
             return
-        if d<=0:
+        if d <= 0:
             print(d, ' the length should be positive')
             return
-        if self._adjacent_islands[i1] is not None:
-            accessible_from_i1 = self._adjacent_islands[i1]
-            for adj in accessible_from_i1:
-                if adj._island == i2:
-                    print("Error: it already exist a bridge between "+ str(i1) + " to " + str(i2))
-                    return
-        else:
-            self._adjacent_islands[i1] = []
+        print("adding ", i1,i2,h,d)
 
+        if i1 in self._neigbours(i2):
+            print("Error: already exist bridge between {} and {}".format(i1,i2))
+            return
+        if i2 in self._neigbours(i1):
+            print("Error: already exist bridge between {} and {}".format(i2,i1))
+            return
+
+        if self._adjacent_islands[i1] is None:
+            #  create the empty list
+            self._adjacent_islands[i1] = []
         if self._adjacent_islands[i2] is None:
+            #  create the empty list
             self._adjacent_islands[i2] = []
 
-        # If we reach this line, it means that the two islands
-        # do not have a bridge between them
         self._adjacent_islands[i1].append(AdjacentIsland(i2, h, d))
         self._adjacent_islands[i2].append(AdjacentIsland(i1, h, d))
+
 
     def __str__(self) -> str:
         """ returns a string containing the graph"""
@@ -68,44 +77,26 @@ class Archipelago:
             if self._adjacent_islands[island] is not None:
                 for adj in self._adjacent_islands[island]:
                     result += str(adj) + ", "
+
             if result.endswith(", "):
                 result = result[:-2]
         return result
 
-    def non_accessible_islands(self) -> list:
-        """returns a list with the islands that are
-        non-accessible.
-         Mark: 0.33"""
-        result = []
-        for i in range(self._num):
-            if self._adjacent_islands[i] is None:
-                result.append(i)
-        return result
-
-    def islands_k_bridges(self, k : int) -> list:
-        """returns a list with the islands that exactly has
-        k bridges.
-        Mark: 0.5"""
-        result = []
-        for i in range(self._num):
-            if self._adjacent_islands[i] is not None and len(self._adjacent_islands[i]) == k:
-                result.append(i)
-            elif self._adjacent_islands[i] is None and k==0 :
-                result.append(i)
-        return result
-
     def accessible_from(self, i: int, h: int) -> list:
-        """Suppose that the tide has increased h metres,
-        the methods has to return the list of islands that are accessible
-        from i.
-        Mark: 1.5"""
+        return self.accessible_from_bfs(i,h)
+        # return self.accessible_from_dfs(i,h)
 
+    def accessible_from_bfs(self, i: int, h: int) -> list:
+        """Suppose that the tide has increased h metres,
+        this method has to return the list of islands that are accessible
+        from i.
+        """
         if i not in range(self._num):
            return []
         
         visited = [False] * self._num
         accessible = []
-        q=Queue()
+        q = Queue()
         q.put(i)
         visited[i] = True
         while not q.empty():
@@ -117,8 +108,25 @@ class Archipelago:
                         q.put(adj._island)
                         visited[adj._island] = True
 
-
         return accessible[1:]
+    
+    def accessible_from_dfs(self, i: int, h: int) -> list:
+        if i not in range(self._num):
+            return []
+        
+        visited = [False] * self._num
+        accessible = []
+        self._accessible_from_dfs(i, h, visited, accessible)
+        return accessible[1:]
+    
+    def _accessible_from_dfs(self, i: int, h: int, visited: list, accessible: list) -> None:
+        visited[i] = True
+        accessible.append(i)
+        if self._adjacent_islands[i] is not None:
+            for adj in self._adjacent_islands[i]:
+                if not visited[adj._island]  and adj._height > h:
+                    self._accessible_from_dfs(adj._island, h, visited, accessible)
+
 
     def min_distance(self, distances: dict, visited: dict) -> int:
         """returns the island with the minimum distance accumulated"""
@@ -150,7 +158,7 @@ class Archipelago:
                     w = adj._distance
                     h = adj._height
 
-                    if h >= tide and not visited[i] and distance[i] > distance[u]+w:
+                    if h > tide and not visited[i] and distance[i] > distance[u]+w:
                         # we must update because its distance is greater than the new distance
                         distance[i] = distance[u]+w
                         previous[i] = u
@@ -185,61 +193,33 @@ class Archipelago:
         return minimum_path, distance[target]
 
 
-
-
 if __name__ == '__main__':
-    
-    g3 = Archipelago(4)
-    g3.add_bridge(0, 1, 5, 1)
-    g3.add_bridge(0, 2, 4, 1)
-    g3.add_bridge(0, 3, 3, 10)
-    g3.add_bridge(1, 2, 4, 1)
-    g3.add_bridge(2, 3, 3, 1)
+    g3 = Archipelago(7)
+    g3.add_bridge(0, 1, 2, 3)
+
+    g3.add_bridge(0, 2, 5, 10)
+    g3.add_bridge(1, 2, 3, 2)
+    g3.add_bridge(1, 3, 3, 3)
+    g3.add_bridge(2, 3, 4, 10)
+    g3.add_bridge(2, 4, 5, 3)
+    g3.add_bridge(3, 4, 4, 4)
+
     print(g3)
-    a,b = g3.dijkstra (0,1)
-    print (a,b)
-    path, d= g3.minimum_path (0,4,1)
-    print (path, d)
- 
-       
-    
-    """
-    archi = Archipelago(10)
-    archi.add_bridge(0, 1, 5, 10)
-    archi.add_bridge(0, 2, 4, 3)
-    archi.add_bridge(0, 3, 3, 15)
-    archi.add_bridge(2, 3, 4, 3)
-    archi.add_bridge(3, 8, 3, 3)
 
-    archi.add_bridge(6, 8, 2, 3)
-    archi.add_bridge(8, 9, 2, 3)
+    island = 0
+    for island in range(7):
+        for height in range(6):
+            print('accessible_from {} with height {}'.format(island, height))
+            result = g3.accessible_from(island, height)
+            print(result)
+            result = g3.accessible_from_dfs(island, height)
+            print(result)
+        print()
 
-    print("First graph: ", str(archi))
 
-    print("non accessible islands", archi.non_accessible_islands())
-    print("islands with k=1 bridges", archi.islands_k_bridges(1))
-    print("islands with k=2 bridges", archi.islands_k_bridges(2))
-    print("islands with k=3 bridges", archi.islands_k_bridges(3))
-    print("islands with k=4 bridges", archi.islands_k_bridges(4))
-    
-    
-    print("accessible_from 4, h = 1", archi.accessible_from(4, 1))
-    print("accessible_from 0, h = 1", archi.accessible_from(0, 1))
-    print("accessible_from 0, h = 2", archi.accessible_from(0, 2))
-    print("accessible_from 0, h = 3", archi.accessible_from(0, 3))
+    path, d = g3.minimum_path(0, 4, 1)
+    print(path, d)
 
-    print("accessible_from 0, h = 4", archi.accessible_from(0, 4))
+    print(g3.minimum_path(0, 3, 5))
 
-    print("accessible_from 0, h = 1", archi.accessible_from(0, 1))
-    print("accessible_from 0, h = 2", archi.accessible_from(0, 2))
-    print("accessible_from 0, h = 3", archi.accessible_from(0, 3))
-
-    print("accessible_from 9, h = 4", archi.accessible_from(9, 4))
-    print("accessible_from 9, h = 3", archi.accessible_from(9, 3))
-    print("accessible_from 9, h = 2", archi.accessible_from(9, 2))
-    print("accessible_from 9, h = 1", archi.accessible_from(9, 1))
-    print("accessible_from 9, h = 0", archi.accessible_from(9, 0))
-
-    print("min distance from 0 to 3", archi.minimum_path(0,3,0))
-    print("min distance from 0 to 3", archi.minimum_path(0,8,0))
-    """
+    print(g3.minimum_path(2, 3, 1))

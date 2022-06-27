@@ -49,8 +49,6 @@ class BinaryTree:
             node.right = self._insert(node.right, elem)
         return node
 
-    # Exam starts here...
-
     def right_sum(self) -> int:
         # Define a variable to track current level
         self._currentLevel = 0
