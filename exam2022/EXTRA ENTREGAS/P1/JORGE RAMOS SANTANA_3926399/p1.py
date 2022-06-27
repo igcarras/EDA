@@ -3,7 +3,6 @@
 
 #Jorge Ramos Santana
 
-from tkinter.tix import DirList
 
 
 class DNode:
