@@ -327,8 +327,7 @@ class BinaryTree:
                 if current == node:
                     return depth_level
                 if current.left is not None and node.elem < current.elem:
-                    list_nodes.add_last(current.left)  # O(1)
-                if current.right is not None and node.elem > current.elem:
+                    list_nodes.add_last(current.left)  # O(1) if current.right is not None and node.elem > current.elem:
                     list_nodes.add_last(current.right)  # O(1)
                 depth_level += 1
 

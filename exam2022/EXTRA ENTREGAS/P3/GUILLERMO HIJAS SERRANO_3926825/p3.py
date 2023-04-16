@@ -10,7 +10,7 @@ class AdjacentIsland:
         def __init__(self, i: int, h: int, d: int) -> None:
             """This constructor creates a 3-tuple where
             we save the connected island, the height of the
-            bridge, and the length of the bridge"""
+            bridge, and the length  of the bridge"""
             self._island = i
             self._height = h
             # height
