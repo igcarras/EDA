@@ -88,10 +88,10 @@ class MyDList:
             
         elif start.elem != elemt.elem and  end.elem != ultimo.elem:
             pos = self.index(start.elem)
-            for n in range(pos-1)
-                elemt = elemt.next
+           # for n in range(pos-1)
+            #    elemt = elemt.next
                 
-            incio = elemt
+            inicio = elemt
            
 
             for x in range(count):

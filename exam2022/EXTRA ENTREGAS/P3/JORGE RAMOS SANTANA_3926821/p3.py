@@ -1,7 +1,5 @@
 import math
 
-from mercantile import neighbors
-
 """
 Name:
 NIA:

@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 
-from p2_sol import BinaryTree
+from p2 import BinaryTree
 
 import unittest
 

@@ -2,12 +2,13 @@
 # -*- coding: utf-8 -*-
 
 
-from exer2_sol import BinaryTree
+from p2 import BinaryTree
 
 import unittest
 
 
 class Test(unittest.TestCase):
+    mark = 0
 
     def setUp(self):
         self.tree = BinaryTree()
@@ -16,15 +17,17 @@ class Test(unittest.TestCase):
         print('\nCase 1: tree is empty')
 
         self.assertEqual(self.tree.right_sum(), 0)
+        Test.mark += 0.1
 
     def test2(self):
         print('\nCase 2: tree not empty. Unbalanced (root with two branches)')
         for x in [5, 3, 9, 1, 8, 20, 30]:
             self.tree.insert(x)
 
-        #self.tree.draw()
+        self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 64)
+        Test.mark += 0.3
 
     def test3(self):
         print('\nCase 3: tree not empty. Unbalanced (only right branch). Right leaf alone')
@@ -35,6 +38,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 55)
+        Test.mark += 0.3
 
     def test4(self):
         print('\nCase 4: tree not empty. Unbalanced (only right branch)')
@@ -46,6 +50,7 @@ class Test(unittest.TestCase):
 
         self.assertEqual(self.tree.right_sum(), 56)
         # self.assertEqual(self.tree.right_sum(), 27)
+        Test.mark += 0.3
 
     def test5(self):
         print('\nCase 5: tree not empty. Unbalanced (only right branch). Left leaf alone')
@@ -56,6 +61,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 32)
+        Test.mark += 0.3
 
     def test6(self):
         print('\nCase 6: tree not empty. Unbalanced (only left branch). Left leaf alone')
@@ -66,6 +72,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 56)
+        Test.mark += 0.3
 
     def test7(self):
         print('\nCase 7: tree not empty. Unbalanced (only left branch). Right leaf alone')
@@ -76,6 +83,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 49)
+        Test.mark += 0.3
 
     def test8(self):
         print('\nCase 8: tree not empty. Unbalanced (only left branch). Fully degenerated tree')
@@ -86,6 +94,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 77)
+        Test.mark += 0.3
 
     def test9(self):
         print('\nCase 9: tree not empty. Only root')
@@ -96,6 +105,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 55)
+        Test.mark += 0.2
 
     def test10(self):
         print('\nCase 10: tree not empty. Balanced three-levels')
@@ -105,6 +115,7 @@ class Test(unittest.TestCase):
 
         #self.tree.draw()
         self.assertEqual(self.tree.right_sum(), 60)
+        Test.mark += 0.3
 
     def test11(self):
         print('\nCase 11: tree not empty. Balanced four-levels')
@@ -115,6 +126,7 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 85)
+        Test.mark += 0.3
 
     def test12(self):
         print('\nCase 12: tree not empty. Unbalanced (only right branch). Fully degenerated tree')
@@ -125,11 +137,10 @@ class Test(unittest.TestCase):
         #self.tree.draw()
 
         self.assertEqual(self.tree.right_sum(), 82)
+        Test.mark += 0.3
 
+    def test_print(self):
+        print("Nota provisional: ", Test.mark)
 
-# If you are using Spyder, please comment the following line:
-# unittest.main(argv=['first-arg-is-ignored'], exit=False)
-
-# To use Spyder, remove the following comments:
 if __name__ == '__main__':
     unittest.main()
