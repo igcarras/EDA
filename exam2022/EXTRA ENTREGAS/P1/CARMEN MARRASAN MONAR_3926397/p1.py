@@ -78,9 +78,10 @@ class MyDList:
         count = 0  
         while nodeIt:
             num = prev.elem
+            aux=nodeIt.elem
             print(nodeIt.elem,prev.elem)
-            while (prev.elem + nodeIt.elem) <=k:   
-                num += nodeIt.elem       
+            while (num + aux) <=k:
+                num += aux
                 if num == k:
                     self.remove_sublist(prev, nodeIt, count)
                 else:
