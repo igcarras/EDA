@@ -48,31 +48,27 @@ class MyBinarySearchTree:
 
     # Removes all nodes having value outside the given range
     # returns a sorted list in ascending order
-    def removeOutsideRange(self, min: int, max: int) -> []:
-        removelist = []
-        self._removeOutsideRange(self._root, min, max, removelist)
-        return removelist
+    def sumInsideRange (self, min: int, max: int) -> int:
+        return self._sumInsideRange(self._root, min, max, 0)
+
 
     # Removes all nodes having value outside the given range
-    def _removeOutsideRange(self, node: BinaryNode, min: int, max: int, removelist: []) -> object:
+    def _sumInsideRange (self, node: BinaryNode, min: int, max: int, sum:int) -> int:
         # Base Case
         if node is None:
-            return None
+            return 0
 
-        # check is node is not leaf
-        if node.left or node.right:
-            node.left = self._removeOutsideRange(node.left, min, max,  removelist)
-            node.right = self._removeOutsideRange(node.right, min, max,  removelist)
+        sum += self._sumInsideRange(node.left, min, max,  sum)
+        sum += self._sumInsideRange(node.right, min, max,  sum)
+
+        if (node.left is None) and (node.right is None):
+            # node is a leave
+             return 0
+        # check is node is not leaf and elem is in range
+        if node.elem < min or node.elem > max:
+            return node.elem
         else:
-            if (node.left is None) and (node.right is None) and (node.elem < min or node.elem > max):
-                # node is a leave
-                # append node in list
-                # print("leaf node for removing:", node.elem)
-                removelist.append(node.elem)
-                return None
-
-        # if node is not leaf, return node and continue recursion
-        return node
+            return 0
 
 
 if __name__ == "__main__":
@@ -87,29 +83,29 @@ if __name__ == "__main__":
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
     print("Remove leaf nodes out range: 1, 120")
-    print("Nodes removed", tree.removeOutsideRange(1,120))
+    print("Nodes removed", tree.sumInsideRange(1,120))
     tree = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
     print("Remove leaf nodes out range: 15, 20")
-    print("Nodes removed", tree.removeOutsideRange(15,20))
+    print("Nodes removed", tree.sumInsideRange(15,20))
     tree = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
     print("Remove leaf nodes out range: 0, 0")
-    print("Nodes removed", tree.removeOutsideRange(0,0))
+    print("Nodes removed", tree.sumInsideRange(0,0))
     tree = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
     print("Remove leaf nodes out range: 9, 23")
-    print("Nodes removed", tree.removeOutsideRange(9, 23))
+    print("Nodes removed", tree.sumInsideRange(9, 23))
     tree = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
     print("Remove leaf nodes out range: -10, 0")
-    print("Nodes removed", tree.removeOutsideRange(-10, 0))
+    print("Nodes removed", tree.sumInsideRange(-10, 0))
     tree = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
     print("Remove leaf nodes out range: 5, 80")
-    print("Nodes removed", tree.removeOutsideRange(5, 80))
+    print("Nodes removed", tree.sumInsideRange(5, 80))
