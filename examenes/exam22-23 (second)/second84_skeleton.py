@@ -54,22 +54,7 @@ class MyBinarySearchTree:
 
     # Sum value of all nodes (NOT LEAF) having value inside the given range
     def _sumInsideRange (self, node: BinaryNode, min: int, max: int, suma:int) -> int:
-        # Base Case
-        if node is None:
-            # node is empty
-            return 0
-
-        suma = suma + self._sumInsideRange(node.left, min, max, suma) + self._sumInsideRange(node.right, min, max, suma)
-
-        # node is a leave
-        if (node.left is None) and (node.right is None):
-            return 0
-
-        # check is node is not leaf and elem is in range
-        if (node.elem >= min and node.elem <= max):
-            suma += node.elem
-
-        return suma
+        pass
 
 
 
