@@ -53,23 +53,28 @@ class MyBinarySearchTree:
 
 
     # Removes all nodes having value outside the given range
-    def _sumInsideRange (self, node: BinaryNode, min: int, max: int, sum:int) -> int:
+    def _sumInsideRange (self, node: BinaryNode, min: int, max: int, suma:int) -> int:
         # Base Case
         if node is None:
             return 0
 
-        sum += self._sumInsideRange(node.left, min, max,  sum)
-        sum += self._sumInsideRange(node.right, min, max,  sum)
-
         if (node.left is None) and (node.right is None):
             # node is a leave
-             return 0
+            return 0
+
+        suma = self._sumInsideRange(node.left, min, max,  suma)
+        suma = self._sumInsideRange(node.right, min, max,  suma)
+        #print("el valor de suma es ", sum)
+
         # check is node is not leaf and elem is in range
         if (node.elem >= min and node.elem <= max):
             print("Sumo el valor ", node.elem)
-            return node.elem
+            suma += node.elem
+            return suma
         else:
-            return 0
+            return suma
+
+
 
 
 if __name__ == "__main__":
