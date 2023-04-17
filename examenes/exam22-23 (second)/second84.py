@@ -65,7 +65,8 @@ class MyBinarySearchTree:
             # node is a leave
              return 0
         # check is node is not leaf and elem is in range
-        if node.elem < min or node.elem > max:
+        if (node.elem >= min and node.elem <= max):
+            print("Sumo el valor ", node.elem)
             return node.elem
         else:
             return 0
@@ -82,30 +83,35 @@ if __name__ == "__main__":
     tree = MyBinarySearchTree()
     for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
         tree.insert(x)
-    print("Remove leaf nodes out range: 1, 120")
-    print("Nodes removed", tree.sumInsideRange(1,120))
-    tree = MyBinarySearchTree()
-    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
-        tree.insert(x)
-    print("Remove leaf nodes out range: 15, 20")
-    print("Nodes removed", tree.sumInsideRange(15,20))
-    tree = MyBinarySearchTree()
-    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
-        tree.insert(x)
-    print("Remove leaf nodes out range: 0, 0")
-    print("Nodes removed", tree.sumInsideRange(0,0))
-    tree = MyBinarySearchTree()
-    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
-        tree.insert(x)
-    print("Remove leaf nodes out range: 9, 23")
-    print("Nodes removed", tree.sumInsideRange(9, 23))
-    tree = MyBinarySearchTree()
-    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
-        tree.insert(x)
-    print("Remove leaf nodes out range: -10, 0")
-    print("Nodes removed", tree.sumInsideRange(-10, 0))
-    tree = MyBinarySearchTree()
-    for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
-        tree.insert(x)
-    print("Remove leaf nodes out range: 5, 80")
-    print("Nodes removed", tree.sumInsideRange(5, 80))
+    print("Sum not leaf nodes out range: 1, 1")
+    print("Result ", tree.sumInsideRange(1,1))
+    print("Sum not leaf nodes out range: 15, 20")
+    print("Result ", tree.sumInsideRange(15,20))
+
+
+
+    # tree = MyBinarySearchTree()
+    # for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+    #     tree.insert(x)
+    # print("Sum not leaf nodes out range: 15, 20")
+    # print("Result ", tree.sumInsideRange(15,20))
+    # tree = MyBinarySearchTree()
+    # for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+    #     tree.insert(x)
+    # print("Sum not leaf nodes out range: 0, 0")
+    # print("Result ", tree.sumInsideRange(0,0))
+    # tree = MyBinarySearchTree()
+    # for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+    #     tree.insert(x)
+    # print("Sum not leaf nodes out range: 9, 23")
+    # print("Result ", tree.sumInsideRange(9, 23))
+    # tree = MyBinarySearchTree()
+    # for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+    #     tree.insert(x)
+    # print("Sum not leaf nodes out range: -10, 0")
+    # print("Result ", tree.sumInsideRange(-10, 0))
+    # tree = MyBinarySearchTree()
+    # for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
+    #     tree.insert(x)
+    # print("Sum not leaf nodes out range: 5, 80")
+    # print("Result ", tree.sumInsideRange(5, 80))
