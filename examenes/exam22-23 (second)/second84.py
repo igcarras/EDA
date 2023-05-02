@@ -48,6 +48,33 @@ class MyBinarySearchTree:
 
     # Sum value of all nodes (NOT LEAF) having value inside the given range
     # return integer with sum values
+    def sumInsideRange4(self, min: int, max: int) -> int:
+        return self._sumInsideRange4(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    # Sum value of all nodes (NOT LEAF) having value inside the given range
+    def _sumInsideRange4(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        # Base Case
+        if node is None:
+            # node is empty
+            return 0
+
+        # node is a leave
+        if (node.left is None) and (node.right is None):
+            return 0
+        else:
+            if min <= node.elem <= max:
+                suma += node. elem + self._sumInsideRange4(node.left, min, max, suma) + self._sumInsideRange4(node.right, min, max, suma)
+            else:
+                suma = self._sumInsideRange4(node.left, min, max, suma) + self._sumInsideRange4(node.right, min, max, suma)
+        return suma
+
+
+
+    # Sum value of all nodes (NOT LEAF) having value inside the given range
+    # return integer with sum values
     def sumInsideRange (self, min: int, max: int) -> int:
         return self._sumInsideRange(self._root, min, max, 0)
 
@@ -68,27 +95,57 @@ class MyBinarySearchTree:
             return 0
 
         # check is node is not leaf and elem is in range
-        if (node.elem >= min and node.elem <= max):
+        if min <= node.elem <= max:
             suma += node.elem
 
         return suma
 
     # Sum value of all nodes (NOT LEAF) having value inside the given range
-    def sumInsideRange2(self, min: int, max: int) -> int:
+    # return integer with sum values
+    def sumInsideRange2 (self, min: int, max: int) -> int:
         return self._sumInsideRange2(self._root, min, max)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
 
     # Sum value of all nodes (NOT LEAF) having value inside the given range
     def _sumInsideRange2 (self, node: BinaryNode, min: int, max: int) -> int:
+        suma = 0
+        # Base Case
+        if node is  None:
+            return 0
+
+
+        # check is node is not leaf and elem is in range
+        if min <= node.elem <= max:
+            if node.left or node.right:
+                suma += node.elem
+        if node.left:
+
+            suma += self._sumInsideRange2(node.left, min, max) + self._sumInsideRange2(node.right, min, max)
+
+        return suma
+
+    # Sum value of all nodes (NOT LEAF) having value inside the given range
+    def sumInsideRange3(self, min: int, max: int) -> int:
+        return self._sumInsideRange3(self._root, min, max)
+
+    # Sum value of all nodes (NOT LEAF) having value inside the given range
+    def _sumInsideRange3(self, node: BinaryNode, min: int, max: int) -> int:
+        # Base Case
+        if node is None:
+            # node is empty
+            return 0
 
         # node is a leave
         if (node.left is None) and (node.right is None):
             return 0
         else:
             # check is node is not leaf and elem is in range
-            if (node.elem >= min and node.elem <= max):
-                return node.elem + self._sumInsideRange2(node.left, min, max) + self._sumInsideRange2(node.right, min, max)
+            if min <= node.elem <= max:
+                return node.elem + self._sumInsideRange3(node.left, min, max) + self._sumInsideRange3(node.right, min, max)
             else:
-                return self._sumInsideRange2(node.left, min, max) + self._sumInsideRange2(node.right, min, max)
+                return self._sumInsideRange3(node.left, min, max) + self._sumInsideRange3(node.right, min, max)
 
 if __name__ == "__main__":
 
@@ -97,7 +154,7 @@ if __name__ == "__main__":
     # for x in [50, 55, 54, 20, 60, 15, 18, 5, 25, 24, 75, 80]:
     #     tree.insert(x)
     #
-    # print("Original Tree")
+    # print("Original Tree" )
     # tree.draw()
     #
     # print("Sum not leaf nodes out range: 1, 1")
@@ -201,3 +258,18 @@ if __name__ == "__main__":
     print("Result ", tree.sumInsideRange2(5, 80))
     print("Tree: Sum not leaf nodes out range: 46, 94")
     print("Result ", tree.sumInsideRange2(46, 94))
+
+    print("Tree: Sum not leaf nodes out range: 1, 120")
+    print("Result ", tree.sumInsideRange4(1, 120))
+    print("Tree: Sum not leaf nodes out range: 10, 20")
+    print("Result ", tree.sumInsideRange4(10, 20))
+    print("Tree: Sum not leaf nodes out range: 0, 0")
+    print("Result ", tree.sumInsideRange4(0, 0))
+    print("Tree: Sum not leaf nodes out range: 12, 93")
+    print("Result ", tree.sumInsideRange4(12, 93))
+    print("Tree: Sum not leaf nodes out range: -10, 0")
+    print("Result ", tree.sumInsideRange4(-10, 0))
+    print("Tree: Sum not leaf nodes out range: 5, 80")
+    print("Result ", tree.sumInsideRange4(5, 80))
+    print("Tree: Sum not leaf nodes out range: 46, 94")
+    print("Result ", tree.sumInsideRange4(46, 94))
