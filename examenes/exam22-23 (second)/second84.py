@@ -140,11 +140,13 @@ class MyBinarySearchTree:
         suma = 0
         # Base Case
         if node is not None:
-            if min <= node.elem <= max:
-                if (node.left is not None) or (node.right is not None):
+            if min <= node.elem <= max and (node.left is  None) and (node.right is  None):
                     suma += node.elem
 
-            return self._sumInsideRangeIrene(node.left, min, max, suma) + self._sumInsideRangeIrene(node.right, min, max, suma)
+            if node.elem < min:
+                return self._sumInsideRangeIrene(node.right, min, max, suma)
+            if node.elem > max:
+                return self._sumInsideRangeIrene(node.left, min, max, suma)
 
         return suma
 
@@ -434,20 +436,20 @@ if __name__ == "__main__":
     # print("Result ", tree.sumInsideRange2(46, 94))
 
     print("Tree: Sum not leaf nodes out range: 1, 120")
-    print("Result ", tree.sumInsideRangeFermin(1, 120))
+    print("Result ", tree.sumInsideRangeIrene(1, 120))
     print("Tree: Sum not leaf nodes out range: 10, 20")
-    print("Result ", tree.sumInsideRangeFermin(10, 20))
+    print("Result ", tree.sumInsideRangeIrene(10, 20))
     print("Tree: Sum not leaf nodes out range: 0, 0")
     print("Result ", tree.sumInsideRangeFermin(0, 0))
     print("Tree: Sum not leaf nodes out range: 12, 93")
-    print("Result ", tree.sumInsideRangeFermin(12, 93))
+    print("Result ", tree.sumInsideRangeIrene(12, 93))
     print("Tree: Sum not leaf nodes out range: -10, 0")
-    print("Result ", tree.sumInsideRangeFermin(-10, 0))
+    print("Result ", tree.sumInsideRangeIrene(-10, 0))
     print("Tree: Sum not leaf nodes out range: 5, 80")
-    print("Result ", tree.sumInsideRangeFermin(5, 80))
+    print("Result ", tree.sumInsideRangeIrene(5, 80))
     print("Tree: Sum not leaf nodes out range: 46, 94")
-    print("Result ", tree.sumInsideRangeFermin(46, 94))
+    print("Result ", tree.sumInsideRangeIrene(46, 94))
     print("Tree: Sum not leaf nodes out range: 1, 5")
-    print("Result ", tree.sumInsideRangeFermin(1, 5))
+    print("Result ", tree.sumInsideRangeIrene(1, 5))
 
 
