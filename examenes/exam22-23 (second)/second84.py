@@ -124,6 +124,33 @@ class MyBinarySearchTree:
                 if node.elem < max:
                     self._sumInsideRangeLucena(node.right, min, max, suma)
 
+     # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangePaloma(self, min: int, max: int) -> int:
+        return self._sumInsideRangePaloma(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangePaloma(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+
+        if (node.left) or (node.right):
+            if node.elem < min:
+                self._sumInsideRangePaloma(node.right, min, max, suma)
+
+            if min <= node.elem <= max:
+                suma += node.elem
+
+            return self._sumInsideRangePaloma(node.right, min, max, suma) + self._sumInsideRangePaloma(node.right, min, max, suma)
+
+            if node.elem > max:
+                self._sumInsideRangePaloma(node.right, min, max, suma)
+
+        return suma
+
 
        # Sum value of all nodes (NOT LEAF) having value inside the given range
         # return integer with sum values
@@ -148,6 +175,33 @@ class MyBinarySearchTree:
             if node.elem > max:
                 return self._sumInsideRangeIrene(node.left, min, max, suma)
 
+        return suma
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeDavid(self, min: int, max: int) -> int:
+        return self._sumInsideRangeDavid(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeDavid(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        suma = 0
+        if self._root==None:
+            return 0
+        if node.left is None and node.right is None:
+            suma +=0
+        if node.right is not None or node.left is not None:
+            if min <= node.elem <= max:
+                suma += node.elem
+
+            if node.elem > min:
+                return self._sumInsideRangeDavid(node.left, min, max, suma)
+            if node.elem < max:
+                return self._sumInsideRangeDavid(node.right, min, max, suma)
         return suma
 
         # Sum value of all nodes (NOT LEAF) having value inside the given range
@@ -458,20 +512,20 @@ if __name__ == "__main__":
     # print("Result ", tree.sumInsideRange2(46, 94))
 
     print("Tree: Sum not leaf nodes out range: 1, 120")
-    print("Result ", tree.sumInsideRangeMarcos(1, 120))
+    print("Result ", tree.sumInsideRangeDavid(1, 120))
     print("Tree: Sum not leaf nodes out range: 10, 20")
-    print("Result ", tree.sumInsideRangeMarcos(10, 20))
+    print("Result ", tree.sumInsideRangeDavid(10, 20))
     print("Tree: Sum not leaf nodes out range: 0, 0")
-    print("Result ", tree.sumInsideRangeMarcos(0, 0))
+    print("Result ", tree.sumInsideRangeDavid(0, 0))
     print("Tree: Sum not leaf nodes out range: 12, 93")
-    print("Result ", tree.sumInsideRangeMarcos(12, 93))
+    print("Result ", tree.sumInsideRangeDavid(12, 93))
     print("Tree: Sum not leaf nodes out range: -10, 0")
-    print("Result ", tree.sumInsideRangeMarcos(-10, 0))
+    print("Result ", tree.sumInsideRangeDavid(-10, 0))
     print("Tree: Sum not leaf nodes out range: 5, 80")
-    print("Result ", tree.sumInsideRangeMarcos(5, 80))
+    print("Result ", tree.sumInsideRangeDavid(5, 80))
     print("Tree: Sum not leaf nodes out range: 46, 94")
-    print("Result ", tree.sumInsideRangeMarcos(46, 94))
+    print("Result ", tree.sumInsideRangeDavid(46, 94))
     print("Tree: Sum not leaf nodes out range: 1, 5")
-    print("Result ", tree.sumInsideRangeMarcos(1, 5))
+    print("Result ", tree.sumInsideRangeDavid(1, 5))
 
 
