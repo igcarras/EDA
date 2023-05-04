@@ -71,6 +71,181 @@ class MyBinarySearchTree:
         return suma
 
 
+    # Sum value of all nodes (NOT LEAF) having value inside the given range
+    # return integer with sum values
+    def sumInsideRangeSive(self, min: int, max: int) -> int:
+        return self._sumInsideRangeSive(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    # Sum value of all nodes (NOT LEAF) having value inside the given range
+    def _sumInsideRangeSive(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        # Base Case
+        if node is None:
+            # node is empty
+            suma += 0
+
+        if (node.left is None) and (node.right is None):
+            suma += 0
+        else:
+            if node.elem>min:
+                self._sumInsideRangeSive(node.left, min, max, suma)
+
+            if min <= node.elem <= max:
+                suma += node.elem
+
+            if node.elem < max:
+                self._sumInsideRangeSive(node.right, min, max, suma)
+
+        return suma
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeLucena(self, min: int, max: int) -> int:
+        return self._sumInsideRangeLucena(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeLucena(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        # Base Case
+        if node:
+            if (node.left) or (node.right):
+                if node.elem > min:
+                    self._sumInsideRangeLucena(node.left, min, max, suma)
+
+                if min <= node.elem <= max:
+                    suma += node.elem
+
+                if node.elem < max:
+                    self._sumInsideRangeLucena(node.right, min, max, suma)
+
+
+       # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeIrene(self, min: int, max: int) -> int:
+        return self._sumInsideRangeIrene(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeIrene(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        suma = 0
+        # Base Case
+        if node is not None:
+            if min <= node.elem <= max:
+                if (node.left is not None) or (node.right is not None):
+                    suma += node.elem
+
+            return self._sumInsideRangeIrene(node.left, min, max, suma) + self._sumInsideRangeIrene(node.right, min, max, suma)
+
+        return suma
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeSalvador(self, min: int, max: int) -> int:
+        return self._sumInsideRangeSalvador(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeSalvador(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+
+        if node is None:
+            return suma
+
+        if min <= node.elem <= max:
+            if node.left is not None or node.right is not None or (node.left is not None and node.right is not None):
+                suma += node.elem
+
+        self._sumInsideRangeSalvador(node.left, min, max, suma) + self._sumInsideRangeSalvador(node.right,
+                                                                                                        min,
+                                                                                                        max, suma)
+
+        return suma
+
+
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeTurrado(self, min: int, max: int) -> int:
+        return self._sumInsideRangeTurrado(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeTurrado(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        if node:
+            if min <= node.elem <= max:
+                if (node.left is not None) or (node.right is not None):
+                    suma += node.elem
+
+            self._sumInsideRangeTurrado(node.left, min, max, suma) + self._sumInsideRangeTurrado(node.right, min,
+                                                                                                    max, suma)
+
+        return suma
+
+
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeGuillermo(self, min: int, max: int) -> int:
+        return self._sumInsideRangeGuillermo(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeGuillermo(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        if node is None:
+            return suma
+
+        if min <= node.elem <= max and (node.right and node.left):
+            suma += node.elem
+
+        self._sumInsideRangeGuillermo(node.left, min, max, suma) + self._sumInsideRangeGuillermo(node.right, min,
+                                                                                                max, suma)
+
+        return suma
+
+
+     # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+    def sumInsideRangeFermin(self, min: int, max: int) -> int:
+        return self._sumInsideRangeGuillermo(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeFermin(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        if node is not None:
+            if min <= node.elem <= max and (node.right and node.left):
+                suma += node.elem
+
+            self._sumInsideRangeFermin(node.left, min, max, suma) + self._sumInsideRangeFermin(node.right, min,
+                                                                                                max, suma)
+        else:
+            suma+=0
+        return suma
+
 
     # Sum value of all nodes (NOT LEAF) having value inside the given range
     # return integer with sum values
@@ -259,18 +434,20 @@ if __name__ == "__main__":
     # print("Result ", tree.sumInsideRange2(46, 94))
 
     print("Tree: Sum not leaf nodes out range: 1, 120")
-    print("Result ", tree.sumInsideRange4(1, 120))
+    print("Result ", tree.sumInsideRangeFermin(1, 120))
     print("Tree: Sum not leaf nodes out range: 10, 20")
-    print("Result ", tree.sumInsideRange4(10, 20))
+    print("Result ", tree.sumInsideRangeFermin(10, 20))
     print("Tree: Sum not leaf nodes out range: 0, 0")
-    print("Result ", tree.sumInsideRange4(0, 0))
+    print("Result ", tree.sumInsideRangeFermin(0, 0))
     print("Tree: Sum not leaf nodes out range: 12, 93")
-    print("Result ", tree.sumInsideRange4(12, 93))
+    print("Result ", tree.sumInsideRangeFermin(12, 93))
     print("Tree: Sum not leaf nodes out range: -10, 0")
-    print("Result ", tree.sumInsideRange4(-10, 0))
+    print("Result ", tree.sumInsideRangeFermin(-10, 0))
     print("Tree: Sum not leaf nodes out range: 5, 80")
-    print("Result ", tree.sumInsideRange4(5, 80))
+    print("Result ", tree.sumInsideRangeFermin(5, 80))
     print("Tree: Sum not leaf nodes out range: 46, 94")
-    print("Result ", tree.sumInsideRange(46, 94))
+    print("Result ", tree.sumInsideRangeFermin(46, 94))
     print("Tree: Sum not leaf nodes out range: 1, 5")
-    print("Result ", tree.sumInsideRange(1, 5))
+    print("Result ", tree.sumInsideRangeFermin(1, 5))
+
+

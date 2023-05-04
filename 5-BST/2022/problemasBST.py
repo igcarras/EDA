@@ -75,8 +75,6 @@ class BST2(BinarySearchTree):
         self._prints10(self._root, None, None)
 
     def _prints10(self, node: 'BSTNode', parent: 'BSTNode', grand: 'BSTNode') -> None:
-        if node:
-            self._prints10(node.left, node, parent)
             if grand and grand.elem % 10 == 0:
                 print(node.elem, end=' ')
             self._prints10(node.right, node, parent)
@@ -290,3 +288,13 @@ if __name__ == "__main__":
     print(tree.lwc(15,35),30)
     print(tree.lwc(67,70),70)
     print(tree.lwc(30,35),30)
+
+    values = [20,8,4,12,10,14,22]
+
+    tree = BST2()
+    for x in values:
+        tree.insert(x)
+
+    tree.draw()
+
+    print(tree.prints10())

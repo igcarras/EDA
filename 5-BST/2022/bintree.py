@@ -258,3 +258,4 @@ if __name__ == '__main__':
 
     print('depth of root.right.left:', tree.depth(right.left))
     print('depth of root.right.right.right:', tree.depth(rrNode.right), rrNode.right.elem)
+
