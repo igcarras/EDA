@@ -172,6 +172,28 @@ class MyBinarySearchTree:
             self._sumInsideRangeMarcos(node.right, min, max, suma)
         return suma
 
+    def sumInsideRangeIsabel(self, min: int, max: int) -> int:
+        return self._sumInsideRangeIsabel(self._root, min, max, 0)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeIsabel(self, node: BinaryNode, min: int, max: int, suma: int) -> int:
+        if node.left or node.right:
+            if node.elem>min and node.left:
+                self._sumInsideRangeIsabel(node.left, min, max, suma)
+            if node.elem<max and node.right:
+                self._sumInsideRangeIsabel(node.right, min, max, suma)
+
+            if min <= node.elem <= max:
+                    suma += node.elem
+
+        return suma
+
+
+
         # Sum value of all nodes (NOT LEAF) having value inside the given range
         # return integer with sum values
 
@@ -458,20 +480,20 @@ if __name__ == "__main__":
     # print("Result ", tree.sumInsideRange2(46, 94))
 
     print("Tree: Sum not leaf nodes out range: 1, 120")
-    print("Result ", tree.sumInsideRangeMarcos(1, 120))
+    print("Result ", tree.sumInsideRangeIsabel(1, 120))
     print("Tree: Sum not leaf nodes out range: 10, 20")
-    print("Result ", tree.sumInsideRangeMarcos(10, 20))
+    print("Result ", tree.sumInsideRangeIsabel(10, 20))
     print("Tree: Sum not leaf nodes out range: 0, 0")
-    print("Result ", tree.sumInsideRangeMarcos(0, 0))
+    print("Result ", tree.sumInsideRangeIsabel(0, 0))
     print("Tree: Sum not leaf nodes out range: 12, 93")
-    print("Result ", tree.sumInsideRangeMarcos(12, 93))
+    print("Result ", tree.sumInsideRangeIsabel(12, 93))
     print("Tree: Sum not leaf nodes out range: -10, 0")
-    print("Result ", tree.sumInsideRangeMarcos(-10, 0))
+    print("Result ", tree.sumInsideRangeIsabel(-10, 0))
     print("Tree: Sum not leaf nodes out range: 5, 80")
-    print("Result ", tree.sumInsideRangeMarcos(5, 80))
+    print("Result ", tree.sumInsideRangeIsabel(5, 80))
     print("Tree: Sum not leaf nodes out range: 46, 94")
-    print("Result ", tree.sumInsideRangeMarcos(46, 94))
+    print("Result ", tree.sumInsideRangeIsabel(46, 94))
     print("Tree: Sum not leaf nodes out range: 1, 5")
-    print("Result ", tree.sumInsideRangeMarcos(1, 5))
+    print("Result ", tree.sumInsideRangeIsabel(1, 5))
 
 
