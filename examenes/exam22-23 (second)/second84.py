@@ -292,7 +292,6 @@ class MyBinarySearchTree:
             suma+=0
         return suma
 
-
     # Sum value of all nodes (NOT LEAF) having value inside the given range
     # return integer with sum values
     def sumInsideRange (self, min: int, max: int) -> int:
