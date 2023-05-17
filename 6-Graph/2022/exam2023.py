@@ -25,7 +25,6 @@ class MyGraph:
             r = True
         else:
             for u in self._vertices[vertex]:
-                print(u)
                 if not visited[u]:
                     r = r or self._has_path_to_odd(u, k - 1, visited, origin)
         return r
@@ -47,8 +46,22 @@ if __name__ == '__main__':
     g.add_edge(2, 4)
     g.add_edge(3, 4)
     g.add_edge(2, 2)
-    print(g)
+
 
     print(g.has_path_to_odd(2))
     print(g.has_path_to_odd(3))
 
+    l=[2,4,6,8,10,12,14,16,15]
+    g1=MyGraph(l)
+
+    g1.add_edge(4,6)
+    g1.add_edge(4,8)
+    g1.add_edge(6,12)
+    g1.add_edge(8,10)
+    g1.add_edge(12,16)
+    g1.add_edge(10,14)
+    g1.add_edge(14,15)
+    g1.add_edge(12,15)
+
+
+    print(g1.has_path_to_odd(13))
