@@ -65,3 +65,31 @@ if __name__ == '__main__':
 
 
     print(g1.has_path_to_odd(13))
+
+    l=[2,4,6,8,10,12,14,16,17, 20, 22, 24, 25]
+    g2=MyGraph(l)
+
+    g2.add_edge(2,4)
+    g2.add_edge(4, 6)
+    g2.add_edge(2,10)
+    g2.add_edge(8,10)
+    g2.add_edge(8,12)
+    g2.add_edge(8,6)
+    g2.add_edge(6,12)
+    g2.add_edge(6,14)
+    g2.add_edge(10,16)
+    g2.add_edge(16,12)
+    g2.add_edge(16,20)
+    g2.add_edge(20,12)
+    g2.add_edge(20,17)
+    g2.add_edge(20,25)
+    g2.add_edge(17,14)
+    g2.add_edge(17,22)
+    g2.add_edge(14,22)
+    g2.add_edge(22,24)
+    g2.add_edge(24,17)
+    g2.add_edge(25,24)
+
+    print(g2.has_path_to_odd(2))
+    print(g2.has_path_to_odd(3))
+    print(g2.has_path_to_odd(13))
