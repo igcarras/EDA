@@ -30,9 +30,9 @@ class MyGraph:
                     r = r or self._has_path_to_odd(u, k - 1, visited, origin)
         return r
 
-    def __init__(self, list_vertex):
+    def __init__(self, list_vertices):
         self._vertices = {}
-        for i in list_vertex:
+        for i in list_vertices:
             self._vertices[i] = []
 
 
