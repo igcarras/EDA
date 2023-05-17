@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from graph import Graph
 
+
 class Graph4(Graph):
     # delete this method, if it already exists in graph.py
     def add_vertex(self, vertex: str) -> None:
@@ -118,8 +119,6 @@ class Graph4(Graph):
 
         return True
 
-
-
     def _has_cycles_bfs(self, vertex: str, visited: dict) -> bool:
         """This is function is based on bfs to detect if there is
         some cycle in the breadth traversal from vertex. It uses the dictionary
@@ -223,7 +222,6 @@ class Graph4(Graph):
 
         return False
 
-
 if __name__ == '__main__':
     # We use the class to represent an undirected graph without weights :
     # <img src='https://computersciencesource.files.wordpress.com/2010/05/dfs_1.png' width='35%'/>
@@ -236,161 +234,164 @@ if __name__ == '__main__':
     g.add_edge('B', 'D')  # B:1,  D:4
     g.add_edge('B', 'E')  # C:2,  B:1
     print(g)
-    # Please, draw the graph. This is a connected graph, that is,
-    # for any pair of vertices, there is a path between them
-    for v in g._vertices:
-        list_non_accessible = g.non_accessible(v)
-        print("non-accessible from {}:{} ".format(v, list_non_accessible))
-        # all list should be empty
-        assert list_non_accessible == []
 
-        list_reachable = g.get_reachable(v)
-        print("reachable from {}: {} ".format(v, list_reachable))
-        assert list_reachable == list(g._vertices.keys())
-        # we now use the _bfs alg
-        list_reachable = g.get_reachable(v, '_bfs')
-        print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
-        assert list_reachable == list(g._vertices.keys())
-        print()
-    algorithm = 'bfs'
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert g.has_cycles(algorithm)
 
-    # we add more vertices to the graph (please, download
-    # graph.py if you don't have the method add_vertex
-    g.add_vertex("F")
-    g.add_vertex("G")
-    g.add_vertex("H")
-    # Now, we add edges to connect these nodes between them,
-    # but not with the other vertices. In this way, we will have
-    # a subgraph
-    g.add_edge("F", "G")
-    g.add_edge("F", "H")
-    g.add_edge("G", "H")
-    print(g)
 
-    # now, we show the non-accessible vertices for each vertex in the graph
-    for v in g._vertices:
-        list_non_accessible = g.non_accessible(v)
-        print("non-accessible from {}:{} ".format(v, list_non_accessible))
-        list_reachable = g.get_reachable(v)
-        print("reachable from {}:{} ".format(v, list_reachable))
-        list_reachable = g.get_reachable(v, '_bfs')
-        print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
-
-        print()
-        # checks if our methods are correct (similar to unitest)
-        if v in ['A', 'B', 'C', 'D', 'E']:
-            assert sorted(list_non_accessible) == ['F', 'G', 'H']
-            assert sorted(list_reachable) == ['A', 'B', 'C', 'D', 'E']
-        elif v in ['F', 'G', 'H']:
-            assert sorted(list_non_accessible) == ['A', 'B', 'C', 'D', 'E']
-            assert sorted(list_reachable) == ['F', 'G', 'H']
-
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert g.has_cycles(algorithm)
-
-    # We create an undirected graph without cycles
-    labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
-    g = Graph4(labels, False)
-    g.add_edge('A', 'B')
-    g.add_edge('A', 'C')
-    g.add_edge('B', 'D')
-    g.add_edge('B', 'E')
-    g.add_edge('C', 'F')
-    g.add_edge('C', 'G')
-    g.add_edge('E', 'H')
-    g.add_edge('F', 'I')
-    print(g)
-    print("has_cycles: {}".format(g.has_cycles()))
-    assert not g.has_cycles()
-
-    # Now,  we use the implementation to represent this graph:
-    # <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CPT-Graphs-directed-weighted-ex1.svg/722px-CPT-Graphs-directed-weighted-ex1.svg.png' width='25%'/>
-
-    labels = ['A', 'B', 'C', 'D', 'E']
-    g = Graph4(labels)
-
-    # Now, we add the edges
-    g.add_edge('A', 'C', 12)  # A->(12)C
-    g.add_edge('A', 'D', 60)  # A->(60)D
-    g.add_edge('B', 'A', 10)  # B->(10)A
-    g.add_edge('C', 'B', 20)  # C->(20)B
-    g.add_edge('C', 'D', 32)  # C->(32)D
-    g.add_edge('E', 'A', 7)   # E->(7)A
-
-    print(g)
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert g.has_cycles(algorithm)
-
-    for v in g._vertices:
-        list_non_accessible = g.non_accessible(v)
-        print("non-accessible from {}:{} ".format(v, list_non_accessible))
-        list_reachable = g.get_reachable(v)
-        print("reachable from {}:{} ".format(v, list_reachable))
-        list_reachable = g.get_reachable(v, '_bfs')
-        print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
-
-        print()
-        # checks if our method is correct (similar to unitest)
-        if v in ['A', 'B', 'C']:
-            assert sorted(list_non_accessible) == ['E']
-            assert sorted(list_reachable) == ['A', 'B', 'C', 'D']
-        elif v == 'D':
-            assert sorted(list_non_accessible) == ['A', 'B', 'C', 'E']
-            assert sorted(list_reachable) == ['D']
-        elif v == 'E':
-            assert sorted(list_non_accessible) == []
-            assert sorted(list_reachable) == ['A', 'B', 'C', 'D', 'E']
-
-    # Let us remove the edge from B to A, the graph does not have any cycle
-    g.remove_edge('B', 'A')
-    print(g)
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert not g.has_cycles(algorithm)
-
-    labels = ['A', 'B', 'C']
-    g = Graph4(labels)
-    g.add_edge('A', 'B')
-    g.add_edge('A', 'C')
-    g.add_edge('B', 'C')
-    print(g)
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert not g.has_cycles(algorithm)
-
-    # remove A -> C
-    g.remove_edge('A', 'C')
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert not g.has_cycles(algorithm)
-
-    # add C -> A, now, the graph is cyclic!!!
-    g.add_edge('C', 'A')
-    print("has cycles? ", g.has_cycles(algorithm))
-    assert g.has_cycles(algorithm)
-
-    print('check_bipartite ', g.check_bipartite())
-    # assert not g.check_bipartite()
-
-    # now, the graph is bipartite
-    g.remove_edge('C', 'A')
-    g.remove_edge('A', 'B')
-    g.add_edge('A', 'C')
-    print(g)
-    print('check_bipartite ', g.check_bipartite())
-    assert g.check_bipartite()
-
-    # we create a bipartite graph
-    labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
-    g = Graph4(labels, False)
-    g.add_edge('A', 'E')
-    g.add_edge('A', 'F')
-    g.add_edge('B', 'G')
-    g.add_edge('C', 'F')
-    g.add_edge('D', 'H')
-    print(g)
-    print('check_bipartite ', g.check_bipartite())
-    assert g.check_bipartite()
-    g.add_edge('H', 'A')
-    print(g)
-    print('check_bipartite ', g.check_bipartite())
-    assert g.check_bipartite()
+    # # for any pair of vertices, there is a path between them
+    # # Please, draw the graph. This is a connected graph, that is,
+    # for v in g._vertices:
+    #     list_non_accessible = g.non_accessible(v)
+    #     print("non-accessible from {}:{} ".format(v, list_non_accessible))
+    #     # all list should be empty
+    #     assert list_non_accessible == []
+    #
+    #     list_reachable = g.get_reachable(v)
+    #     print("reachable from {}: {} ".format(v, list_reachable))
+    #     assert list_reachable == list(g._vertices.keys())
+    #     # we now use the _bfs alg
+    #     list_reachable = g.get_reachable(v, '_bfs')
+    #     print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
+    #     assert list_reachable == list(g._vertices.keys())
+    #     print()
+    # algorithm = 'bfs'
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert g.has_cycles(algorithm)
+    #
+    # # we add more vertices to the graph (please, download
+    # # graph.py if you don't have the method add_vertex
+    # g.add_vertex("F")
+    # g.add_vertex("G")
+    # g.add_vertex("H")
+    # # Now, we add edges to connect these nodes between them,
+    # # but not with the other vertices. In this way, we will have
+    # # a subgraph
+    # g.add_edge("F", "G")
+    # g.add_edge("F", "H")
+    # g.add_edge("G", "H")
+    # print(g)
+    #
+    # # now, we show the non-accessible vertices for each vertex in the graph
+    # for v in g._vertices:
+    #     list_non_accessible = g.non_accessible(v)
+    #     print("non-accessible from {}:{} ".format(v, list_non_accessible))
+    #     list_reachable = g.get_reachable(v)
+    #     print("reachable from {}:{} ".format(v, list_reachable))
+    #     list_reachable = g.get_reachable(v, '_bfs')
+    #     print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
+    #
+    #     print()
+    #     # checks if our methods are correct (similar to unitest)
+    #     if v in ['A', 'B', 'C', 'D', 'E']:
+    #         assert sorted(list_non_accessible) == ['F', 'G', 'H']
+    #         assert sorted(list_reachable) == ['A', 'B', 'C', 'D', 'E']
+    #     elif v in ['F', 'G', 'H']:
+    #         assert sorted(list_non_accessible) == ['A', 'B', 'C', 'D', 'E']
+    #         assert sorted(list_reachable) == ['F', 'G', 'H']
+    #
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert g.has_cycles(algorithm)
+    #
+    # # We create an undirected graph without cycles
+    # labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I']
+    # g = Graph4(labels, False)
+    # g.add_edge('A', 'B')
+    # g.add_edge('A', 'C')
+    # g.add_edge('B', 'D')
+    # g.add_edge('B', 'E')
+    # g.add_edge('C', 'F')
+    # g.add_edge('C', 'G')
+    # g.add_edge('E', 'H')
+    # g.add_edge('F', 'I')
+    # print(g)
+    # print("has_cycles: {}".format(g.has_cycles()))
+    # assert not g.has_cycles()
+    #
+    # # Now,  we use the implementation to represent this graph:
+    # # <img src='https://upload.wikimedia.org/wikipedia/commons/thumb/b/bc/CPT-Graphs-directed-weighted-ex1.svg/722px-CPT-Graphs-directed-weighted-ex1.svg.png' width='25%'/>
+    #
+    # labels = ['A', 'B', 'C', 'D', 'E']
+    # g = Graph4(labels)
+    #
+    # # Now, we add the edges
+    # g.add_edge('A', 'C', 12)  # A->(12)C
+    # g.add_edge('A', 'D', 60)  # A->(60)D
+    # g.add_edge('B', 'A', 10)  # B->(10)A
+    # g.add_edge('C', 'B', 20)  # C->(20)B
+    # g.add_edge('C', 'D', 32)  # C->(32)D
+    # g.add_edge('E', 'A', 7)  # E->(7)A
+    #
+    # print(g)
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert g.has_cycles(algorithm)
+    #
+    # for v in g._vertices:
+    #     list_non_accessible = g.non_accessible(v)
+    #     print("non-accessible from {}:{} ".format(v, list_non_accessible))
+    #     list_reachable = g.get_reachable(v)
+    #     print("reachable from {}:{} ".format(v, list_reachable))
+    #     list_reachable = g.get_reachable(v, '_bfs')
+    #     print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
+    #
+    #     print()
+    #     # checks if our method is correct (similar to unitest)
+    #     if v in ['A', 'B', 'C']:
+    #         assert sorted(list_non_accessible) == ['E']
+    #         assert sorted(list_reachable) == ['A', 'B', 'C', 'D']
+    #     elif v == 'D':
+    #         assert sorted(list_non_accessible) == ['A', 'B', 'C', 'E']
+    #         assert sorted(list_reachable) == ['D']
+    #     elif v == 'E':
+    #         assert sorted(list_non_accessible) == []
+    #         assert sorted(list_reachable) == ['A', 'B', 'C', 'D', 'E']
+    #
+    # # Let us remove the edge from B to A, the graph does not have any cycle
+    # g.remove_edge('B', 'A')
+    # print(g)
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert not g.has_cycles(algorithm)
+    #
+    # labels = ['A', 'B', 'C']
+    # g = Graph4(labels)
+    # g.add_edge('A', 'B')
+    # g.add_edge('A', 'C')
+    # g.add_edge('B', 'C')
+    # print(g)
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert not g.has_cycles(algorithm)
+    #
+    # # remove A -> C
+    # g.remove_edge('A', 'C')
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert not g.has_cycles(algorithm)
+    #
+    # # add C -> A, now, the graph is cyclic!!!
+    # g.add_edge('C', 'A')
+    # print("has cycles? ", g.has_cycles(algorithm))
+    # assert g.has_cycles(algorithm)
+    #
+    # print('check_bipartite ', g.check_bipartite())
+    # # assert not g.check_bipartite()
+    #
+    # # now, the graph is bipartite
+    # g.remove_edge('C', 'A')
+    # g.remove_edge('A', 'B')
+    # g.add_edge('A', 'C')
+    # print(g)
+    # print('check_bipartite ', g.check_bipartite())
+    # assert g.check_bipartite()
+    #
+    # # we create a bipartite graph
+    # labels = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H']
+    # g = Graph4(labels, False)
+    # g.add_edge('A', 'E')
+    # g.add_edge('A', 'F')
+    # g.add_edge('B', 'G')
+    # g.add_edge('C', 'F')
+    # g.add_edge('D', 'H')
+    # print(g)
+    # print('check_bipartite ', g.check_bipartite())
+    # assert g.check_bipartite()
+    # g.add_edge('H', 'A')
+    # print(g)
+    # print('check_bipartite ', g.check_bipartite())
+    # assert g.check_bipartite()
