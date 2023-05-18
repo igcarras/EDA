@@ -93,3 +93,31 @@ if __name__ == '__main__':
     print(g2.has_path_to_odd(2))
     print(g2.has_path_to_odd(3))
     print(g2.has_path_to_odd(13))
+
+    l = []
+    g3 = MyGraph(l)
+    print(g3.has_path_to_odd(0))
+    print(g3.has_path_to_odd(-1))
+
+    l = [0]
+    g4 = MyGraph(l)
+    print(g4.has_path_to_odd(0))
+    print(g4.has_path_to_odd(-1))
+
+    l = [2,4,6,8,10,12,14,16,18,20]
+    g5 = MyGraph(l)
+    g5.add_edge(2, 4)
+    g5.add_edge(4, 6)
+    g5.add_edge(2, 10)
+    g5.add_edge(8, 10)
+    g5.add_edge(8, 12)
+    g5.add_edge(8, 6)
+    g5.add_edge(6, 12)
+    g5.add_edge(6, 14)
+    g5.add_edge(10, 16)
+    g5.add_edge(16, 12)
+    g5.add_edge(16, 20)
+    g5.add_edge(20, 12)
+    print(g5.has_path_to_odd(0))
+    print(g5.has_path_to_odd(12))
+
