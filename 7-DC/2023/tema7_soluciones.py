@@ -420,8 +420,37 @@ def partition_sig(arr, start, stop):
     pivot = k - 1
     return pivot
 
+def find_subarray(list_number):
+    if list_number is None:
+        return -1
+    if len(list_number) == 0:
+        return -1
+    else:
+        return _find_subarray(list_number)
+
+def _find_subarray(list_number):
+    if len(list_number) == 1:
+        if list_number[0] >= 0:
+            return list_number[0]
+
+    m = len(list_number) // 2
+    part1 = list_number[0:m]
+    part2 = list_number[m:]
+
+    suma1 = _find_subarray(part1)
+    suma2 = _find_subarray(part2)
+
+    if suma1 < suma2:
+        return suma2
+    if suma1 > suma2:
+        return suma1
+    if suma1 == suma2:
+        return suma1 and suma2
+
 
 if __name__ == '__main__':
+    lista2 = [0, 1, 3, 4, 5, 6, 7, 10, 11, 12, 13]
+    print(find_subarray(lista2))
 
     '''
     #  Test find_max, find_max2
@@ -500,6 +529,7 @@ if __name__ == '__main__':
 
     # Test quicksort that sorts the input list and returns nothing
     input_list = list_n.copy()
+    print(list_n)
     quicksort(list_n)
     print("quicksort({}) = {}".format(input_list, list_n))
     list_n = input_list.copy()
