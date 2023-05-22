@@ -35,30 +35,57 @@ class MyGraph:
                     r = r or self._has_path_to_odd(u, k - 1, visited, origin)
         return r
 
+    # def has_path_to_odd2(self, k) -> []:
+    #     list_odd = []
+    #     visited = {}
+    #     #recorre vertices del grafo
+    #     for v in self._vertices.keys():
+    #         #para cada vertice del grafo inicializa vertices visitados
+    #         for m in self._vertices.keys():
+    #             visited[m] = False
+    #         #recorre el grafo en profundidad para cada vertice (con vertices visitados a false)
+    #         self._has_path_to_odd2(v, k, visited, v, list_odd)
+    #
+    #     return list_odd
+    #
+    # def _has_path_to_odd2(self, vertex, k, visited, origin, lista_parcial):
+    #     visited[vertex] = True
+    #     for u in self._vertices[vertex]:
+    #         if not visited[u]:
+    #             self._has_path_to_odd2(u, k - 1, visited, origin, lista_parcial)
+    #             if k == 0:
+    #                 return
+    #             elif vertex % 2 != 0 and vertex != origin:
+    #                 lista_parcial.append(origin)
+    #
+    #     return
+
+
     def has_path_to_odd2(self, k) -> []:
         list_odd = []
-        visited = {}
+        result = []
+        n=0
         #recorre vertices del grafo
-        for v in self._vertices.keys():
-            #para cada vertice del grafo inicializa vertices visitados
-            for m in self._vertices.keys():
-                visited[m] = False
+        for v in self._vertices:
             #recorre el grafo en profundidad para cada vertice (con vertices visitados a false)
-            self._has_path_to_odd2(v, k, visited, v, list_odd)
 
-        return list_odd
+            self._has_path_to_odd2(v, k, list_odd, n)
+        for i in list_odd:
+            if i % 2 != 0:
+                result.append(i)
 
-    def _has_path_to_odd2(self, vertex, k, visited, origin, lista_parcial):
-        visited[vertex] = True
-        for u in self._vertices[vertex]:
-            if not visited[u]:
-                self._has_path_to_odd2(u, k - 1, visited, origin, lista_parcial)
-                if k == 0:
-                    return
-                elif vertex % 2 != 0 and vertex != origin:
-                    lista_parcial.append(origin)
+        return result
 
-        return
+    def _has_path_to_odd2(self, vertex, k, lista_parcial, n):
+        if n < k:
+
+            if vertex not in lista_parcial:
+                lista_parcial.append(vertex)
+                for u in self._vertices[vertex]:
+
+                    self._has_path_to_odd2(u, k, lista_parcial, n+1)
+        else:
+            return
 
 
     def __init__(self, list_vertices):
