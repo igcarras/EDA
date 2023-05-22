@@ -48,13 +48,12 @@ class MyGraph:
 
     def _has_path_to_odd2(self, vertex, k, origin, lista_parcial):
         for u in self._vertices[vertex]:
-            if k == 0:
-                return
-            elif vertex % 2 != 0 and vertex != origin:
-                if origin not in lista_parcial:
-                    lista_parcial.append(origin)
+            if k > 0:
+                if vertex % 2 != 0 and vertex != origin:
+                    if origin not in lista_parcial:
+                        lista_parcial.append(origin)
 
-            self._has_path_to_odd2(u, k - 1, origin, lista_parcial)
+                self._has_path_to_odd2(u, k - 1, origin, lista_parcial)
         return
 
 
