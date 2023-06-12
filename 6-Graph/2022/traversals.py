@@ -95,8 +95,8 @@ class Graph2(Graph):
         # Recur for all the vertices  adjacent to this vertex
         for adj in self._vertices[vertex]:
             if not visited_vertex[adj.vertex]:
-                # self._dfs(adj.vertex, visited_vertex)
-                self._dfs_iterative(adj.vertex, visited_vertex)
+                self._dfs(adj.vertex, visited_vertex)
+                #self._dfs_iterative(adj.vertex, visited_vertex)
 
 
 if __name__ == '__main__':
