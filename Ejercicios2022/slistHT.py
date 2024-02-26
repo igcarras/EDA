@@ -9,8 +9,8 @@ class SNode:
 
 class SList:
     """This is the implementation of a singly linked list. We use 
-    a reference to the first node, named head, and also a reference 
-    to the last node, named as tail. Also we keep an attribute, size, 
+    a reference to the first node, named _head, and also a reference
+    to the last node, named as _tail. Also we keep an attribute, _size,
     to store the number of nodes"""
     def __init__(self):
         self._head=None
@@ -50,16 +50,16 @@ class SList:
         """Add a new element, e, at the beginning of the list"""
         #create the new node
         newNode=SNode(e)
-        #the new node must point to the current head
+        #the new node must point to the current _head
         
         if self.isEmpty():
             self._tail=newNode
         else:
             newNode.next=self._head
 
-        #update the reference of head to point the new node
+        #update the reference of _head to point the new node
         self._head=newNode
-        #increase the size of the list  
+        #increase the _size of the list
         self._size+=1
     
     
@@ -68,7 +68,7 @@ class SList:
         #create the new node
         newNode=SNode(e)
         #the last node must point to the new node
-        #now, we must update the tail reference
+        #now, we must update the _tail reference
         if self.isEmpty():
             self._head=newNode
         else:
@@ -76,7 +76,7 @@ class SList:
         
         self._tail=newNode
 
-        #increase the size of the list  
+        #increase the _size of the list
         self._size+=1
     
     
@@ -91,9 +91,9 @@ class SList:
         else:
             #gets the first element, which we will return later
             result=self._head.elem
-            #updates head to point to the new head (the next node)
+            #updates _head to point to the new _head (the next node)
             self._head=self._head.next
-            #if the list only has one node, tail must be None
+            #if the list only has one node, _tail must be None
             if self._head==None:
                 self._tail=None
             self._size-=1

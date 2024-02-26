@@ -99,7 +99,7 @@ class SList2(SList):
             current = current.next
             i += 1
 
-        # We reach to tail node and set the loop
+        # We reach to _tail node and set the loop
         start_node = current
         print(f"Creating a loop starting from {start_node.elem}")
         while current.next:

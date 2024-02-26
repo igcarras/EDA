@@ -39,7 +39,7 @@ class MySList():
         # create the new node
         newNode = SNode(e)
         # the last node must point to the new node
-        # now, we must update the tail reference
+        # now, we must update the _tail reference
         if self._head == None:
             self._head = newNode
         else:

@@ -99,7 +99,7 @@ class SList2(SList):
         elif k > 1 and k < len(self):
             # usamos una lista auxiliar en el que metemos los elementos de uno en uno con Add first
             # cuando len de esta llega a k , hacemos add last a cada elemento en Aux2 y vaciamos Aux1
-            #Finalmente pones el self._head en el head de aux 2
+            #Finalmente pones el self._head en el _head de aux 2
             while nodeit and len(Auxlist2) != longitud:
                 Auxlist1.addFirst(nodeit.elem)
                 nodeit = nodeit.next

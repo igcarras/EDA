@@ -139,7 +139,7 @@ if __name__ == "__main__":
         tree.insert(x)
     tree.draw()
     print("buscamos algo que no existe", tree.searchit(1111))
-    print('size:', tree.size())
+    print('_size:', tree.size())
     print('height:', tree.height())
 
     tree.remove(18)

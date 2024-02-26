@@ -35,7 +35,7 @@ class BinaryTree:
         return self._size(self._root)
 
     def _size(self, node: BinaryNode) -> int:
-        """return the size of the subtree from node"""
+        """return the _size of the subtree from node"""
         if node is None:
             return 0
         else:
@@ -146,10 +146,10 @@ class BinaryTree:
         else:
             print("Level order: ", end= ' ')  # avoid the new line
 
-            # we can use SList with tail and head
+            # we can use SList with _tail and _head
             list_nodes = SList()
             list_nodes.addLast(self._root)
-            while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+            while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
                 current = list_nodes.removeFirst() # O(1)
                 print(current.elem, end=' ')
                 if current.left is not None:
@@ -163,10 +163,10 @@ class BinaryTree:
         """prints the level order of the tree. O(n)"""
         result = []
         if self._root is not None:
-            # we can use SList with tail and head
+            # we can use SList with _tail and _head
             list_nodes = SList()
             list_nodes.addLast(self._root)
-            while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+            while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
                 current = list_nodes.removeFirst() # O(1)
                 result.append(current.elem)
                 if current.left is not None:
@@ -184,13 +184,13 @@ class BinaryTree:
         if self._root is None:
             print('Error: the tree is empty')
         else:
-            # we can use SList with tail and head
+            # we can use SList with _tail and _head
             depth_level = 0
 
             list_nodes = SList()
             list_nodes.addLast(self._root)
 
-            while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+            while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
                 current = list_nodes.removeFirst() # O(1)
                 if current == node:
                     return depth_level

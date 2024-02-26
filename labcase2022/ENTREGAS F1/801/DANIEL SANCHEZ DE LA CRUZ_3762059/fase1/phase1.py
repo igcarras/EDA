@@ -14,7 +14,7 @@ class SList2(SList):
         elif n == 0:
             return 0
         else:
-            # Calculate the index at which the sum starts (e.g. if list size is 5 and n is 2, starting index is 3 (sum 3 and 4))
+            # Calculate the index at which the sum starts (e.g. if list _size is 5 and n is 2, starting index is 3 (sum 3 and 4))
             sum = 0
             sum_start_index = len(self) - n
 
@@ -49,7 +49,7 @@ class SList2(SList):
             for i in range(index - 1):
                 previous = previous.next
             
-            # Add new node and increase list size
+            # Add new node and increase list _size
             newNode = SNode(elem)
             newNode.next = previous.next
             previous.next = newNode
@@ -61,7 +61,7 @@ class SList2(SList):
         if not ((start >= 0) and (start <= end) and (end < len(self))):
             return
         else:
-            # Store inputList tail reference
+            # Store inputList _tail reference
             aux = inputList._head
             while aux.next:
                 aux = aux.next
@@ -78,14 +78,14 @@ class SList2(SList):
                 i += 1
             end_node = aux.next
 
-            # Move head reference if inputList is inserted at the beginning of the main list,
-            # else connect start node to inputList head
+            # Move _head reference if inputList is inserted at the beginning of the main list,
+            # else connect start node to inputList _head
             if start == 0:
                 self._head = inputList._head
             else:
                 start_node.next = inputList._head
 
-            # Link inputList tail to end node of main list and update list size
+            # Link inputList _tail to end node of main list and update list _size
             input_list_tail.next = end_node
             self._size = len(self) + inputList._size - (end - start + 1)
 
@@ -118,7 +118,7 @@ class SList2(SList):
         else:
             group = SList()
 
-            # Do-while loop that saves the group tail as we need it later
+            # Do-while loop that saves the group _tail as we need it later
             group.addFirst(aux.elem)
             tail = group._head
             aux = aux.next
@@ -126,11 +126,11 @@ class SList2(SList):
                 group.addFirst(aux.elem)
                 aux = aux.next
 
-                # Return if last group size is less than k
+                # Return if last group _size is less than k
                 if not aux:
                     return group._head
             
-            # Connect group tail to the next group head
+            # Connect group _tail to the next group _head
             tail.next = self._reversegroup(aux, k)
             return group._head
 

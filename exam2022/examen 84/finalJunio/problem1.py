@@ -84,7 +84,7 @@ class MyDList:
                             else:
                                 #In this case, node1 always has next and prev
                                 #we have to remove node1
-                                #we never remove the tail, for this reason, we cannot modify _tail
+                                #we never remove the _tail, for this reason, we cannot modify _tail
                                 node1.prev.next=node1.next
                                 node1.next.prev=node1.prev
                                 

@@ -38,7 +38,7 @@ class MySList():
         # create the new node
         newNode = SNode(e)
         # the last node must point to the new node
-        # now, we must update the tail reference
+        # now, we must update the _tail reference
         if self._head == None:
             self._head = newNode
         else:
@@ -103,8 +103,8 @@ class MySList():
             if len(self) > len(other):
                 max = len(other)
                 while max != 0:
-                    if self._head.elem > other.head.elem:
-                        resta = self._head.elem - other.head.elem
+                    if self._head.elem > other._head.elem:
+                        resta = self._head.elem - other._head.elem
                         result.append(resta)
                         resta = 0
                         self._head = self._head.next
@@ -120,8 +120,8 @@ class MySList():
             else:
                 max = len(self)
                 while max != 0:
-                    if self._head.elem > other.head.elem:
-                        resta = self._head.elem - other.head.elem
+                    if self._head.elem > other._head.elem:
+                        resta = self._head.elem - other._head.elem
                         result.append(resta)
                         resta = 0
                         self._head = self._head.next

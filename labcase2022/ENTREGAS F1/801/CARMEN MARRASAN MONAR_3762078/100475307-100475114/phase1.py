@@ -64,7 +64,7 @@ class SList2(SList):
             nodel2 = inputList._head
             while nodel2.next:
                 nodel2 = nodel2.next
-            if start > 0: #Puntero del prev apuntando al head de la lista
+            if start > 0: #Puntero del prev apuntando al _head de la lista
                 prev.next = inputList._head
             else: #Si start es cero, insertar al principio
                 self._head = inputList._head

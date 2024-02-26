@@ -25,7 +25,7 @@ class SList2(SList):
             return sum
 
     def insertMiddle(self, elem):
-        # Si la lista esta vacía creamos un nuevo nodo, con valor elem, y hacemos que sea el head de la lista
+        # Si la lista esta vacía creamos un nuevo nodo, con valor elem, y hacemos que sea el _head de la lista
         if self._size == 0:
             mid_node = SNode(elem)
             self._head = mid_node

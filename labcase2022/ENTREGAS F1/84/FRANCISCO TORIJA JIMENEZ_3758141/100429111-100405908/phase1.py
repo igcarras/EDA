@@ -100,7 +100,7 @@ class SList2(SList):
                                                             #ACTUALIZAMOS/REDIRIGIMOS PUNTEROS
             node_cont_start.next = inputList._head          #El nodo siguiente a "start" ahora apuntara al primero de la nueva lista
             node_input.next = node_cont_end.next                #Y el nodo siguiente al final de la nueva lista apuntara al "end" de la original
-            self._size = len(self) - (end - start) + len(inputList)  #Por ultimo, actualizamos el size
+            self._size = len(self) - (end - start) + len(inputList)  #Por ultimo, actualizamos el _size
 
         
         if start == end and start != 0 and end != 0:     ## CASO BASE #2: start y end son iguales, pero distintos de cero ##
@@ -124,7 +124,7 @@ class SList2(SList):
             
             node_prev.next = inputList._head                #ACTUALIZAMOS/REDIRIGIMOS PUNTEROS
             node_input.next = node_cont_node.next           #En este caso, se elimina solo un elem y se anade ahi la nueva lista
-            self._size = len(self) - 1 + len(inputList)     #Actualizamos el size
+            self._size = len(self) - 1 + len(inputList)     #Actualizamos el _size
         
         
         if start == 0 and end == 0:                         ## CASO BASE #3: start y end iguales, ambos son cero ##
@@ -135,7 +135,7 @@ class SList2(SList):
             node_input.next = self._head.next               #ACTUALIZAMOS/REDIRIGIMOS PUNTEROS
             self._head = inputList._head                    #En este caso, solo se eliminara el self._head 
             self._size = len(self) - 1 + len(inputList)     #Y se anadira ahi la nueva lista
-            #Actualizamos el size
+            #Actualizamos el _size
         
         if start == 0 and end > 0 and end < len(self):      ## CASO BASE #4: start es cero y end no \\ end < len(self) ## 
             node_zero_end = self._head                    
@@ -154,9 +154,9 @@ class SList2(SList):
 
                                                             #ACTUALIZAMOS/REDIRIGIMOS PUNTEROS
             self._head = self._head.next                    #Eliminamos el primer elem de la lista haciendo next
-            self._head = inputList._head                    #Y mi nueva head sera la head de inputList
+            self._head = inputList._head                    #Y mi nueva _head sera la _head de inputList
             node_input.next = node_zero_cont_end.next       #El final de inputList apuntara al resto de la lista original
-            self._size = len(self) - 1 + len(inputList)     #Actualizamos el size
+            self._size = len(self) - 1 + len(inputList)     #Actualizamos el _size
             
 
 
@@ -171,7 +171,7 @@ class SList2(SList):
                 listaMayorK.addFirst(self.removeFirst())
                 i += 1
                 
-            self._head = listaMayorK._head               #Referenciamos el nuevo head
+            self._head = listaMayorK._head               #Referenciamos el nuevo _head
         
         elif 1 < k < len(self):                         #Si k es mayor que 1 y menor a la len de la lista
             listaReverso = SList()                      #Usaremos dos listas auxiliares, una para revertir
@@ -197,7 +197,7 @@ class SList2(SList):
                 j = 1                                   #Hacemos que 'j' sea 1 de nuevo para volver a empezar
                 
                 
-            self._head = listaFinal._head               #Por ultimo, referenciamos nuestra nueva head
+            self._head = listaFinal._head               #Por ultimo, referenciamos nuestra nueva _head
 
         else:  #k <= 1                                  #Finalmente, si k es igual o menos a 1, la lista se queda igual
             pass

@@ -61,7 +61,7 @@ class SList2(SList):
             new.next = final.next
             # Se conecta el final de la nueva lista.
             if start == 0:
-                # Si start es 0, el head de la antigua lista se reemplaza por el de la nueva.
+                # Si start es 0, el _head de la antigua lista se reemplaza por el de la nueva.
                 self._head = inputList._head
             else:
                 # Si no, se conecta con el elemento principio.
@@ -107,15 +107,15 @@ class SList2(SList):
                             # Follow avanza al siguiente nodo, dejando current en su lugar y solo si no es None
                             follow = follow.next
                     elif self._head.next == after or not termina:
-                        # Cuando current es after, si self._head.next es también after, head está descolocado
+                        # Cuando current es after, si self._head.next es también after, _head está descolocado
                         # Esto solo se cumple una vez, con el primer grupo
                         if i == 0:
                             # Esto solo se ejecuta en la primera pasada por el elif, hasta que el else reinicie i
                             self._head = previous
                             # Previous se ha quedado en el último elemento del primer grupo que se ha modificado
-                            # El último miembro del grupo es ahora el primero al cambiar el sentido, previous es head
+                            # El último miembro del grupo es ahora el primero al cambiar el sentido, previous es _head
                             before = self._head
-                            # Colocamos before en el nuevo head
+                            # Colocamos before en el nuevo _head
                         if i < k - 1:
                             # Se va a ejecutar k - 1 veces, hasta que before se encuentra en el final del primer grupo
                             # Es k - 1 porque before está en el primer miembro de ese grupo no en el último del anterior
@@ -127,7 +127,7 @@ class SList2(SList):
                             contador = 0
                             i = 0
                             termina = True
-                            # Termina se aseguraba que aunque head ya se había colocado, el elif siguera ejecutandose
+                            # Termina se aseguraba que aunque _head ya se había colocado, el elif siguera ejecutandose
                     else:
                         if i == 0:
                             # Esto solo se ejecuta en la primera pasada por el else, hasta que se reinicie i

@@ -153,7 +153,7 @@ if __name__ == "__main__":
     for x in [18, 11, 23, 5, 15, 20, 24, 9, 15, 22, 21, 6, 8, 7]:
         tree.insert(x)
     tree.draw()
-    print('size:', tree.size())
+    print('_size:', tree.size())
     print('height:', tree.height())
 
     tree.remove(18)

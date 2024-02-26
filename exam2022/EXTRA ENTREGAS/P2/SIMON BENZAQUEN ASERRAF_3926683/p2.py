@@ -15,8 +15,8 @@ class BinaryNode:
 
 class SList:
   """This is the implementation of a singly linked list. We use 
-  a reference to the first node, named head, and also a reference 
-  to the last node, named as tail. Also we keep an attribute, size, 
+  a reference to the first node, named _head, and also a reference
+  to the last node, named as _tail. Also we keep an attribute, _size,
   to store the number of nodes"""
   def __init__(self):
     self.head=None
@@ -35,15 +35,15 @@ class SList:
     """Add a new element, e, at the beginning of the list"""
     #create the new node
     newNode=BinaryNode(e)
-    #the new node must point to the current head
+    #the new node must point to the current _head
     newNode.next=self.head
     
     if self.isEmpty():
       self.tail=newNode
       
-    #update the reference of head to point the new node
+    #update the reference of _head to point the new node
     self.head=newNode
-    #increase the size of the list  
+    #increase the _size of the list
     self.size += 1
     
     
@@ -52,7 +52,7 @@ class SList:
     #create the new node
     newNode=BinaryNode(e)
     #the last node must point to the new node
-    #now, we must update the tail reference
+    #now, we must update the _tail reference
     
     if self.isEmpty():
       self.head=newNode
@@ -62,7 +62,7 @@ class SList:
     self.tail=newNode
 
 
-    #increase the size of the list  
+    #increase the _size of the list
     self.size += 1
     
     
@@ -87,9 +87,9 @@ class SList:
     
     #gets the first element, which we will return later
     first=self.head.elem
-    #updates head to point to the new head (the next node)
+    #updates _head to point to the new _head (the next node)
     self.head=self.head.next
-    #if the list only has one node, tail must be None
+    #if the list only has one node, _tail must be None
     if self.isEmpty():
       self.tail=None
     self.size -= 1
@@ -138,12 +138,12 @@ class BinaryTree:
         # Define a variable to track current level
         if self._root is None:
             return 0
-        # we can use SList with tail and head
+        # we can use SList with _tail and _head
         suma = 0
         list_nodes = SList()
         list_nodes.addLast(self._root)
         
-        while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+        while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
             current = list_nodes.removeFirst()
             print(current)
             if current.left is not None and current.right is None:

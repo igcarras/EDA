@@ -43,15 +43,15 @@ class SList:
         """ Add a new element, e, at the beginning of the list"""
         # create the new node
         new_node = SNode(e)
-        # the new node must point to the current head
+        # the new node must point to the current _head
         if self.is_empty():
             self._tail = new_node
         else:
             new_node.next = self._head
 
-        # update the reference of head to point the new node
+        # update the reference of _head to point the new node
         self._head = new_node
-        # increase the size of the list
+        # increase the _size of the list
         self._size += 1
 
     def add_last(self, e: object):
@@ -59,14 +59,14 @@ class SList:
         # create the new node
         new_node = SNode(e)
         # the last node must point to the new node
-        # now, we must update the tail reference
+        # now, we must update the _tail reference
         if self.is_empty():
             self._head = new_node
         else:
             self._tail.next = new_node
         
         self._tail = new_node
-        # increase the size of the list
+        # increase the _size of the list
         self._size += 1
 
     def remove_first(self) -> object:
@@ -77,9 +77,9 @@ class SList:
         else:
             # gets the first element, which we will return later
             result = self._head.elem
-            # updates head to point to the new head (the next node)
+            # updates _head to point to the new _head (the next node)
             self._head = self._head.next
-            # if the list only has one node, tail must be None
+            # if the list only has one node, _tail must be None
             if self._head is None:
                 self._tail = None
             self._size -= 1

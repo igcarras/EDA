@@ -196,7 +196,7 @@ class SList2(SList):
                     AuxList2.addLast(current2.elem)
                     current2 = current2.next
                     AuxList1._head = current2
-            # Cuando ya hemos terminado, simplemente movilizamos el puntero "head" de la lista general al de la lista
+            # Cuando ya hemos terminado, simplemente movilizamos el puntero "_head" de la lista general al de la lista
             # auxiliar "AuxList2".
             self._head = AuxList2._head
             # Además, como hemos estado decrementando el tamaño de la lista invocante, ahora tenemos que self._size = 0.

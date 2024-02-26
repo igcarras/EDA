@@ -55,7 +55,7 @@ class SList2(SList):
         elif start < 0:
             return None
         else:    #ahora realizamos las pruebas que nos dan un return correcto
-            if start == 0:    #si la lista está vacia simplemente añadimos la lista input mediante un head
+            if start == 0:    #si la lista está vacia simplemente añadimos la lista input mediante un _head
                 self._head = inputList._head
             else:
                 while index != start:      #avanzamos el nodo auxiliar hasta que coincida con el start que tenemos
@@ -69,7 +69,7 @@ class SList2(SList):
                 index += 1
             last = nodeIt.next
 
-            nodeIt2 = inputList._head   #añadimos los elementos de la lista mediante un head
+            nodeIt2 = inputList._head   #añadimos los elementos de la lista mediante un _head
             while nodeIt2.next != None:
                 nodeIt2 = nodeIt2.next
             nodeIt2.next = last
@@ -90,7 +90,7 @@ class SList2(SList):
                 i = 0  #reinciamos los valores para vovler a realizar el bucle hasta que nos quedemos sin elementos
                 ind = posicion
             nodeIt = nodeIt.next
-        self._head = nueva_lista._head  #hacemos que la nueva lista hedere el head inicial
+        self._head = nueva_lista._head  #hacemos que la nueva lista hedere el _head inicial
 
 
     def maximumPair(self):

@@ -45,7 +45,7 @@ class Test(unittest.TestCase):
         print()
         
     def test5_addLast(self):
-        print('Case 5: addLast in a list of size 1')
+        print('Case 5: addLast in a list of _size 1')
         self.l1.addLast(3)
         expected=[5,3]
         self.assertEqual(str(self.l1), str(expected),"Fail: addLast in a list of length==1")

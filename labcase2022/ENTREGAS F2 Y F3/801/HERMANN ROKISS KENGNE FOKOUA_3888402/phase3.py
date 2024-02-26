@@ -20,7 +20,7 @@ class Queue:
       
         
       def enqueue(self,e):
-        """Add the element e to the tail of the queue"""
+        """Add the element e to the _tail of the queue"""
         self.items.append(e)
         
       def dequeue(self):

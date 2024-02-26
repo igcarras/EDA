@@ -47,15 +47,15 @@ class DList:
         """Adds a new element, e, at the beginning of the list"""
         # create the new node
         new_node = DNode(e)
-        # the new node must point to the current head
+        # the new node must point to the current _head
         if self.is_empty():
             self._tail = new_node
         else:
             self._head.prev = new_node
         
-        # update the reference of head to point the new node
+        # update the reference of _head to point the new node
         self._head = new_node
-        # increase the size of the list
+        # increase the _size of the list
         self._size += 1
 
     def add_last(self, e: object) -> None:
@@ -69,9 +69,9 @@ class DList:
             new_node.prev = self._tail
             self._tail.next = new_node
         
-        # update the reference of head to point the new node
+        # update the reference of _head to point the new node
         self._tail = new_node
-        # increase the size of the list
+        # increase the _size of the list
         self._size += 1
 
     def remove_first(self):
@@ -167,7 +167,7 @@ class DList:
     def removeAt(self, index: int) -> object:
         """Removes and returns the element at the index position in the list"""
         # We must check that index is a right position in the list
-        # Remember that the indexes in a list can range from 0 to size-1
+        # Remember that the indexes in a list can range from 0 to _size-1
         result = None
         if not isinstance(index, int) or index not in range(len(self)):
             print(index, 'Error removeAt: index out of range')

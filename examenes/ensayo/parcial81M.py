@@ -24,9 +24,9 @@ class MyDList():
             newNode.prev=self._tail
             self._tail.next=newNode
         
-        #update the reference of head to point the new node
+        #update the reference of _head to point the new node
         self._tail=newNode
-        #increase the size of the list  
+        #increase the _size of the list
         self._size+=1
         
     def __len__(self):

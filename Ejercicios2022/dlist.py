@@ -20,7 +20,7 @@ class DList:
 
     def isEmpty(self):
         """Checks if the list is empty"""
-        #return self.head == None   
+        #return self._head == None
         return len(self)==0
   
     def __str__(self):
@@ -48,7 +48,7 @@ class DList:
         """Add a new element, e, at the beginning of the list"""
         #create the new node
         newNode=DNode(e)                                   
-        #the new node must point to the current head
+        #the new node must point to the current _head
         
         if self.isEmpty():                                
             self._tail=newNode                               
@@ -56,9 +56,9 @@ class DList:
             newNode.next=self._head                          
             self._head.prev=newNode                          
         
-        #update the reference of head to point the new node
+        #update the reference of _head to point the new node
         self._head=newNode                                 
-        #increase the size of the list  
+        #increase the _size of the list
         self._size+=1                             
         
     
@@ -74,9 +74,9 @@ class DList:
             newNode.prev=self._tail
             self._tail.next=newNode
         
-        #update the reference of head to point the new node
+        #update the reference of _head to point the new node
         self._tail=newNode
-        #increase the size of the list  
+        #increase the _size of the list
         self._size+=1
 
    
@@ -184,7 +184,7 @@ class DList:
         """This methods removes the node at the index position in the list"""
         
         #We must check that index is a right position in the list
-        #Remember that the indexes in a list can range from 0 to size-1
+        #Remember that the indexes in a list can range from 0 to _size-1
         result=None
         if index not in range(len(self)): 
             print(index,'Error removeAt: index out of range')

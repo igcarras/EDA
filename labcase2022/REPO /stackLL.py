@@ -6,11 +6,11 @@ class SNode:
     self.elem = e
     self.next = next
 
-"""Now, we can implement the class for a singly linked list. Our class only uses a refererence, head, for storing the first node, respectively. Moreover, it includes an atributte, named size, which stores the number of elements in the list."""
+"""Now, we can implement the class for a singly linked list. Our class only uses a refererence, _head, for storing the first node, respectively. Moreover, it includes an atributte, named _size, which stores the number of elements in the list."""
 
 class Stack:
   """This is the implementation of a stack based on a singly linked list. 
-  We only use a reference to the first node, named head. This head references
+  We only use a reference to the first node, named _head. This _head references
   to the peak of the stack"""
   def __init__(self):
     """This constructor creates an empty stack"""
@@ -18,7 +18,7 @@ class Stack:
     self._size=0
 
   def __len__(self):
-    """It returns the size of the stack"""
+    """It returns the _size of the stack"""
     return self._size
 
   def isEmpty(self):
@@ -30,11 +30,11 @@ class Stack:
     """Add a new element, e, on the stack (before the peak of the stack)"""
     #create the new node
     newNode=SNode(e)
-    #the new node must point to the current head
+    #the new node must point to the current _head
     newNode.next=self._head
-    #update the reference of head to point the new node
+    #update the reference of _head to point the new node
     self._head=newNode
-    #increase the size of the list  
+    #increase the _size of the list
     self._size=self._size+1
 
 
@@ -46,7 +46,7 @@ class Stack:
     else:  
       #gets the first element, which we will return later
       result=self._head.elem
-      #updates head to point to the new head (the next node)
+      #updates _head to point to the new _head (the next node)
       self._head=self._head.next
       self._size-=1
     

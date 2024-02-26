@@ -127,7 +127,7 @@ class SList2(SList,SNode):
         #calculate the number of splits
         splits = int(math.ceil((self._size/k)-1))
         currentSplit = 0
-        #Save head keeps track of the initial node of the reversed list
+        #Save _head keeps track of the initial node of the reversed list
         saveHead = None
         #LastNodeProv keeps track of the last node of the last split
         lastNodeProv=None
@@ -161,7 +161,7 @@ class SList2(SList,SNode):
             #Newhead contains the node that starts the reversing EX: [1,2,3,4] newhead will be 4
             newHead= aux.next
             
-            #If we are in the first split, we save the head for the end:
+            #If we are in the first split, we save the _head for the end:
             if(currentSplit==0):
                 saveHead = newHead
             #This contains the node that starts the next split
@@ -172,13 +172,13 @@ class SList2(SList,SNode):
             
             #Now we can cut and isolate the reminding nodes for the current split from newHead (we are isolating newHead) [1,2,3], [4]
             aux.next=None
-            #As we do this we need to substract one from the provisional size
+            #As we do this we need to substract one from the provisional _size
             provSize=provSize-1
             #comming back to starting point because we need to start iterating.  [1,2,3] --> aux will be 1
             aux=self._head
             #We use a prev variable to keep track of the last node
             prev =self._head
-            #Provisional head is used in order to keep the last number that has been splitted Ex: provHead will be 4
+            #Provisional _head is used in order to keep the last number that has been splitted Ex: provHead will be 4
             provHead = newHead
             while aux!=None:     
                 #Once we reach the end of the split
@@ -193,7 +193,7 @@ class SList2(SList,SNode):
                     if(provSize==1):
                         #If we have already completed one split
                         if(lastNodeProv!=None):
-                            #We join the last split with the head of the new split
+                            #We join the last split with the _head of the new split
                             lastNodeProv.next =newHead
                         #If there are more splits comming
                         if(waiting!=None):
@@ -257,7 +257,7 @@ class SList2(SList,SNode):
                 #Change the index of the  next values we need to add up     
                 initialIndex +=1
                 endIndex -=1
-                #We go back to head
+                #We go back to _head
                 aux = self._head
                 #restoringValues
                 leftValue=None
