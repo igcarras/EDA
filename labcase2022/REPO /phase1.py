@@ -149,7 +149,7 @@ w
         if nextNode is not None:
             inputNode.next = self._reverseK(nextNode, k)
 
-        # prev is new head of the input list
+        # prev is new _head of the input list
         return prevNode
 
     def maximumPair(self):

@@ -45,7 +45,7 @@ class MyDList:
     
     def isEmpty(self):
         """Checks if the list is empty"""
-        #return self.head == None   
+        #return self._head == None
         return len(self)==0
     
     def removeFirst(self):

@@ -35,7 +35,7 @@ class MySList():
         # create the new node
         newNode = SNode(e)
         # the last node must point to the new node
-        # now, we must update the tail reference
+        # now, we must update the _tail reference
         if self._head == None:
             self._head = newNode
         else:
@@ -63,8 +63,8 @@ class MySList():
         if self.isSorted():
             if other.isSorted():
                 l_final = MySList()               #lista en la que iré almacenando las restas
-                puntero_Invocante = self._head    #head de la lista invocante
-                puntero_Otra = other._head        #head de la lista que se le pasa por parámetro
+                puntero_Invocante = self._head    #_head de la lista invocante
+                puntero_Otra = other._head        #_head de la lista que se le pasa por parámetro
 
                 while puntero_Otra:
                     resultado = puntero_Invocante.elem - puntero_Otra.elem  #realizo la resta

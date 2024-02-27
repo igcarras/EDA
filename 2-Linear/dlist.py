@@ -24,7 +24,7 @@ class DList:
     """Add a new elem, e, at the beginning of the list"""
     #create the new node
     newNode=DNode(e)
-    #the new node must point to the current head
+    #the new node must point to the current _head
     
     if self.isEmpty():
       self.tail=newNode
@@ -32,9 +32,9 @@ class DList:
       newNode.next=self.head
       self.head.prev=newNode
       
-    #update the reference of head to point the new node
+    #update the reference of _head to point the new node
     self.head=newNode
-    #increase the size of the list  
+    #increase the _size of the list
     self.size=self.size+1
     
     
@@ -49,9 +49,9 @@ class DList:
       newNode.prev=self.tail
       self.tail.next=newNode
       
-    #update the reference of head to point the new node
+    #update the reference of _head to point the new node
     self.tail=newNode
-    #increase the size of the list  
+    #increase the _size of the list
     self.size=self.size+1
    
   
@@ -171,7 +171,7 @@ class DList:
     """This methods removes the node at the index position in the list"""
     
     #We must check that index is a right position in the list
-    #Remember that the indexes in a list can range from 0 to size-1
+    #Remember that the indexes in a list can range from 0 to _size-1
     if index<0 or index>=self.size:
       print(index,'Error: index out of range')
       return 

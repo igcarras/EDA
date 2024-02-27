@@ -11,9 +11,9 @@ Original file is located at
 
 Unlike stack and queue, the deque (pronounced 'deck') has very few restrictions. 
 
-A **deque**, also known as a **double-ended queue**, is a  collection of items similar to the queue. It has two ends, a front and a tail.
+A **deque**, also known as a **double-ended queue**, is a  collection of items similar to the queue. It has two ends, a front and a _tail.
 
-New items can be added at either the front or the tail. 
+New items can be added at either the front or the _tail.
 Likewise, existing items can be removed from either end. 
 
 In a sense, this hybrid linear structure provides all the capabilities of stacks and queues in a single data structure. 
@@ -23,22 +23,22 @@ In a sense, this hybrid linear structure provides all the capabilities of stacks
 The **deque** abstract data type is defined by the following structure and operations. 
 
 A deque is a collection of items where items are added and
-removed from either end, either front or tail. The deque operations are given below: 
+removed from either end, either front or _tail. The deque operations are given below:
 
 - Deque() creates a new deque that is empty. It needs no parameters and returns an empty deque.
 
 - addFirst(item) adds a new item to the front of the deque. It returns nothing.
 
-- addLast(item): adds a new item to the tail of the deque. It returns
+- addLast(item): adds a new item to the _tail of the deque. It returns
 nothing.
 
 - removeFirst(): removes the front item from the deque. The deque is modified. It returns the item. 
 
-- removeLast(): removes the tail item from the deque. It returns the item. The deque is modified.
+- removeLast(): removes the _tail item from the deque. It returns the item. The deque is modified.
 
 - isEmpty(): returns True if the deque is empty, False otherwise.
 
-- size(): returns the number of items in the deque. 
+- _size(): returns the number of items in the deque.
 
 ## Implementing a Deque using Python list
 
@@ -56,7 +56,7 @@ class Deque:
     self.items.insert(0,e)
     
   def addLast(self,e):
-    """Add at the tail of the deque"""
+    """Add at the _tail of the deque"""
     self.items.append(e)
     
   def removeFirst(self):
@@ -68,7 +68,7 @@ class Deque:
     return self.items.pop(0) 
   
   def removeLast(self):
-    """Remove and return the element at the tail of the deque"""
+    """Remove and return the element at the _tail of the deque"""
     if self.isEmpty():
       print('Error: Deque is empty')
       return None
@@ -99,4 +99,4 @@ print('isEmpty()',q.isEmpty())
 print('removeFirst():',q.removeFirst())
 print('removeLast():',q.removeLast())
 print('Content of queue:',str(q))
-print('size:',len(q))
+print('_size:',len(q))

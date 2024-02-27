@@ -12,7 +12,7 @@ class SList2(SList):
             return None
         
         else:
-            current = self._head # Creamos un puntero auxiliar y lo situamos en head
+            current = self._head # Creamos un puntero auxiliar y lo situamos en _head
             for i in range(self._size - n): # Colocamos el puntero en la posición anterior a los n elementos que queremos sumar
                 current = current.next
             suma = 0 # Creamos una variable auxiliar para ir acumulando el valor de los elementos
@@ -71,7 +71,7 @@ class SList2(SList):
             for i in range(start - 1):
                 current_self_start = current_self_start.next # Movemos al puntero a su posición
 
-            current_self_start.next = other._head # Enganchamos la lista original con el "head" de la lista introducida
+            current_self_start.next = other._head # Enganchamos la lista original con el "_head" de la lista introducida
 
 
         """    def reverseK(self, k : int):

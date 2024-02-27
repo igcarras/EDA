@@ -57,7 +57,7 @@ class BST2(BinarySearchTree):
 
     def sum_elems(self) -> object:
         """ returns the sum of all its elems. What is its temporal complexity?"""
-        # Complexity: O(n), where n is the size of the tree.
+        # Complexity: O(n), where n is the _size of the tree.
         # The function has to visit all the nodes of the tree.
         return self._sum_elems(self._root)
 
@@ -70,7 +70,7 @@ class BST2(BinarySearchTree):
     def prints10(self) -> None:
         """prints the elems of those nodes whose grandparents' elems are multiply of 10
         What is its temporal complexity"""
-        # Complexity: O(n), where n is the size of the tree.
+        # Complexity: O(n), where n is the _size of the tree.
         # The function has to visit all the nodes of the tree.
         self._prints10(self._root, None, None)
 
@@ -114,26 +114,26 @@ class BST2(BinarySearchTree):
         return node
 
     def fe_size(self, elem: object) -> int:
-        """gives an elem, and returns the size balance factor of
+        """gives an elem, and returns the _size balance factor of
         its node """
         node = self.search(elem)
         return self._fe_size(node)
 
     def _fe_size(self, node: 'BSTNode') -> int:
-        """returns the size balance factor of the input node"""
+        """returns the _size balance factor of the input node"""
         if node is None:
             return 0
         else:
             return abs(self._size(node.left) - self._size(node.right))
 
     def is_size_balanced(self) -> bool:
-        """return True if the tree is size balanced"""
+        """return True if the tree is _size balanced"""
         return self._is_size_balanced(self._root)
 
     def _is_size_balanced(self, node: 'BSTNode') -> bool:
-        """returns True if the node is size balanced;
-        a node is balanced if its size factor is <=1 and
-        its two children are size balanced"""
+        """returns True if the node is _size balanced;
+        a node is balanced if its _size factor is <=1 and
+        its two children are _size balanced"""
         if node:
             return self._fe_size(node) <= 1 and \
                    self._is_size_balanced(node.left) and \
@@ -260,7 +260,7 @@ if __name__ == "__main__":
     tree.draw()
     print()
     for x in [45, 60, 30, 15, 35, 10, 24, 21, 66, 80, 63, 55, 36, 50, 32, 56]:
-        print('size-balanced factor of  {} is {}'.format(x, tree.fe_size(x)))
+        print('_size-balanced factor of  {} is {}'.format(x, tree.fe_size(x)))
         print('height-balanced factor of  {} is {}'.format(x, tree.fe_height(x)))
         print()
 

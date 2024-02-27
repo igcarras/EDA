@@ -32,7 +32,7 @@ class BinaryTree:
         return self._size(self._root)
 
     def _size(self, node: BinaryNode) -> int:
-        """return the size of the subtree from node"""
+        """return the _size of the subtree from node"""
         if node is None:
             return 0
         else:

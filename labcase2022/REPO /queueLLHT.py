@@ -32,12 +32,12 @@ class Queue:
         else:
             #gets the first element, which we will return later
             result=self._head.elem
-            #updates head to point to the new head (the next node)
+            #updates _head to point to the new _head (the next node)
             self._head=self._head.next
-            #if the queue only has one node, tail must be None
+            #if the queue only has one node, _tail must be None
             if self.isEmpty():
                 self._tail=None
-            #decreases the size of the queue
+            #decreases the _size of the queue
             self._size -= 1
             
         return result 
@@ -58,7 +58,7 @@ class Queue:
         if self.isEmpty():
             print('Error: queue is empty!')
         else:
-            #gets the tail element, which we will return later
+            #gets the _tail element, which we will return later
             result=self._tail.elem
            
             
@@ -69,14 +69,14 @@ class Queue:
         #create the new node
         newNode=SNode(e)
         #the last node must point to the new node
-        #now, we must update the tail reference
+        #now, we must update the _tail reference
         if self.isEmpty():
             self._head=newNode
         else:
             self._tail.next= newNode
-        #update tail to point the new last node
+        #update _tail to point the new last node
         self._tail=newNode
-        #increases the size of the list  
+        #increases the _size of the list
         self._size += 1
     
     
@@ -112,7 +112,7 @@ if __name__=='__main__':
 
     print()
     print("front of the queue:", s.front()) 
-    print("tail of the queue:", s.tail()) 
+    print("_tail of the queue:", s.tail())
     print()
 
 

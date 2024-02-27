@@ -63,10 +63,10 @@ class SList2(SList):
                     pend = aux
                 aux = aux.next
                 cont += 1
-            if start == 0:                          # en el caso de que start sea 0 tan solo movemos el head
+            if start == 0:                          # en el caso de que start sea 0 tan solo movemos el _head
                 self._head = inputList._head
             else:
-                pstart.next = inputList._head            # el nodo auxiliar de la posicion start de la lista invocante apunta al head de la inputlist
+                pstart.next = inputList._head            # el nodo auxiliar de la posicion start de la lista invocante apunta al _head de la inputlist
             nodeIt.next = pend                      # nodo final de la inputlist apunta a el nodo auxiliar de la posicion end de la lista invocante
 
     def reverseK(self, k):        # metodo que invierte una lista en grupos de k elementos
@@ -108,7 +108,7 @@ class SList2(SList):
                 i += 1
                 if NodeIt:
                     NodeIt = NodeIt.next
-            self._head = auxList2._head # movemos el head de la lista invocante al head de la lista auxiliar 2 (ya invertida)
+            self._head = auxList2._head # movemos el _head de la lista invocante al _head de la lista auxiliar 2 (ya invertida)
 
         #variante con complejidad espacial cuadrática
         """auxList1 = None          #creamos dos listas auxiliares de la clase Slist2
@@ -138,7 +138,7 @@ class SList2(SList):
                         NodeIt2 = NodeIt2.next
                 i += 1
                 NodeIt = NodeIt.next
-            self._head = auxList2._head                 # movemos el head de la lista inicial a el head de la lista aux 2 para eliminar los elementos en el orden original"""
+            self._head = auxList2._head                 # movemos el _head de la lista inicial a el _head de la lista aux 2 para eliminar los elementos en el orden original"""
 
 
 

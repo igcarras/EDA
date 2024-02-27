@@ -9,14 +9,14 @@ class SNode:
 
 class SList:
     """This is the implementation of a singly linked list. We only use 
-    a reference to the first node, named head"""
+    a reference to the first node, named _head"""
     def __init__(self):
         """This constructor creates an empty list"""
         self._head=None
         self._size=0
     
     def __len__(self):
-        """It returns the size of the list"""
+        """It returns the _size of the list"""
         return self._size
 
 
@@ -43,11 +43,11 @@ class SList:
         """Add a new element, e, at the beginning of the list"""
         #create the new node
         newNode=SNode(e)
-        #the new node must point to the current head
+        #the new node must point to the current _head
         newNode.next=self._head
-        #update the reference of head to point the new node
+        #update the reference of _head to point the new node
         self._head=newNode
-        #increase the size of the list  
+        #increase the _size of the list
         self._size+=1
     
     def addLast(self,e):
@@ -76,7 +76,7 @@ class SList:
         else:  
             #gets the first element, which we will return later
             result=self._head.elem
-            #updates head to point to the new head (the next node)
+            #updates _head to point to the new _head (the next node)
             self._head=self._head.next
             self._size-=1
         
@@ -178,7 +178,7 @@ class SList:
         """This methods removes the node at the index position in the list"""
         result=None
         #We must check that index is a right position in the list
-        #Remember that the indexes in a list can range from 0 to size-1
+        #Remember that the indexes in a list can range from 0 to _size-1
         if index not in range(len(self)): 
             print(index,'Error removeAt: index out of range')
         elif index==0:

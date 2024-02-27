@@ -5,12 +5,12 @@ class SNode:
     self.element = e
     self.next = next
 
-"""Now, we can implement the class for a singly linked list. Our class only uses a refererence, head, for storing the first node, respectively. Moreover, it includes an atributte, named size, which stores the number of elements in the list."""
+"""Now, we can implement the class for a singly linked list. Our class only uses a refererence, _head, for storing the first node, respectively. Moreover, it includes an atributte, named _size, which stores the number of elements in the list."""
 
 class SList:
   """This is the implementation of a singly linked list. We use 
-  a reference to the first node, named head, and also a reference 
-  to the last node, named as tail. Also we keep an attribute, size, 
+  a reference to the first node, named _head, and also a reference
+  to the last node, named as _tail. Also we keep an attribute, _size,
   to store the number of nodes"""
   def __init__(self):
     self.head=None
@@ -29,15 +29,15 @@ class SList:
     """Add a new element, e, at the beginning of the list"""
     #create the new node
     newNode=SNode(e)
-    #the new node must point to the current head
+    #the new node must point to the current _head
     newNode.next=self.head
     
     if self.isEmpty():
       self.tail=newNode
       
-    #update the reference of head to point the new node
+    #update the reference of _head to point the new node
     self.head=newNode
-    #increase the size of the list  
+    #increase the _size of the list
     self.size += 1
     
     
@@ -46,7 +46,7 @@ class SList:
     #create the new node
     newNode=SNode(e)
     #the last node must point to the new node
-    #now, we must update the tail reference
+    #now, we must update the _tail reference
     
     if self.isEmpty():
       self.head=newNode
@@ -56,7 +56,7 @@ class SList:
     self.tail=newNode
 
 
-    #increase the size of the list  
+    #increase the _size of the list
     self.size += 1
     
     
@@ -81,9 +81,9 @@ class SList:
     
     #gets the first element, which we will return later
     first=self.head.element
-    #updates head to point to the new head (the next node)
+    #updates _head to point to the new _head (the next node)
     self.head=self.head.next
-    #if the list only has one node, tail must be None
+    #if the list only has one node, _tail must be None
     if self.isEmpty():
       self.tail=None
     self.size -= 1
@@ -168,7 +168,7 @@ class SList:
     """This methods inserts a new node containing the element e at the index
     position in the list"""
     
-    #first, we must check that index is a right position. Note that index=size
+    #first, we must check that index is a right position. Note that index=_size
     #is a right position for the insertAt method. 
     if index<0 or index>self.size:
       print(index, 'Error: index out of range')
@@ -201,7 +201,7 @@ class SList:
     """This methods removes the node at the index position in the list"""
     
     #We must check that index is a right position in the list
-    #Remember that the indexes in a list can range from 0 to size-1
+    #Remember that the indexes in a list can range from 0 to _size-1
     if index<0 or index>=self.size:
       print(index,'Error: index out of range')
       return 
@@ -277,10 +277,10 @@ class BinaryTree:
         else:
             print("Level order: ", end= ' ')  # avoid the new line
 
-            # we can use SList with tail and head
+            # we can use SList with _tail and _head
             list_nodes = SList()
             list_nodes.add_last(self._root)
-            while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+            while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
                 current = list_nodes.remove_first()
                 print(current.elem, end=' ')
                 if current.left is not None:
@@ -294,11 +294,11 @@ class BinaryTree:
         """prints the level order of the tree. O(n)"""
         result = []
         if self._root is not None:
-            # we can use SList with tail and head
+            # we can use SList with _tail and _head
             list_nodes = SList()
             list_nodes.add_last(self._root)
 
-            while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+            while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
                 current = list_nodes.remove_first() # O(1)
                 result.append(current.elem)
                 if current.left is not None:
@@ -316,13 +316,13 @@ class BinaryTree:
         if self._root is None:
             print('Error: the tree is empty')
         else:
-            # we can use SList with tail and head
+            # we can use SList with _tail and _head
             depth_level = 0
 
             list_nodes = SList()
             list_nodes.add_last(self._root)
 
-            while len(list_nodes) > 0:  # loop will be executed the size of tree: n
+            while len(list_nodes) > 0:  # loop will be executed the _size of tree: n
                 current = list_nodes.remove_first() # O(1)
                 if current == node:
                     return depth_level
@@ -339,7 +339,7 @@ class BinaryTree:
         return self._size(self._root)
 
     def _size(self, node: BinaryNode) -> int:
-        """return the size of the subtree from node"""
+        """return the _size of the subtree from node"""
         if node is None:
             return 0
         else:

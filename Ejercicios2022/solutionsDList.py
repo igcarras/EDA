@@ -124,7 +124,7 @@ class DList2(DList):
           print(index, len(self), 'searching from the beginning')
           return self.getAt(index)
         else:
-          print(index,'searching from the tail')
+          print(index,'searching from the _tail')
 
           aux=self._tail
           i=len(self)-1
@@ -151,7 +151,7 @@ class DList2(DList):
         elif index==len(self):
           self.addLast(elem)
         elif index<=len(self)//2:
-          print(index,'insert- starting from the head')
+          print(index,'insert- starting from the _head')
           self.insertAt(index,elem)
         else:
           print(index,'insert- starting from the end')
@@ -181,11 +181,11 @@ class DList2(DList):
         elif index==len(self)-1:
           return self.removeLast()
         elif index<=len(self)//2:
-          print(index,'remove- starting from the head')
+          print(index,'remove- starting from the _head')
           return self.removeAt(index)
         else:
           #we must to reach the node at the index position
-          print(index,'remove- starting from the tail...')
+          print(index,'remove- starting from the _tail...')
           i=len(self)-1
           node=self._tail
           while i>index:
@@ -397,7 +397,7 @@ class DList2(DList):
             #we have to move forward
             node=node.prev
 
-        #finally, we have to swap head y tail
+        #finally, we have to swap _head y _tail
         self._head,self._tail=self._tail,self._head
                 
                     

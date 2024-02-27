@@ -17,8 +17,8 @@
 
 class Queue:
   """FIFO Queue implementation using a Python list as storage. 
-  We add new elements at the tail of the list (enqueue)
-  and remove elements from the head of the list (dequeue)."""
+  We add new elements at the _tail of the list (enqueue)
+  and remove elements from the _head of the list (dequeue)."""
   
   def __init__(self):
     """Create an empty queue"""
@@ -36,7 +36,7 @@ class Queue:
     return str(self._items)  
 
   def enqueue(self,e):
-    """Add the element e to the tail of the queue"""
+    """Add the element e to the _tail of the queue"""
     self._items.append(e)
     
   def dequeue(self):
@@ -71,7 +71,7 @@ print('isEmpty()',q.isEmpty())
 print('dequeue():',q.dequeue())
 print('Content of queue',str(q))
 print('front element:',q.front())
-print('size:',len(q))
+print('_size:',len(q))
 
 
 # Now, we implement the function for the Josephus problem:

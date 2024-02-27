@@ -129,7 +129,7 @@ class SList2(SList):
             othernode.next = currentr.next
         """
         Volveremos a unir inputList a self SALVO QUE end sea igual a la longitud de la lista self, en cuyo caso inputList será la nueva "colilla" 
-        (no confundir "colilla" con el último nodo de una lista "tail")
+        (no confundir "colilla" con el último nodo de una lista "_tail")
         """
 
 

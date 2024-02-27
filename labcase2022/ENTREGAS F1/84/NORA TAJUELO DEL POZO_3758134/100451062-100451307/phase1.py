@@ -208,7 +208,7 @@ class SList2(SList):
     
         
         else:
-            #creo una variable para reestablecer head
+            #creo una variable para reestablecer _head
             cabeza = False
             lista = SList()
             c=0

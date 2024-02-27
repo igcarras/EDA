@@ -229,7 +229,7 @@ class Test(unittest.TestCase):
 
         
     def testMaximumPair2(self):
-        print("\n\tmaximumPair2, list size=1")
+        print("\n\tmaximumPair2, list _size=1")
         inputList=SList2()
         for x in [3]:
             inputList.addLast(x)
@@ -237,11 +237,11 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=3
         self.assertEqual(expected,result)
-        print("\tmaximumPair2, list size=1, ok!!")
+        print("\tmaximumPair2, list _size=1, ok!!")
 
 
     def testMaximumPair3(self):
-        print("\n\tmaximumPair3, list size=2")
+        print("\n\tmaximumPair3, list _size=2")
         inputList=SList2()
         for x in [3,2]:
             inputList.addLast(x)
@@ -249,11 +249,11 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=5
         self.assertEqual(expected,result)
-        print("\tmaximumPair3, list size=2, ok!!!")
+        print("\tmaximumPair3, list _size=2, ok!!!")
 
 
     def testMaximumPair4(self):
-        print("\n\tmaximumPair4, list size=3")
+        print("\n\tmaximumPair4, list _size=3")
         inputList=SList2()
         for x in [3,2,8]:
             inputList.addLast(x)
@@ -261,11 +261,11 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=11
         self.assertEqual(expected,result)    
-        print("\tmaximumPair4, list size=3, ok!!!")
+        print("\tmaximumPair4, list _size=3, ok!!!")
 
         
     def testMaximumPair5(self):
-        print("\n\tmaximumPair5, list size=4")
+        print("\n\tmaximumPair5, list _size=4")
         inputList=SList2()
         for x in [3,2,8,1]:
             inputList.addLast(x)
@@ -273,11 +273,11 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=10
         self.assertEqual(expected,result)
-        print("\tmaximumPair5, list size=4, ok!!!")
+        print("\tmaximumPair5, list _size=4, ok!!!")
 
 
     def testMaximumPair6(self):
-        print("\n\tmaximumPair6, list size=5, middle>max")
+        print("\n\tmaximumPair6, list _size=5, middle>max")
         inputList=SList2()
         for x in [3,2,13,8,1]:
             inputList.addLast(x)
@@ -285,11 +285,11 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=13
         self.assertEqual(expected,result) 
-        print("\tmaximumPair6, list size=5, middle>max, ok!!!")
+        print("\tmaximumPair6, list _size=5, middle>max, ok!!!")
 
     
     def testMaximumPair7(self):
-        print("\n\tmaximumPair7, list size=5, middle<max")
+        print("\n\tmaximumPair7, list _size=5, middle<max")
     
         inputList=SList2()
         for x in [10,2,-1,8,1]:
@@ -298,11 +298,11 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=11
         self.assertEqual(expected,result) 
-        print("\tmaximumPair7, list size=5, middle<max, ok!!!")
+        print("\tmaximumPair7, list _size=5, middle<max, ok!!!")
 
     
     def testMaximumPair8(self):
-        print("\n\tmaximumPair8, list size=5, middle<max")
+        print("\n\tmaximumPair8, list _size=5, middle<max")
         inputList=SList2()
         for x in [10,2,-1,20, 8,1]:
             inputList.addLast(x)
@@ -310,7 +310,7 @@ class Test(unittest.TestCase):
         result=inputList.maximumPair()
         expected=19
         self.assertEqual(expected,result) 
-        print("\tmaximumPair8, list size=5, middle<max, ok!!!")
+        print("\tmaximumPair8, list _size=5, middle<max, ok!!!")
 
         
     def testreverseK1(self):
