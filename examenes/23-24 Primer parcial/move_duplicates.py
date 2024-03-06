@@ -9,7 +9,7 @@ class SList2(SList):
         last_node = self._tail
 
         while current is not last_node.next:
-            if current.elem == current.next.elem:
+            if current.next and current.elem == current.next.elem:
                 duplicate = current.next
                 successive = duplicate.next
                 current.next = successive
