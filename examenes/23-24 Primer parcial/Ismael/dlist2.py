@@ -1,20 +1,24 @@
 from dlist import DList, DNode
 
 class DList2(DList):
-    def add_duplicates_last(self, k):
+    def add_duplicates(self, k):
+        contador = 0
         if len(self) > 0:
-            count = 0
-            long_list = len(self)
-            current_index = 0
             current = self._head
-            for i in range(long_list):
+            while current:
                 if current.elem < k:
                     nodo = DNode(current.elem)
-                    nodo.prev = self._tail
-                    self._tail.next = nodo
-                    self._tail = nodo
-                    self._size += 1
-                    count += 1
-                current = current.next
-                current_index += 1
-            return count
+                    nodo.next = current.next
+                    anterior_siguiente = current.next
+                    if current.next:
+                        current.next.prev = nodo
+                    else:
+                        self._tail = nodo
+                    current.next = nodo
+                    nodo.prev = current
+                    self._size +=1
+                    contador += 1
+                    current = anterior_siguiente
+                else:
+                    current = current.next
+        return contador
