@@ -7,27 +7,8 @@ Original file is located at
     https://colab.research.google.com/drive/1ic76_Egk1-sBcS5CRLTQVXAD0_ucKr6s
 """
 
-from move_duplicates import SList2
-
+from Ejercicio2 import SList2
 import unittest
-class Test(SList2):
-  def move_duplicates_to_end(self):
-        if self.is_empty():
-            return
-
-        current = self._head
-        last_node = self._tail
-
-        while current is not last_node.next:
-            if current.next and current.elem == current.next.elem:
-                duplicate = current.next
-                successive = duplicate.next
-                current.next = successive
-                self._tail.next = duplicate
-                self._tail = duplicate
-                self._tail.next = None
-            else:
-                current = current.next
 
 class Test(unittest.TestCase):
   def setUp(self):
