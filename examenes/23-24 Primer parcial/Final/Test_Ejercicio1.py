@@ -29,6 +29,9 @@ class Test(unittest.TestCase):
         self.l4.addLast(4)
         self.l4.addLast(2)
 
+        self.l5 = DList2()
+        self.l5.addLast(1)
+        self.l5.addLast(1)
 
     def test1(self):
         print('Case 1: longitud de la lista es ==0')
@@ -63,7 +66,7 @@ class Test(unittest.TestCase):
 
 
     def test4(self):
-        print('Case 4: Todos los elementos de la lsita se duplican')
+        print('Case 5: Todos los elementos de la lista se duplican')
         expected = [2]*8
         result = self.l3.add_duplicates(3)
         self.assertEqual(str(self.l3), str(expected), "Fail: La lista no es la esperada")
@@ -71,7 +74,7 @@ class Test(unittest.TestCase):
         self.assertEqual(result, 4, "Fail: Número de elementos duplicados no correcto")
 
     def test5(self):
-        print('Case 5: Ninguno de los elementos de la lista se duplican')
+        print('Case 6: Ninguno de los elementos de la lista se duplican')
         expected = [2]*4
         result = self.l3.add_duplicates(1)
         self.assertEqual(str(self.l3), str(expected), "Fail: La lista no es la esperada")
@@ -79,7 +82,7 @@ class Test(unittest.TestCase):
         self.assertEqual(result, 0, "Fail: Número de elementos duplicados no correcto")
 
     def test6(self):
-        print('Case 6: Ninguno de los elementos de la lista se duplican')
+        print('Case 7: Ninguno de los elementos de la lista se duplican')
         expected = [6,4,2]
         result = self.l4.add_duplicates(1)
         self.assertEqual(str(self.l4), str(expected), "Fail: La lista no es la esperada")
@@ -87,7 +90,7 @@ class Test(unittest.TestCase):
         self.assertEqual(result, 0, "Fail: Número de elementos duplicados no correcto")
 
     def test7(self):
-        print('Case 7: Se duplica el elemento final')
+        print('Case 8: Se duplica el elemento final')
         expected = [6,4,2,2]
         result = self.l4.add_duplicates(3)
         self.assertEqual(str(self.l4), str(expected), "Fail: La lista no es la esperada")
@@ -109,6 +112,13 @@ class Test(unittest.TestCase):
         self.assertEqual(str(self.l4), str(expected), "Fail: La lista no es la esperada")
         self.assertEqual(len(self.l4), len(expected), "Fail: La longitud de la lista no es la esperada")
         self.assertEqual(result, 3, "Fail: Número de elementos duplicados no correcto")
+    def test11(self):
+        print('Case 11: Se duplica todos')
+        expected = [1,1,1,1]
+        result  =self.l5.add_duplicates(7)
+        self.assertEqual(str(self.l5), str(expected), "Fail: La lista no es la esperada")
+        self.assertEqual(len(self.l5), len(expected), "Fail: La longitud de la lista no es la esperada")
+        self.assertEqual(result, 2, "Fail: Número de elementos duplicados no correcto")
 
 if __name__=="__main__":
     unittest.main()
