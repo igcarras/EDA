@@ -1,7 +1,7 @@
 from dlist import DList, DNode
 
 class DList2(DList):
-    def add_duplicates(self, k):
+    def copy_at_end(self, k):
         count = 0
         if len(self) > 0:
             current = self._head
