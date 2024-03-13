@@ -22,7 +22,7 @@ class CalculatorTests(unittest.TestCase):
     def testSubtract(self):
         result = self.calc.subtract(5, 3)
         #assert result == 2
-        self.assertEqual(result,2)
+        self.assertEqual(result,3)
     
     # Testing wrongAdd as before
     #def testWrongAdd(self):
