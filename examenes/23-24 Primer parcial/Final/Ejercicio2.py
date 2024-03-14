@@ -10,12 +10,20 @@ class SList2(SList):
 
         while current is not last_node.next:
             if current.next and (current.elem == current.next.elem):
+                print("estoy en ", current.elem)
+
                 duplicate = current.next
+                print("siguiente es:", duplicate.elem)
                 successive = duplicate.next
-                current.next = successive
-                self._tail.next = duplicate
-                self._tail = duplicate
-                self._tail.next = None
+                if successive is not None:
+                    current.next = successive
+                    self._tail.next = duplicate
+                    self._tail = duplicate
+                    self._tail.next = None
+                else:
+                    print("entro aqui")
+                    current = current.next
+
             else:
                 current = current.next
 
@@ -23,13 +31,13 @@ class SList2(SList):
 if __name__ == '__main__':
     slist = SList2()
     slist.add_last(1)
-    slist.add_last(1)
+    #slist.add_last(1)
     slist.add_last(2)
+    #slist.add_last(3)
     slist.add_last(3)
     slist.add_last(3)
-    slist.add_last(3)
-    slist.add_last(4)
-    slist.add_last(5)
+    #slist.add_last(4)
+    #slist.add_last(5)
 
     print("Lista original:", slist)
     slist.move_duplicates_to_end()
