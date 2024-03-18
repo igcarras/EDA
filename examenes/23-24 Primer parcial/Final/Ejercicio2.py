@@ -8,7 +8,7 @@ class SList2(SList):
         current = self._head
         last_node = self._tail
         count = 0
-        while count < self.__len__() and (current is not last_node):
+        while count < self.__len__():
             if current.next and (current.elem == current.next.elem):
                 duplicate = current.next
                 successive = duplicate.next
@@ -25,22 +25,23 @@ class SList2(SList):
                 current = current.next
                 count = count + 1
 
-
-    def move_duplicates_to_end_2(self):
+    def move_duplicates_to_end2(self):
         if len(self) > 1:
             prev = self._head
             current = prev.next
-            final = self._tail
-            while current and prev != final:
-                if prev.elem == current.elem and current.next!=None:
+            for i in range(1, len(self)):
+                if prev.elem == current.elem and current.next != None:
                     prev.next = current.next
                     self._tail.next = current
                     self._tail = current
                     self._tail.next = None
                     current = prev.next
                 else:
+
                     prev = current
                     current = current.next
+
+
 if __name__ == '__main__':
     slist = SList2()
     slist.add_last(1)
