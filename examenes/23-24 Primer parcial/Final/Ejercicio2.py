@@ -6,7 +6,6 @@ class SList2(SList):
             return
 
         current = self._head
-        last_node = self._tail
         count = 0
         while count < self.__len__():
             if current.next and (current.elem == current.next.elem):
@@ -17,13 +16,13 @@ class SList2(SList):
                     self._tail.next = duplicate
                     self._tail = duplicate
                     self._tail.next = None
-                    count=count+1
                 else:
                     current = current.next
-                    count = count + 1
             else:
                 current = current.next
-                count = count + 1
+
+            count = count + 1
+
 
     def move_duplicates_to_end2(self):
         if len(self) > 1:
