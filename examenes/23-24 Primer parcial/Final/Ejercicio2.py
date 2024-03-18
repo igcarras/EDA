@@ -23,13 +23,13 @@ class SList2(SList):
 
             count = count + 1
 
-
-    def move_duplicates_to_end2(self):
+"""
+    def move_duplicates_to_end(self):
         if len(self) > 1:
             prev = self._head
             current = prev.next
-            for i in range(1, len(self)):
-                if prev.elem == current.elem and current.next != None:
+            for i in range(1,len(self)):
+                if prev.elem == current.elem and current.next!=None:
                     prev.next = current.next
                     self._tail.next = current
                     self._tail = current
@@ -39,8 +39,7 @@ class SList2(SList):
 
                     prev = current
                     current = current.next
-
-
+"""
 if __name__ == '__main__':
     slist = SList2()
     slist.add_last(1)

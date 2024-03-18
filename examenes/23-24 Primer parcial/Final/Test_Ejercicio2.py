@@ -63,8 +63,8 @@ class Test(unittest.TestCase):
       self.S6e.add_last(i)
 
 
-    L7e = [2, 2, 2, 2]
-    L7s = [2, 2, 2, 2]
+    L7e = [2,2,2,2]
+    L7s = [2,2,2,2]
 
     for i in L7s:
       self.S7s.add_last(i)
