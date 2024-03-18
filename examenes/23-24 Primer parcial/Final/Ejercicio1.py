@@ -9,7 +9,7 @@ class DList2(DList):
                 if current.elem < k:
                     nodo = DNode(current.elem)
                     nodo.next = current.next
-                    aux_prev_next = current.next
+                    auxiliar = current.next
                     if current.next:
                         current.next.prev = nodo
                     else:
@@ -18,7 +18,7 @@ class DList2(DList):
                     nodo.prev = current
                     self._size +=1
                     count += 1
-                    current = aux_prev_next
+                    current = auxiliar
                 else:
                     current = current.next
         return count
