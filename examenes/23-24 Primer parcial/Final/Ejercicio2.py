@@ -7,11 +7,9 @@ class SList2(SList):
 
         current = self._head
         last_node = self._tail
-
-        while current:
+        count = 0
+        while count < self.__len__() and (current is not last_node):
             if current.next and (current.elem == current.next.elem):
-                print("estoy en ", current.elem)
-
                 duplicate = current.next
                 successive = duplicate.next
                 if successive is not None:
@@ -19,11 +17,14 @@ class SList2(SList):
                     self._tail.next = duplicate
                     self._tail = duplicate
                     self._tail.next = None
+                    count=count+1
                 else:
                     current = current.next
-
+                    count = count + 1
             else:
                 current = current.next
+                count = count + 1
+
 
     def move_duplicates_to_end_2(self):
         if len(self) > 1:

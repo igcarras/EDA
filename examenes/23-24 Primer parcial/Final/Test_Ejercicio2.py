@@ -23,6 +23,8 @@ class Test(unittest.TestCase):
     self.S5s=SList2()
     self.S6e = SList2()
     self.S6s = SList2()
+    self.S7e = SList2()
+    self.S7s = SList2()
 
     L2s=[1,1,3,4,5]
     L2e=[1,3,4,5,1]
@@ -54,11 +56,20 @@ class Test(unittest.TestCase):
 
     L6e = [1, 2, 3, 3]
     L6s = [1, 2, 3, 3]
+
     for i in L6s:
       self.S6s.add_last(i)
     for i in L6e:
       self.S6e.add_last(i)
 
+
+    L7e = [2, 2, 2, 2]
+    L7s = [2, 2, 2, 2]
+
+    for i in L7s:
+      self.S7s.add_last(i)
+    for i in L7e:
+      self.S7e.add_last(i)
   def test1(self):
     OL=self.S1 #Original empty list
     self.S1.move_duplicates_to_end()
@@ -154,5 +165,23 @@ class Test(unittest.TestCase):
       self.assertEqual(current1.elem,current2.elem,'Any elements in list before and after are not the same')
       current1=current1.next
       current2=current2.next
+
+  def test7(self):
+    print('Test 7:')
+    print('\tOriginal list:', self.S7s)
+    self.S7s.move_duplicates_to_end()
+    print('\tExpected remaining list.',self.S7e)
+    print('\tActual remaining list:',self.S7s)
+    self.assertEqual(self.S7s._size,self.S7e._size,'Size before and after in empty list is not the same')
+    self.assertEqual(self.S7s._head.elem,self.S7e._head.elem,'Head before and after in empty list is not the same')
+    self.assertEqual(self.S7s._tail.elem,self.S7e._tail.elem,'Tail before and after in empty list is not the same')
+    current1=self.S7s._head
+    current2=self.S7e._head
+    while current1:
+      self.assertEqual(current1.elem,current2.elem,'Any elements in list before and after are not the same')
+      current1=current1.next
+      current2=current2.next
+
+
 
 unittest.main(argv=['first-arg-is-ignored'], exit=False)
