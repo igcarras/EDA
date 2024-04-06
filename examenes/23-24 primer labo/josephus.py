@@ -2,15 +2,12 @@ from random import randrange
 from prize  import Award,Prizes
 
 def contest(prize1, prize2, k):
-
     while len(prize1) > 1:
         count = 1
         while count < k:
             prize1.add(prize1.remove())
             count = count + 1
         prize1.remove()
-
-
     while len(prize2) > 1:
         count = 1
         while count < k:

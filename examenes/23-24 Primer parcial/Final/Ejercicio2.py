@@ -1,6 +1,7 @@
 from slistHT import SList
 
 class SList2(SList):
+    """
     def move_duplicates_to_end(self):
         if self.is_empty():
             return
@@ -23,7 +24,6 @@ class SList2(SList):
 
             count = count + 1
 
-"""
     def move_duplicates_to_end(self):
         if len(self) > 1:
             prev = self._head
@@ -39,17 +39,35 @@ class SList2(SList):
 
                     prev = current
                     current = current.next
+
 """
+
+
+
+    def move_duplicates_to_end(self):
+        if len(self) > 0:
+            prev=self._head
+            aux=prev.next
+            for i in range (len(self)-2):
+                if prev.elem == aux.elem:
+                    prev.next = aux.next
+                    self._tail.next = aux
+                    self._tail.next = None
+                else:
+                    prev=aux
+                aux=aux.next
+        else:
+            return
+
 if __name__ == '__main__':
     slist = SList2()
     slist.add_last(1)
-    #slist.add_last(1)
-    slist.add_last(1)
-    #slist.add_last(3)
     slist.add_last(1)
     slist.add_last(1)
-    #slist.add_last(4)
-    #slist.add_last(5)
+    slist.add_last(1)
+    slist.add_last(1)
+    slist.add_last(1)
+    slist.add_last(1)
 
     print("Lista original:", slist)
     slist.move_duplicates_to_end()
