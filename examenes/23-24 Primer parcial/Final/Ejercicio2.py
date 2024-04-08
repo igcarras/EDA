@@ -52,6 +52,7 @@ class SList2(SList):
                 if prev.elem == aux.elem:
                     prev.next = aux.next
                     self._tail.next = aux
+                    self._tail = aux
                     self._tail.next = None
                 else:
                     prev=aux
@@ -59,16 +60,37 @@ class SList2(SList):
         else:
             return
 
+
+
+    def move_duplicates_to_end2(self):
+        if len(self)>2:
+            nodeit=self._head
+            aux = nodeit.next
+            count = 0
+            while count < self.__len__()-1:
+                while nodeit.elem == aux.elem:
+                    if aux.next:
+                        nodeit.next=aux.next
+                        aux.next=None
+                        self._tail.next=aux
+                        self._tail=aux
+                        aux=nodeit.next
+                        count+=1
+                nodeit=aux
+                aux=aux.next
+                count+=1
+
+
 if __name__ == '__main__':
     slist = SList2()
     slist.add_last(1)
-    slist.add_last(1)
-    slist.add_last(1)
-    slist.add_last(1)
-    slist.add_last(1)
-    slist.add_last(1)
-    slist.add_last(1)
+    slist.add_last(2)
+    slist.add_last(2)
+    slist.add_last(2)
+    slist.add_last(2)
+    slist.add_last(2)
+    slist.add_last(2)
 
     print("Lista original:", slist)
-    slist.move_duplicates_to_end()
+    slist.move_duplicates_to_end2()
     print("Lista después de mover duplicados al final:", slist)
