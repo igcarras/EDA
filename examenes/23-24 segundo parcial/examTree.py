@@ -16,7 +16,7 @@ If the key is smaller than X , then we can say that the ceil will be at right su
 If the key is grater than X , then the node can be a possible solution but to get immediate greater value we have to call the function with left subtree
 """
 
-class Ejercicio(BinarySearchTree):
+class ExamTree(BinarySearchTree):
     def find_ceiling_node(self, x):
         return self. _find_ceiling_node(self._root, x)
 
@@ -41,7 +41,7 @@ class Ejercicio(BinarySearchTree):
 
 
 if __name__ == "__main__":
-    tree1 = Ejercicio()
+    tree1 = ExamTree()
     input_list = [5, 1, 7, 2, 3]
     for x in input_list:
          tree1.insert(x)
@@ -49,8 +49,11 @@ if __name__ == "__main__":
    # show the resulting tree
     tree1.draw()
     print(tree1.find_ceiling_node(3))
+    print(tree1.find_ceiling_node(7))
+    print(tree1.find_ceiling_node(6))
+    print(tree1.find_ceiling_node(12))
 
-    tree2 = Ejercicio()
+    tree2 = ExamTree()
     input_list = [10, 5, 11, 4, 7, 8]
     for x in input_list:
          tree2.insert(x)
@@ -58,3 +61,22 @@ if __name__ == "__main__":
    # show the resulting tree
     tree2.draw()
     print(tree2.find_ceiling_node(6))
+    print(tree2.find_ceiling_node(7))
+    print(tree2.find_ceiling_node(4))
+    print(tree2.find_ceiling_node(2))
+    print(tree2.find_ceiling_node(15))
+
+    tree3 = ExamTree()
+    input_list = [9, 7, 3, 2, 1, 18, 22, 17, 15, 31]
+    for x in input_list:
+        tree3.insert(x)
+    # you can see the tree after each insertion
+    # show the resulting tree
+    tree3.draw()
+    print(tree3.find_ceiling_node(9))
+    print(tree3.find_ceiling_node(1))
+    print(tree3.find_ceiling_node(4))
+    print(tree3.find_ceiling_node(31))
+    print(tree3.find_ceiling_node(16))
+    print(tree3.find_ceiling_node(32))
+
