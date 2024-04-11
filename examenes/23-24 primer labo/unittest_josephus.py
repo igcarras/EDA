@@ -2,7 +2,6 @@ from random import randrange
 from prize  import Award,Prizes
 import unittest
 
-#version con doble bucle implementación tradicional
 def contest(prize1, prize2, k):
 
     while prize1 != None and len(prize1) > 1:
@@ -29,38 +28,6 @@ def contest(prize1, prize2, k):
     else:
         winner2 = 0
     return max(winner1, winner2)
-
-#versión con un solo bucle (version optimizada)
-def contest_short(prize1, prize2, k):
-    count = 1
-    while prize1 != None and len(prize1) > 1:
-        prize1.remove()
-        if count < k:
-            prize1.add(prize1.remove())
-            count = count + 1
-        else:
-            count = 1
-
-    count = 1
-    while prize2 != None and len(prize2) > 1:
-
-        prize2.remove()
-        if count < k:
-            prize2.add(prize2.remove())
-            count = count + 1
-        else:
-            count = 1
-
-    if prize1 != None and len(prize1) > 0:
-        winner1 = prize1.remove()
-    else:
-        winner1 = 0
-    if prize2 != None and len(prize2) > 0:
-        winner2 = prize2.remove()
-    else:
-        winner2 = 0
-    return max(winner1, winner2)
-
 
 
 import unittest
