@@ -48,10 +48,18 @@ if __name__ == "__main__":
         # you can see the tree after each insertion
    # show the resulting tree
     tree1.draw()
-    print(tree1.find_ceiling_node(3))
-    print(tree1.find_ceiling_node(7))
-    print(tree1.find_ceiling_node(6))
-    print(tree1.find_ceiling_node(12))
+    x=3
+    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
+
+    x = 7
+    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
+
+    x = 6
+    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
+
+    x = 12
+    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
+
 
     tree2 = ExamTree()
     input_list = [10, 5, 11, 4, 7, 8]
@@ -60,11 +68,19 @@ if __name__ == "__main__":
         # you can see the tree after each insertion
    # show the resulting tree
     tree2.draw()
-    print(tree2.find_ceiling_node(6))
-    print(tree2.find_ceiling_node(7))
-    print(tree2.find_ceiling_node(4))
-    print(tree2.find_ceiling_node(2))
-    print(tree2.find_ceiling_node(15))
+
+    x = 6
+    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
+    x = 7
+    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
+    x = 4
+    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
+    x = 2
+    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
+    x = 15
+    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
+
+
 
     tree3 = ExamTree()
     input_list = [9, 7, 3, 2, 1, 18, 22, 17, 15, 31]
@@ -73,10 +89,17 @@ if __name__ == "__main__":
     # you can see the tree after each insertion
     # show the resulting tree
     tree3.draw()
-    print(tree3.find_ceiling_node(9))
-    print(tree3.find_ceiling_node(1))
-    print(tree3.find_ceiling_node(4))
-    print(tree3.find_ceiling_node(31))
-    print(tree3.find_ceiling_node(16))
-    print(tree3.find_ceiling_node(32))
+
+    x = 9
+    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
+    x = 1
+    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
+    x = 4
+    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
+    x = 31
+    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
+    x = 16
+    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
+    x = 32
+    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
 
