@@ -30,6 +30,23 @@ class MyBinaryTree(BinaryTree):
             self.__is_bst(node.left, min_value, node.elem - 1) \
             and self.__is_bst(node.right, node.elem + 1, max_value)
 
+
+    def is_bst2(self) -> bool:
+        """gets a binary input_tree and checks if the input_tree is bst.
+        Worst case: we have to visit all nodes, O(n)
+        Best case: input_tree is empty"""
+        return self.__is_bst(self._root, -sys.maxsize, sys.maxsize)
+
+    def __is_bst2(self, node: BinaryNode, min_value: int, max_value: int) -> bool:
+        if node is None:
+            return True
+
+        if not(min_value <= node.elem <= max_value):
+            return False
+
+        return self.__is_bst2(node.left, min_value, node.elem - 1) \
+            and self.__is_bst2(node.right, node.elem + 1, max_value)
+
     def print_grandchild_10(self) -> None:
         self._print_grandchild_10(self._root, None, None)
 
@@ -67,6 +84,7 @@ if __name__ == "__main__":
 
     # Test para is_bst (False)
     print("is BST?", input_tree.is_bst())
+    print("is BST?", input_tree.is_bst2())
     # Test para is_bst (True)
     aux_tree = BinarySearchTree()
     for x in [50, 25, 75, 10, 30, 60]:
@@ -76,6 +94,7 @@ if __name__ == "__main__":
     input_tree2.draw()
 
     print("is BST?", input_tree2.is_bst())
+    print("is BST?", input_tree2.is_bst2())
 
     """
     aux_tree = BinarySearchTree()
