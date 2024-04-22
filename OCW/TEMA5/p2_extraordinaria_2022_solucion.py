@@ -1,4 +1,3 @@
-#!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 
 
@@ -57,17 +56,28 @@ class BinaryTree:
     def _right_sum_recursive(self, node, level):
         if not node:
             return 0
-
+        print("Estoy en el nodo", node.elem)
         sum = 0
         # If we detect a level change
+        print("Estoy buscando en el nivel", level, "y en el arbol estoy en el nivel ", self._currentLevel)
         if self._currentLevel < level:
             # We accumulate item value to the sum
             sum += node.elem
             # We update current level to keep going
             self._currentLevel = level
+            print("Suma es:", sum, "y bajo un nivel en el arbol hasta el nivel ", self._currentLevel)
+
 
         # Recursion: right first since we want to sum last items of each level only
         sum += self._right_sum_recursive(node.right, level + 1)
         sum += self._right_sum_recursive(node.left, level + 1)
         return sum
 
+if __name__ == "__main__":
+    input_tree = BinaryTree()
+    values = [25, 20, 36, 10, 22, 30, 40, 5, 12, 28, 38]
+    for x in values:
+        input_tree.insert(x)
+    input_tree.draw()
+
+    print("La suma final aculumada es ", input_tree.right_sum())
