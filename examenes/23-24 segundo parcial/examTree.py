@@ -39,6 +39,29 @@ class ExamTree(BinarySearchTree):
         # Devuelve el máximo del número dado (ceil_node)
         return val if val >= x else ceil_node.elem
 
+    def closest(self, value: int) -> int:
+        """returns the closest element to value.
+        Worst Case: value exists, and it is a leaf in the largest branch. O(log n)
+        Best Case: root is None or root. elem is value, O(1)
+        """
+        return self.__closest(self._root, value)
+    def __closest(self, node: BinaryNode, value: int) -> int:
+        """returns the closest element to value.
+        value could not exist into the input_tree."""
+        if node is None:
+            return -1
+
+        if node.elem == value:  # base case: node.elem is value
+            return value
+
+        if value > node.elem:  # we have to search in the left child
+            return self.__closest(node.right, value)
+
+        closest_child = self.__closest(node.left, value)
+
+        #print(closest_child, node.elem)
+        return closest_child if closest_child >= x else node.elem
+
 
 if __name__ == "__main__":
     tree1 = ExamTree()
@@ -59,6 +82,19 @@ if __name__ == "__main__":
 
     x = 12
     print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
+
+    print("--------------------------")
+    x=3
+    print("Ceil de ", x, " es ", tree1.closest(x))
+
+    x = 7
+    print("Ceil de ", x, " es ", tree1.closest(x))
+
+    x = 6
+    print("Ceil de ", x, " es ", tree1.closest(x))
+
+    x = 12
+    print("Ceil de ", x, " es ", tree1.closest(x))
 
 
     tree2 = ExamTree()
