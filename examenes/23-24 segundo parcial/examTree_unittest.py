@@ -115,5 +115,39 @@ class Test(unittest.TestCase):
     self.assertEqual(tree1.find_ceiling_node(30), -1)
     self.assertEqual(tree1.find_ceiling_node(32), -1)
     self.assertEqual(tree1.find_ceiling_node(19), -1)
+  def test4(self):
+    print('Test 4')
+    tree1 = ExamTree()
+    input_list = [12, 7, 11, 4, 3, 8, 96 ,42, 54,43 ,72,62]
+    for x in input_list:
+         tree1.insert(x)
+    #tree1.draw()
+    self.assertEqual(tree1.find_ceiling_node(6), 7)
+    self.assertEqual(tree1.find_ceiling_node(7), 7)
+    self.assertEqual(tree1.find_ceiling_node(4), 4)
+    self.assertEqual(tree1.find_ceiling_node(2), 3)
+    self.assertEqual(tree1.find_ceiling_node(8), 8)
+    self.assertEqual(tree1.find_ceiling_node(9), 11)
+    self.assertEqual(tree1.find_ceiling_node(52), 54)
+    self.assertEqual(tree1.find_ceiling_node(11), 11)
+    self.assertEqual(tree1.find_ceiling_node(63), 72)
+    self.assertEqual(tree1.find_ceiling_node(73), 96)
+    self.assertEqual(tree1.find_ceiling_node(100), -1)
+  def test5(self):
+    print('Test 5')
+    tree1 = ExamTree()
+    input_list = [6, 4, 7]
+    for x in input_list:
+      tree1.insert(x)
+    # tree1.draw()
+    self.assertEqual(tree1.find_ceiling_node(6), 6)
+    self.assertEqual(tree1.find_ceiling_node(7), 7)
+    self.assertEqual(tree1.find_ceiling_node(4), 4)
+    self.assertEqual(tree1.find_ceiling_node(1), 4)
+    self.assertEqual(tree1.find_ceiling_node(5), 6)
+    self.assertEqual(tree1.find_ceiling_node(9), -1)
 
 unittest.main(argv=['first-arg-is-ignored'], exit=False)
+
+
+
