@@ -408,11 +408,26 @@ if __name__ == "__main__":
     for v in [8, 7, 18, 16, 11, 12, 13, 22]:
         print("closest({})={}".format(v, input_tree.closest(v)))
     """
-    """
-    input_tree = BST2()
-    for number in [15, 3, 1, 5, 30, 20, 40, 6]:
-        input_tree.insert(number)
-    input_tree.draw()
+    """"""
+    #input_tree = BST2()
+    #for number in [15, 3, 1, 5, 30, 20, 40, 6]:
+    #    input_tree.insert(number)
+    #input_tree.draw()
+
+    input_tree2 = BST2()
+    for number in [50, 48, 70, 30, 65, 90, 20, 32, 67, 98]:
+        input_tree2.insert(number)
+    input_tree2.draw()
+
+    i, j = 20, 30
+    print("lwc({},{})={}".format(i, j, input_tree2.lwc(i, j)))
+    i, j = 67, 70
+    print("lwc({},{})={}".format(i, j, input_tree2.lwc(i, j)))
+
+    i, j = 30, 35
+    print("lwc({},{})={}".format(i, j, input_tree2.lwc(i, j)))
+
+    """""
     i, j = 15, 3
     print("check_cousins({},{})={}".format(i, j, input_tree.check_cousins(i, j)))
     i, j = 3, 30
@@ -421,7 +436,7 @@ if __name__ == "__main__":
     print("check_cousins({},{})={}".format(i, j, input_tree.check_cousins(i, j)))
     i, j = 5, 20
     print("check_cousins({},{})={}".format(i, j, input_tree.check_cousins(i, j)))
-
+    
     i, j = 15, 3
     print("lwc({},{})={}".format(i, j, input_tree.lwc(i, j)))
     i, j = 3, 30
@@ -441,8 +456,7 @@ if __name__ == "__main__":
     i, j = 3, 6
     print("lwc({},{})={}".format(i, j, input_tree.lwc(i, j)))
     """
-
-    #
+    """
     input_tree = BST2()
     for m in [15, 3, 1, 5, 30, 20, 40]:
         input_tree.insert(m)
@@ -455,3 +469,4 @@ if __name__ == "__main__":
     print('Después de update_adding_left_child:')
     input_tree.draw()
     print(input_tree.level_order_list())
+    """

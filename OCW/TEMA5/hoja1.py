@@ -13,8 +13,7 @@ class MyBinaryTree(BinaryTree):
             self.__mirror(node.left)
             # we transform the right child
             self.__mirror(node.right)
-            # swap the children
-            node.left, node.right = node.right, node.left
+
 
     def is_bst(self) -> bool:
         """gets a binary input_tree and checks if the input_tree is bst.
