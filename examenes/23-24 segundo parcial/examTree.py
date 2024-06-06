@@ -3,9 +3,7 @@ from bintree import BinaryNode
 
 
 """"
-https://www.geeksforgeeks.org/problems/implementing-ceil-in-bst/1?page=2&category=Binary%20Search%20Tree&difficulty=Medium&sortBy=latest
-Expected Approach
-Intuition
+
 We can use BST property to solve the problem . In BST all the keys are less than all the keys that are present in its right subtree and  greater than all the keys that are present in its left subtree. In this manner considering and comparing the given number with the root value, we can decide to move either in left or right.
 
 Implementation
@@ -21,6 +19,7 @@ class ExamTree(BinarySearchTree):
         return self. _find_ceiling_node(self._root, x)
 
     def _find_ceiling_node(self, ceil_node: BinaryNode, x: int) -> int:
+
         # Caso base: si el nodo actual es None, retornamos -1
         if ceil_node is None:
             return -1
@@ -38,104 +37,3 @@ class ExamTree(BinarySearchTree):
         val = self._find_ceiling_node(ceil_node.left, x)
         # Devuelve el máximo del número dado (ceil_node)
         return val if val >= x else ceil_node.elem
-
-    def closest(self, value: int) -> int:
-        """returns the closest element to value.
-        Worst Case: value exists, and it is a leaf in the largest branch. O(log n)
-        Best Case: root is None or root. elem is value, O(1)
-        """
-        return self.__closest(self._root, value)
-    def __closest(self, node: BinaryNode, value: int) -> int:
-        """returns the closest element to value.
-        value could not exist into the input_tree."""
-        if node is None:
-            return -1
-
-        if node.elem == value:  # base case: node.elem is value
-            return value
-
-        if value > node.elem:  # we have to search in the left child
-            return self.__closest(node.right, value)
-
-        closest_child = self.__closest(node.left, value)
-
-        #print(closest_child, node.elem)
-        return closest_child if closest_child >= x else node.elem
-
-
-if __name__ == "__main__":
-    tree1 = ExamTree()
-    input_list = [5, 1, 7, 2, 3]
-    for x in input_list:
-         tree1.insert(x)
-        # you can see the tree after each insertion
-   # show the resulting tree
-    tree1.draw()
-    x=3
-    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
-
-    x = 7
-    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
-
-    x = 6
-    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
-
-    x = 12
-    print("Ceil de ", x, " es ", tree1.find_ceiling_node(x))
-
-    print("--------------------------")
-    x=3
-    print("Ceil de ", x, " es ", tree1.closest(x))
-
-    x = 7
-    print("Ceil de ", x, " es ", tree1.closest(x))
-
-    x = 6
-    print("Ceil de ", x, " es ", tree1.closest(x))
-
-    x = 12
-    print("Ceil de ", x, " es ", tree1.closest(x))
-
-
-    tree2 = ExamTree()
-    input_list = [10, 5, 11, 4, 7, 8]
-    for x in input_list:
-         tree2.insert(x)
-        # you can see the tree after each insertion
-   # show the resulting tree
-    tree2.draw()
-
-    x = 6
-    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
-    x = 7
-    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
-    x = 4
-    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
-    x = 2
-    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
-    x = 15
-    print("Ceil de ", x, " es ", tree2.find_ceiling_node(x))
-
-
-
-    tree3 = ExamTree()
-    input_list = [9, 7, 3, 2, 1, 18, 22, 17, 15, 31]
-    for x in input_list:
-        tree3.insert(x)
-    # you can see the tree after each insertion
-    # show the resulting tree
-    tree3.draw()
-
-    x = 9
-    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
-    x = 1
-    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
-    x = 4
-    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
-    x = 31
-    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
-    x = 16
-    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
-    x = 32
-    print("Ceil de ", x, " es ", tree3.find_ceiling_node(x))
-
