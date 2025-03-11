@@ -7,7 +7,7 @@ Original file is located at
     https://colab.research.google.com/drive/1ic76_Egk1-sBcS5CRLTQVXAD0_ucKr6s
 """
 
-from complete_list import SList2
+from metodo_completar import SList2
 
 import unittest
 class Test(SList2):
