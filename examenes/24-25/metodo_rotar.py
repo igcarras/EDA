@@ -54,3 +54,8 @@ if __name__ == '__main__':
     print(l)
     l.rotar(2)
     print("New DList con p=2:", l)
+
+    l = DList2()
+    print(l)
+    l.rotar(2)
+    print("New DList con p=2:", l)

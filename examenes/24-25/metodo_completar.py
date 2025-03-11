@@ -19,8 +19,41 @@ class SList2(SList):
             self._size += 1  # Actualizar tamaño
 
 if __name__ == '__main__':
+    slist = SList2()
+    slist.add_last(1)
+    slist.add_last(3)
+    slist.add_last(4)
 
+    print("Lista original:", slist)
+    slist.completar()
+    print("Lista después de mover duplicados al final:", slist)
 
+    slist = SList2()
+    slist.add_last(1)
+    slist.add_last(5)
+
+    print("Lista original:", slist)
+    slist.completar()
+    print("Lista después de mover duplicados al final:", slist)
+
+    slist = SList2()
+    slist.add_last(7)
+    slist.add_last(8)
+    slist.add_last(9)
+
+    print("Lista original:", slist)
+    slist.completar()
+    print("Lista después de mover duplicados al final:", slist)
+
+    slist = SList2()
+    slist.add_last(2)
+    slist.add_last(3)
+    slist.add_last(4)
+    slist.add_last(6)
+
+    print("Lista original:", slist)
+    slist.completar()
+    print("Lista después de mover duplicados al final:", slist)
     slist = SList2()
 
     print("Lista original:", slist)
