@@ -34,7 +34,6 @@ if __name__ == "__main__":
     for val in [10, 5, 3, 7, 20, 15, 30, 8, 6]:
         tree.insert(val)
 
-    result = SList()
     result = tree.even_elements_inorder()
     print(result)
     tree.print_reverse_slist(result._head)
