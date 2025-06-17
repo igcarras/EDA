@@ -2,9 +2,23 @@ from slistH import SList
 from slistH import SNode
 from bintree import BinaryNode
 from bst import BinarySearchTree
+
+
+class MyList(SList):
+    def print_reverse_slist(self):
+        return self._print_reverse_slist(self._head)
+
+    def _print_reverse_slist(self, node: SNode):
+        """Imprime los elementos desde el final al inicio usando recursión"""
+        if node is None:
+            return
+        self._print_reverse_slist(node.next)
+        print(node.elem, end=' ')
+
+
 class MyBST (BinarySearchTree):
-    def even_elements_inorder(self) -> SList:
-        list_bst = SList()
+    def even_elements_inorder(self) -> MyList:
+        list_bst = MyList()
         self._even_elements_inorder(self._root, list_bst)
         return list_bst
 
@@ -16,13 +30,6 @@ class MyBST (BinarySearchTree):
                 list_bst.addLast(node.elem)
             self._even_elements_inorder(node.right, list_bst)
             return
-
-    def print_reverse_slist(self, node:SNode):
-        """Imprime los elementos desde el final al inicio usando recursión"""
-        if node is None:
-            return
-        self.print_reverse_slist(node.next)
-        print(node.elem, end=' ')
 
 
 
@@ -36,4 +43,4 @@ if __name__ == "__main__":
 
     result = tree.even_elements_inorder()
     print(result)
-    tree.print_reverse_slist(result._head)
+    result.print_reverse_slist()
