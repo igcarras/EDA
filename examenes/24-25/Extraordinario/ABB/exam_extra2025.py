@@ -6,7 +6,8 @@ from bst import BinarySearchTree
 
 class MyList(SList):
     def print_reverse_slist(self):
-        return self._print_reverse_slist(self._head)
+        self._print_reverse_slist(self._head)
+        return
 
     def _print_reverse_slist(self, node: SNode):
         """Imprime los elementos desde el final al inicio usando recursión"""
@@ -42,5 +43,17 @@ if __name__ == "__main__":
         tree.insert(val)
 
     result = tree.even_elements_inorder()
-    print(result)
+    print("Números pares del ABB:", "\n", result)
+    print("Lista invertida:")
     result.print_reverse_slist()
+    print("\n","-----------------")
+
+    tree2 = MyBST()
+    for val in [12, 5, 3, 7, 1, 23, 4, 9, 2]:
+        tree2.insert(val)
+
+    result = tree2.even_elements_inorder()
+    print("Números pares del ABB:", "\n", result)
+    print("Lista invertida:")
+    result.print_reverse_slist()
+    print("\n", "-----------------")
