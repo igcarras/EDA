@@ -11,6 +11,11 @@ class DList:
     self._tail=None
     self._size=0
 
+  def isEmpty(self):
+    """Checks if the list is empty"""
+    #return self.head == None
+    return len(self)==0
+
   def addLast(self, e):
       """Add a new elem, e, at the end of the list"""
       # create the new node
