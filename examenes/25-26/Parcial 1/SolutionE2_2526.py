@@ -11,6 +11,9 @@ class DList:
     self._tail=None
     self._size=0
 
+  def __len__(self):
+      return self._size
+
   def isEmpty(self):
     """Checks if the list is empty"""
     #return self.head == None
@@ -50,15 +53,14 @@ class DList:
 
   def ringList (self, s):
     other = DList()
-    current=self.head
-    if s>0 and s<self.size :
+    if s>0 and s<=self._size :
         for i in range (0,s):
             """order of complexity O(n)"""
             other.addLast(self.removeFirst())
-        """ring List pointers"""
-        other.tail.next = other.head
-        other.head.prev = other.tail
+        other._tail.next = other._head
+        other._head.prev = other._tail
         return other
     else:
         print("error: wrong size")
+        return None
 
