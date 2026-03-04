@@ -62,7 +62,7 @@ class SList2(SList):
                     # it is the first node
                     self._head = self._head.next
                     if self._head is None:
-                        self._tail = None
+                        self._tail = self._head
                 else:
                     # it's not the first node
                     prev.next = node_it.next

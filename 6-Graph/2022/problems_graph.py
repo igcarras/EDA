@@ -237,25 +237,25 @@ if __name__ == '__main__':
 
 
 
-    # # for any pair of vertices, there is a path between them
-    # # Please, draw the graph. This is a connected graph, that is,
-    # for v in g._vertices:
-    #     list_non_accessible = g.non_accessible(v)
-    #     print("non-accessible from {}:{} ".format(v, list_non_accessible))
-    #     # all list should be empty
-    #     assert list_non_accessible == []
-    #
-    #     list_reachable = g.get_reachable(v)
-    #     print("reachable from {}: {} ".format(v, list_reachable))
-    #     assert list_reachable == list(g._vertices.keys())
-    #     # we now use the _bfs alg
-    #     list_reachable = g.get_reachable(v, '_bfs')
-    #     print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
-    #     assert list_reachable == list(g._vertices.keys())
-    #     print()
-    # algorithm = 'bfs'
-    # print("has cycles? ", g.has_cycles(algorithm))
-    # assert g.has_cycles(algorithm)
+    # for any pair of vertices, there is a path between them
+    # Please, draw the graph. This is a connected graph, that is,
+    for v in g._vertices:
+         list_non_accessible = g.non_accessible(v)
+         print("non-accessible from {}:{} ".format(v, list_non_accessible))
+         # all list should be empty
+         assert list_non_accessible == []
+
+         list_reachable = g.get_reachable(v)
+         print("reachable from {}: {} ".format(v, list_reachable))
+         assert list_reachable == list(g._vertices.keys())
+         # we now use the _bfs alg
+         list_reachable = g.get_reachable(v, '_bfs')
+         print("reachable (using _bfs) from {}: {} ".format(v, list_reachable))
+         assert list_reachable == list(g._vertices.keys())
+         print()
+    algorithm = 'dfs'
+    print("has cycles? ", g.has_cycles(algorithm))
+    assert g.has_cycles(algorithm)
     #
     # # we add more vertices to the graph (please, download
     # # graph.py if you don't have the method add_vertex
