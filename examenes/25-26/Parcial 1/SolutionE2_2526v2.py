@@ -48,7 +48,7 @@ class DList:
                 self._tail = None
                 self._size = 0
 
-                return other
+               # return other
 
             elif s > 0:
                 current = self._head
@@ -69,7 +69,7 @@ class DList:
                 other._size = s
                 self._size = self._size - s
 
-                return other
+                #return other
 
             return other
 
