@@ -172,6 +172,9 @@ class BST2(BinarySearchTree):
         else:
             return True
 
+
+
+
 """""
 if __name__ == "__main__":
     tree = BST2()
