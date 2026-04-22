@@ -26,11 +26,7 @@ class Stack:
     
 
 def ReplaceStack(s,old,new):
-    ...
-    
-    
-    
-    
+
     if(s==[] or s == None):
         return None
     
