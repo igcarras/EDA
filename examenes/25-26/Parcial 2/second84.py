@@ -388,6 +388,55 @@ class MyBinarySearchTree:
 
         return node.elem + self._sumInsideRangeDum(node.left, min, max) + self._sumInsideRangeDum(node.right, min, max)
 
+    def sumInsideRangeJorge(self, min: int, max: int) -> int:
+        return self._sumInsideRangeJorge(self._root, min, max)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeJorge(self, node: BinaryNode, min: int, max: int) -> int:
+
+        if node is None:
+            # node is empty
+            return 0
+
+        if node.left is None and node.right is None:
+            return 0
+        elif node.elem > max:
+                return self._sumInsideRangeJorge(node.left, min, max)
+        elif node.elem < min:
+            return self._sumInsideRangeJorge(node.right, min, max)
+        else:
+            return node.elem + self._sumInsideRangeJorge(node.right, min, max) + self._sumInsideRangeJorge(node.left, min, max)
+
+    def sumInsideRangeCeleste(self, min: int, max: int) -> int:
+        print("Hola")
+        return self._sumInsideRangeCeleste(self._root, min, max)
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+        # return integer with sum values
+
+        # Sum value of all nodes (NOT LEAF) having value inside the given range
+
+    def _sumInsideRangeCeleste(self, node: BinaryNode, min: int, max: int) -> int:
+
+        if node is None or (node.left is None and node.right is None):
+            # node is empty
+            return 0
+
+
+        if min <= node.elem <= max:
+            return node.elem + self._sumInsideRangeCeleste(node.right, min, max) + self._sumInsideRangeCeleste(
+                node.left, min, max)
+
+        if node.elem > max:
+            return self._sumInsideRangeCeleste(node.left, min, max)
+
+        if node.elem < min:
+            return self._sumInsideRangeCeleste(node.right, min, max)
+
 
     def sumInsideRangeOrder(self, min: int, max: int) -> int:
         return self._sumInsideRangeOrder(self._root, min, max)
@@ -526,20 +575,20 @@ if __name__ == "__main__":
     # print("Result ", tree.sumInsideRange2(46, 94))
 
     print("Tree: Sum not leaf nodes out range: 1, 120")
-    print("Result ", tree.sumInsideRange4(1, 120))
+    print("Result ", tree.sumInsideRangeCeleste(1, 120))
     print("Tree: Sum not leaf nodes out range: 10, 20")
-    print("Result ", tree.sumInsideRange4(10, 20))
+    print("Result ", tree.sumInsideRangeCeleste(10, 20))
     print("Tree: Sum not leaf nodes out range: 0, 0")
-    print("Result ", tree.sumInsideRange4(0, 0))
+    print("Result ", tree.sumInsideRangeCeleste(0, 0))
     print("Tree: Sum not leaf nodes out range: 12, 93")
-    print("Result ", tree.sumInsideRange4(12, 93))
+    print("Result ", tree.sumInsideRangeCeleste(12, 93))
     print("Tree: Sum not leaf nodes out range: -10, 0")
-    print("Result ", tree.sumInsideRange4(-10, 0))
+    print("Result ", tree.sumInsideRangeCeleste(-10, 0))
     print("Tree: Sum not leaf nodes out range: 5, 80")
-    print("Result ", tree.sumInsideRange4(5, 80))
+    print("Result ", tree.sumInsideRangeCeleste(5, 80))
     print("Tree: Sum not leaf nodes out range: 46, 94")
-    print("Result ", tree.sumInsideRange4(46, 94))
+    print("Result ", tree.sumInsideRangeCeleste(46, 94))
     print("Tree: Sum not leaf nodes out range: 1, 5")
-    print("Result ", tree.sumInsideRange4(1, 5))
+    print("Result ", tree.sumInsideRangeCeleste(1, 5))
 
 
