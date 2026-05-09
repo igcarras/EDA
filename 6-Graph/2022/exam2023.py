@@ -1,10 +1,18 @@
 class MyGraph:
+    def __init__(self, list_vertices):
+        self._vertices = {}
+        for i in list_vertices:
+            self._vertices[i] = []
+
     def add_edge(self, i, j):
         if i not in self._vertices.keys():
             return
         if j not in self._vertices.keys():
             return
         self._vertices[i].append(j)
+
+    def is_tree(self)->bool:
+    def dfs(self)
 
     def has_path_to_odd(self, k) -> []:
         list_odd = []
@@ -57,10 +65,6 @@ class MyGraph:
         return
 
 
-    def __init__(self, list_vertices):
-        self._vertices = {}
-        for i in list_vertices:
-            self._vertices[i] = []
 
 
 if __name__ == '__main__':
