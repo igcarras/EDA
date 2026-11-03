@@ -1,9 +1,7 @@
 from bst import BinarySearchTree
     
 class BT(BinarySearchTree):
-    
-    
-    """CREATE A recursive function that REMOVES the GREATEST NODE"""
+"""CREATE A recursive function that REMOVES the GREATEST NODE"""
     def remove_max(self):
         return self._remove_max(self._root)
 
@@ -17,13 +15,11 @@ class BT(BinarySearchTree):
             node.right = self._remove_max(node.right)  # base recursive
         
         return node
-    
-    
 
 
-     """prints the elements of those nodes whose grandparents' elements are multiply of 10
+     """prints the elements of those nodes whose grandparents' elements are multiply of 10"""
     def prints10(self) -> None:
-        What is its temporal complexity"""
+
         # Complexity: O(n), where n is the size of the tree.
         # The function has to visit all the nodes of the tree.
         self._prints10(self._root, None, None)
@@ -34,9 +30,6 @@ class BT(BinarySearchTree):
             if grand and grand.elem % 10 == 0:
                 print(node.elem, end=' ')
             self._prints10(node.right, node, parent)
-
-
-    
 
 
     """Calculate the length of the longest path passing through the root . 
@@ -104,6 +97,7 @@ values = [25, 20, 36, 10, 22, 30, 40, 5, 12, 28, 38, 48]
 for x in values:
    tree.insert(x)
 tree.draw()
+
 print(tree.getDist(25,38))
 print(tree.getDist(36,5))
 tree.remove_max()
