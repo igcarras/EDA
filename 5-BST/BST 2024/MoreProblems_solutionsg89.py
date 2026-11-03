@@ -30,6 +30,36 @@ class BT(BinarySearchTree):
             node.left = self._removeNodeMultiple(node.left, multiple, removelist)
         return node
 
+    def secondLargest(self):
+        result = []
+        self._secondLargest(self._root, result)
+
+        if len(result) < 2:
+            return -1
+
+        return result[1]
+
+    def _secondLargest(self, node, result):
+
+        if node is None or len(result) >= 2:
+            return
+
+        # Visit right subtree
+        self._secondLargest(node.right, result)
+
+        if len(result) >= 2:
+            return
+
+        # Visit current node
+        result.append(node.elem)
+
+        if len(result) >= 2:
+            return
+
+        # Visit left subtree
+        self._secondLargest(node.left, result)
+
+
 tree =BT()
 values = [25, 20, 36, 10, 22, 30, 40, 5, 12, 28, 38, 48]
 for x in values:
@@ -37,5 +67,6 @@ for x in values:
 tree.draw()
 
 print(tree.removeNodeMultiple())
+print(tree.secondLargest())
 
 
